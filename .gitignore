@@ -1,0 +1,15 @@
+# Project exclude paths
+/out/
+/chapter3/.idea/.gitignore
+/chapter3/out/production/chapter3/HelloJack.class
+/chapter3/out/production/chapter3/HelloWorld.class
+/.idea/java-the-complete-java-developer-course.iml
+/.idea/misc.xml
+/chapter3/.idea/misc.xml
+/.idea/modules.xml
+/chapter3/.idea/modules.xml
+/.idea/uiDesigner.xml
+/chapter3/out/production/chapter3/variables.class
+/chapter3/out/production/chapter3/variables_challenge.class
+/.idea/vcs.xml
+/.idea/workspace.xml
