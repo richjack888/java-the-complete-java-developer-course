@@ -12,7 +12,24 @@ public class operator_challenge {
         if (!fiveValue) {
             System.out.println("Got some remainder");
         }
+        int score = -500;
+        if (score > 0) {
+            System.out.println("score is positive : " + score);
+        } else if (score < 0) {
+            System.out.println("score is negative : " + score);
+        } else {
+            System.out.println("score is : " + score);
+        }
 
+        boolean gameOver = true;
+
+        if (gameOver) {
+            int gameScore = 788;
+            int levelComplete = 5;
+            int bonus = 200;
+            int finalScore = gameScore + (levelComplete * bonus);
+            System.out.println("Your score is : " + finalScore);
+        }
 
     }
 
