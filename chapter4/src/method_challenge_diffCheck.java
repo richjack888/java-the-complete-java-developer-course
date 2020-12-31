@@ -1,4 +1,4 @@
-public class method_challenge {
+public class method_challenge_diffCheck {
 
     public static void main(String[] args) {
 
@@ -7,16 +7,15 @@ public class method_challenge {
         displayHighScorePosition("Reo", calculateHighScorePosition(400));
         displayHighScorePosition("Amanda", calculateHighScorePosition(50));
 
-
     }
 
     public static void displayHighScorePosition(String playerName, int position) {
-        System.out.println(playerName + " to get into position " + position + " on the high score table");
+        System.out.println(" to get into position " + position + " on the high score table");
     }
 
     public static int calculateHighScorePosition(int playerScore) {
 
-        return (playerScore >= 1000) ? 1 : (playerScore >= 500) ? 2 : (playerScore >= 100) ? 3 : 44;
+        return (playerScore >= 1000) ? 1 : (playerScore >= 500) ? 2 : (playerScore >= 100) ? 3 : 4;
     }
 
 
