@@ -1,4 +1,4 @@
-public class speed_converter {
+public class practiceB_speed_converter {
 
     public static void main(String[] args) {
 

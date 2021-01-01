@@ -1,4 +1,4 @@
-public class positive_negative_zero {
+public class practiceA_positive_negative_zero {
 
     public static void main(String[] args) {
 
