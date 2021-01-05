@@ -9,8 +9,7 @@ public class practiceL_playing_cat {
     }
 
     public static boolean isCatPlaying(boolean summer, int temperature) {
-        return (summer && ((temperature > 25) && (temperature <= 45))) ||
-                (temperature > 25 && temperature <= 35);
+        return (temperature >= 25) && (temperature <= (summer ? 45 : 35));
 
     }
 }
