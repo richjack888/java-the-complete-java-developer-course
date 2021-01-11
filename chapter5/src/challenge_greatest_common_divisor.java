@@ -11,14 +11,22 @@ public class challenge_greatest_common_divisor {
 
     public static int getGreatestCommonDivisor(int first, int second) {
         if ((first < 10) || (second < 10)) return -1;
-        int value = 0;
-
-        for (int i = 1; i <= (first / 2); i++) {
-            if ((first % i == 0) && (second % i == 0)) {
-                value = i;
+        while (first != second) {
+            if (first > second) {
+                first -= second;
+            } else {
+                second -= first;
             }
         }
-        return value;
+        return first;
+//        int value = 0;
+//
+//        for (int i = 1; i <= (first / 2); i++) {
+//            if ((first % i == 0) && (second % i == 0)) {
+//                value = i;
+//            }
+//        }
+//        return value;
     }
 
 }
