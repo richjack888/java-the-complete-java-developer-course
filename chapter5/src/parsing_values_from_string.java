@@ -2,8 +2,8 @@ public class parsing_values_from_string {
 
     public static void main(String[] args) {
 
-        String numberOfString = "2021";
-        int number = Integer.parseInt(numberOfString);
+        String numberOfString = "2021.567";
+        double number = Double.parseDouble(numberOfString);
 
         numberOfString += 1;
         number += 1;
