@@ -16,13 +16,10 @@ public class challenge_largest_prime {
 
         if (number <= 1) return -1;
 
-        ;
-        for (int i = 2; i < number; i++) {
+        for (int i = (number / 2); i >= 2; i--) {
             if (number % i == 0) {
-                number /= i;
-                i--;
+                number = i;
             }
-
         }
         return number;
     }
