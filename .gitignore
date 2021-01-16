@@ -21,16 +21,19 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+*.iml
+*.xml
 /chapter3/.idea/.gitignore
-/chapter4/chapter4.iml
-/chapter5/chapter5.iml
-/.idea/codeStyles/codeStyleConfig.xml
-/.idea/google-java-format.xml
-/.idea/java-the-complete-java-developer-course.iml
-/.idea/misc.xml
-/chapter3/.idea/misc.xml
-/.idea/modules.xml
-/chapter3/.idea/modules.xml
-/.idea/uiDesigner.xml
-/.idea/vcs.xml
-/chapter6/chapter6.iml
+
+#/chapter4/chapter4.iml
+#/chapter5/chapter5.iml
+#/.idea/codeStyles/codeStyleConfig.xml
+#/.idea/google-java-format.xml
+#/.idea/java-the-complete-java-developer-course.iml
+#/.idea/misc.xml
+#/chapter3/.idea/misc.xml
+#/.idea/modules.xml
+#/chapter3/.idea/modules.xml
+#/.idea/uiDesigner.xml
+#/.idea/vcs.xml
+#/chapter6/chapter6.iml
