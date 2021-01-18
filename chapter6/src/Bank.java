@@ -6,15 +6,20 @@ public class Bank {
     private String email;
     private int phoneNumber;
 
-    public static void main(String[] args) {
-        Bank westdoor = new Bank();
-        westdoor.deposit(500);
-        System.out.println(westdoor.getBalance());
-        westdoor.withdraw(600);
-        westdoor.withdraw(250);
-        System.out.println(westdoor.getBalance());
-
+    public Bank(int accountNumber, double balance, String customerName, String email, int phoneNumber) {
+        System.out.println("Second execute");
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.customerName = customerName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
+
+    public Bank() {
+        this(8888888, 00.00, "Defaault customername", "Default email", 12300000);
+        System.out.println("First execute");
+    }
+
 
     public int getAccountNumber() {
         return accountNumber;
