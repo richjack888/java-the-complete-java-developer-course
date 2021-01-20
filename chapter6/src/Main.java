@@ -2,8 +2,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Dog huskies = new Dog("female", "120cm", "20kg", "long", "medium", 2, 4);
-        huskies.quickEat();
+        InheritanceChallengeBenz benz = new InheritanceChallengeBenz(24);
+        benz.steer(30);
+        benz.accelerate(50);
+        benz.accelerate(-50);
 
     }
 
