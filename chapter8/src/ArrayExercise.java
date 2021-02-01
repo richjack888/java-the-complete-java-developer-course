@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArrayExercise {
@@ -17,6 +18,8 @@ public class ArrayExercise {
         for (int i = 0; i < values.length; i++) {
             values[i] = scanner.nextInt();
         }
+        System.out.println(Arrays.toString(values));
+
 
         return values;
     }
@@ -27,10 +30,10 @@ public class ArrayExercise {
         }
     }
 
-    private static int[] sortIntegers(int[] numbers) {
+    static int[] sortIntegers(int[] numbers) {
         for (int a = 0; a < numbers.length; a++) {
             for (int b = 0; b < numbers.length; b++) {
-                if (numbers[a] < numbers[b]) {
+                if (numbers[a] > numbers[b]) {
                     int temp = numbers[b];
                     numbers[b] = numbers[a];
                     numbers[a] = temp;
@@ -39,6 +42,20 @@ public class ArrayExercise {
         }
 
         return numbers;
+
+//    small to big
+//    private static int[] sortIntegers(int[] numbers) {
+//        for (int a = 0; a < numbers.length; a++) {
+//            for (int b = 0; b < numbers.length; b++) {
+//                if (numbers[a] < numbers[b]) {
+//                    int temp = numbers[b];
+//                    numbers[b] = numbers[a];
+//                    numbers[a] = temp;
+//                }
+//            }
+//        }
+//
+//        return numbers;
 
 
     }
