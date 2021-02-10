@@ -2,25 +2,18 @@ import java.util.Arrays;
 
 public class ReverseArray {
 
-    public static void main(String[] args) {
-        int[] ar = {1, 2, 3, 4, 5};
-        reverse(ar);
-        System.out.println(Arrays.toString(ar));
-    }
-
     private static void reverse(int[] array) {
+        int backToStart = array.length - 1;
+        System.out.println("Array = " + Arrays.toString(array));
+        for (int i = 0; i < array.length / 2; i++) {
+            int temp = array[i];
+            array[i] = array[backToStart];
+            array[backToStart] = temp;
+            backToStart--;
 
-        int halfLength = array.length / 2;
-
-        for (int i = 0; i < array.length; i++) {
-            if (i > halfLength) {
-                break;
-            }
-            for (int j = (array.length - i - 1); j == (array.length - i - 1); j++) {
-                array[j] = array[i];
-            }
         }
-
+        System.out.println("Reversed array = " + Arrays.toString(array));
     }
-
 }
+
+
