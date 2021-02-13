@@ -3,14 +3,14 @@ import java.util.ArrayList;
 public class GroceryList {
     private ArrayList<String> groceryList = new ArrayList();
 
-    public static void main(String[] args) {
 
+    public ArrayList<String> getGroceryList() {
+        return groceryList;
     }
 
-
     public void addGroceryItem(String item) {
-        System.out.println("You add - " + item + " - to grocery list");
         groceryList.add(item);
+        System.out.println("You had add - " + item + " - to grocery list");
     }
 
     public void printGroceryList() {
@@ -20,23 +20,40 @@ public class GroceryList {
         }
     }
 
-    public void modifyGroceryItem(int position, String item) {
+    public void modifyGroceryItem(String currentItem, String newItem) {
+        int position = findItem(currentItem);
+        if (position >= 0) {
+            modifyGroceryItem(position, newItem);
+        }
+
+    }
+
+    private void modifyGroceryItem(int position, String item) {
         groceryList.set(position, item);
         System.out.println("Grocery Item " + (position + 1) + " has been modified.");
     }
 
-    public void removeGroceryItem(int position) {
-        String theItem = groceryList.get(position - 1);
-        groceryList.remove(position - 1);
+    public void removeGroceryItem(String item) {
+        int position = findItem(item);
+        if (position >= 0) {
+            removeGroceryItem(position);
+        } else {
+            System.out.println("This item is not in grocery list.");
+        }
+    }
+
+    private void removeGroceryItem(int position) {
+        String theItem = groceryList.get(position);
+        groceryList.remove(position);
         System.out.println("item: " + theItem + " had been removed.");
     }
 
-    public String findItem(String searchItem) {
-        int position = groceryList.indexOf(searchItem);
-        if (position >= 0) {
-            return groceryList.get(position);
-        }
-        return null;
+    private int findItem(String searchItem) {
+        return groceryList.indexOf(searchItem);
     }
 
+    public boolean onFile(String searchItem) {
+        int position = findItem(searchItem);
+        return position >= 0;
+    }
 }
