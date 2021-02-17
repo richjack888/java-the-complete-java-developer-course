@@ -43,7 +43,7 @@ public class Main {
     }
 
     public static void addNewContact() {
-        System.out.println("This is x function.");
+        System.out.println("This is addNewContact function.");
         System.out.println("Enter new contact name: ");
         String name = scanner.nextLine();
         System.out.println("Enter phone number: ");
@@ -59,14 +59,52 @@ public class Main {
 
     private static void updateContact() {
         System.out.println("This is updateContact function.");
+        System.out.println("Enter existing name to update: ");
+        String name = scanner.nextLine();
+        Contact existingContactRecord = mobilePhone.queryContact(name);
+        if (existingContactRecord == null) {
+            System.out.println("Contact not found.");
+            return;
+        }
+        System.out.println("Enter new contact name");
+        String newName = scanner.nextLine();
+        System.out.println("Enter new contact phone number");
+        String newNumber = scanner.nextLine();
+        Contact newContact = Contact.createContacts(newName, newNumber);
+        if (mobilePhone.updateContact(existingContactRecord, newContact)) {
+            System.out.println("Successfully updated record.");
+        } else {
+            System.out.println("Error updated.");
+        }
     }
+
 
     private static void removeContact() {
         System.out.println("This is removeContact function.");
+        System.out.println("Enter existing name to remove: ");
+        String name = scanner.nextLine();
+        Contact existingContactRecord = mobilePhone.queryContact(name);
+        if (existingContactRecord == null) {
+            System.out.println("Contact not found.");
+            return;
+        }
+        if (mobilePhone.removeContact(existingContactRecord)) {
+            System.out.println("Successfully deleted");
+        } else {
+            System.out.println("Error deleting contact");
+        }
     }
 
     private static void queryContact() {
         System.out.println("This is queryContact function.");
+        System.out.println("Enter existing name to query: ");
+        String name = scanner.nextLine();
+        Contact existingContactRecord = mobilePhone.queryContact(name);
+        if (existingContactRecord == null) {
+            System.out.println("Contact not found.");
+            return;
+        }
+        System.out.println("Name: " + existingContactRecord.getName() + " phone number is " + existingContactRecord.getPhoneNumber());
     }
 
 
@@ -75,15 +113,14 @@ public class Main {
     }
 
     private static void printActions() {
-        System.out.println("\nAvailable actions:\npress");
+        System.out.println("\nAvailable actions:\nPress number of list.");
         System.out.println("0  - to shutdown\n" +
                 "1  - to print contacts\n" +
                 "2  - to add a new contact\n" +
-                "3  - to update existing an existing contact\n" +
+                "3  - to update an existing contact\n" +
                 "4  - to remove an existing contact\n" +
                 "5  - query if an existing contact exists\n" +
                 "6  - to print a list of available actions.");
-        System.out.println("Choose your action: ");
     }
 
 
