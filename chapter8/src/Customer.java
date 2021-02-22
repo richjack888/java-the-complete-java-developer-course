@@ -9,6 +9,10 @@ public class Customer {
         transactions = new ArrayList<Double>();
     }
 
+    public static Customer createCustomer(String name) {
+        return new Customer(name);
+    }
+
     public String getName() {
         return name;
     }
@@ -17,4 +21,7 @@ public class Customer {
         return transactions;
     }
 
+    public void setTransactions(ArrayList<Double> transactions) {
+        this.transactions = transactions;
+    }
 }

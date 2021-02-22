@@ -2,12 +2,28 @@ import java.util.ArrayList;
 
 public class Branch {
     private ArrayList<Customer> customers;
-    private int BranchName;
-    private double transcation_amount;
+    private String BranchCode;
+    private double transaction_amount;
 
-    public Branch(int BranchName) {
-        this.BranchName = BranchName;
-        this.customers = new ArrayList<Customer>();
+    public Branch(String BranchCode) {
+        this.BranchCode = BranchCode;
+        customers = new ArrayList<Customer>();
+    }
+
+    public static Branch createBranch(String BranchCode) {
+        return new Branch(BranchCode);
+    }
+
+    public ArrayList<Customer> getCustomers() {
+        return customers;
+    }
+
+    public String getBranchCode() {
+        return BranchCode;
+    }
+
+    public double getTransaction_amount() {
+        return transaction_amount;
     }
 
     public boolean addCustomer(Customer customer) {
