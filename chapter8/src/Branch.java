@@ -32,12 +32,10 @@ public class Branch {
             return false;
         }
         customers.add(customer);
-
         return true;
-
     }
 
-    private int findCustomer(String customerName) {
+    public int findCustomer(String customerName) {
         for (int i = 0; i < customers.size(); i++) {
             Customer customer = customers.get(i);
             if (customer.getName().equals(customerName)) {
@@ -45,5 +43,12 @@ public class Branch {
             }
         }
         return -1;
+    }
+
+    public void printCustomer() {
+        System.out.println("Branch code(" + getBranchCode() + "), list of customer: ");
+        for (int i = 0; i < customers.size(); i++) {
+            System.out.println("No." + (i + 1) + " Customer: " + customers.get(i).getName());
+        }
     }
 }

@@ -21,7 +21,5 @@ public class Customer {
         return transactions;
     }
 
-    public void setTransactions(ArrayList<Double> transactions) {
-        this.transactions = transactions;
-    }
+
 }
