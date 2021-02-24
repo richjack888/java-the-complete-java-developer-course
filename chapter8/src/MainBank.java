@@ -4,16 +4,12 @@ public class MainBank {
     private static Scanner scanner = new Scanner(System.in);
     private static Bank bank = new Bank("CityBank");
 
-    {
-        System.out.println("Cannot find that branch");
-    }
-
     public static void main(String[] args) {
         boolean quit = false;
         startBank();
         printActions();
         while (!quit) {
-            System.out.println("------");
+            System.out.println("------------------------------------");
             System.out.println("Enter number to action: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -52,10 +48,11 @@ public class MainBank {
         System.out.println("Enter new branch code: ");
         Branch branch = Branch.createBranch(scanner.nextLine());
         if (bank.addNewBranch(branch)) {
-            System.out.println("Successful! New branch code: " + branch.getBranchCode() + " be added");
+            System.out.println("Successful! New branch code (" + branch.getBranchCode() + ") be added");
         } else {
-            System.out.println("Error! Cannot add branch code " + branch.getBranchCode() + " already had...");
+            System.out.println("Error! Cannot add branch code (" + branch.getBranchCode() + ") already had...");
         }
+        System.out.println("function out!");
     }
 
     private static void addNewCustomer() {
@@ -76,11 +73,33 @@ public class MainBank {
                 System.out.println("Error! Branch(" + branchName + ") doesn't exist!");
             }
         }
+        System.out.println("function out!");
     }
 
     private static void addTransaction() {
         System.out.println("This function is addTransaction");
-
+        if (bank.printBranches()) {
+            System.out.println("A pay $amount to B");
+            System.out.println("Enter A customer branch code: ");
+            String branchName = scanner.nextLine();
+            Branch branchA = bank.queryBranch(branchName);
+            System.out.println("Enter A customer name: ");
+            String customerA = scanner.nextLine();
+            System.out.println("Pay how much?");
+            Double amount = scanner.nextDouble();
+            scanner.nextLine();
+            System.out.println("Enter B customer branch code: ");
+            String branchNameB = scanner.nextLine();
+            Branch branchB = bank.queryBranch(branchNameB);
+            System.out.println("Enter B customer name: ");
+            String customerB = scanner.nextLine();
+            if (bank.customersTransaction(branchA, customerA, branchB, customerB, amount)) {
+                System.out.println("Successful!");
+            } else {
+                System.out.println("Error");
+            }
+        }
+        System.out.println("function out!");
     }
 
     private static void printCustomer() {
@@ -90,8 +109,7 @@ public class MainBank {
             String branchName = scanner.nextLine();
             bank.printBranchCustomer(branchName);
         }
-        ;
-
+        System.out.println("function out!");
     }
 
     private static void printActions() {
@@ -105,10 +123,7 @@ public class MainBank {
                 "6  - to print action.");
     }
 
-
     private static void startBank() {
         System.out.println("Start Bank app ------");
     }
-
-
 }

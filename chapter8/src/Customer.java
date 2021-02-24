@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Customer {
-    ArrayList<Double> transactions;
+    private ArrayList<Double> transactions;
     private String name;
 
     public Customer(String name) {
@@ -21,5 +21,17 @@ public class Customer {
         return transactions;
     }
 
+    public void transaction_record() {
+        for (int i = 0; i < transactions.size(); i++) {
+            System.out.println((i + 1) + " : " + transactions.get(i));
+        }
+    }
 
+    public double countBalance() {
+        double balance = 0;
+        for (int i = 0; i < transactions.size(); i++) {
+            balance += transactions.get(i).doubleValue();
+        }
+        return balance;
+    }
 }
