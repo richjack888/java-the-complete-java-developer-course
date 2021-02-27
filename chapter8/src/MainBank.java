@@ -29,7 +29,7 @@ public class MainBank {
                     addNewCustomer();
                     break;
                 case 4:
-                    addTransaction();
+                    transaction();
                     break;
                 case 5:
                     printCustomer();
@@ -46,13 +46,14 @@ public class MainBank {
     private static void addNewBranch() {
         System.out.println("This function is addNewBranch");
         System.out.println("Enter new branch code: ");
-        Branch branch = Branch.createBranch(scanner.nextLine());
-        if (bank.addNewBranch(branch)) {
-            System.out.println("Successful! New branch code (" + branch.getBranchCode() + ") be added");
+        String branchName = scanner.nextLine();
+        if (bank.addNewBranch(branchName)) {
+            System.out.println("Successful! New branch code [" + branchName + "] be added to " + bank.getName());
         } else {
-            System.out.println("Error! Cannot add branch code (" + branch.getBranchCode() + ") already had...");
+            System.out.println("Error! Cannot add branch code [" + branchName + "] to \" + bank.getName())");
+            System.out.println("Branch code [" + branchName + "] already in " + bank.getName());
         }
-        System.out.println("function out!");
+        System.out.println("addNewBranch function out!");
     }
 
     private static void addNewCustomer() {
@@ -60,46 +61,71 @@ public class MainBank {
         if (bank.printBranches()) {
             System.out.println("Which branch need to add new customer?\nEnter branch code: ");
             String branchName = scanner.nextLine();
-            Branch branch = bank.queryBranch(branchName);
-            if (bank.findBranch(branchName) >= 0) {
+            if (bank.queryBranch(branchName) != null) {
                 System.out.println("Enter new customer name: ");
                 String customerName = scanner.nextLine();
-                if (bank.addNewCustomer(branch, customerName)) {
-                    System.out.println("Successful! New customer: " + customerName + " be added  to branch code: " + branchName);
+                System.out.println("How much initial amount do you want to set?");
+                double initialAmount = scanner.nextDouble();
+                scanner.nextLine();
+                if (bank.addNewCustomer(branchName, customerName, initialAmount)) {
+                    System.out.println("Successful! New customer: " + customerName + " be added  to branch code [" + branchName + "]");
                 } else {
-                    System.out.println("Cannot add new customer " + customerName + " to branch code " + branchName);
+                    System.out.println("Error! Cannot add " + customerName + " to branch code [" + branchName + "].");
+                    System.out.println("Customer already in that branch.");
                 }
             } else {
-                System.out.println("Error! Branch(" + branchName + ") doesn't exist!");
+                System.out.println("Error! Branch code [" + branchName + "] doesn't exist!");
             }
         }
-        System.out.println("function out!");
+        System.out.println("addNewCustomer function out!");
     }
 
-    private static void addTransaction() {
-        System.out.println("This function is addTransaction");
+    private static void transaction() {
+        System.out.println("This function is transaction");
         if (bank.printBranches()) {
             System.out.println("A pay $amount to B");
-            System.out.println("Enter A customer branch code: ");
-            String branchName = scanner.nextLine();
-            Branch branchA = bank.queryBranch(branchName);
-            System.out.println("Enter A customer name: ");
-            String customerA = scanner.nextLine();
-            System.out.println("Pay how much?");
-            Double amount = scanner.nextDouble();
-            scanner.nextLine();
-            System.out.println("Enter B customer branch code: ");
-            String branchNameB = scanner.nextLine();
-            Branch branchB = bank.queryBranch(branchNameB);
-            System.out.println("Enter B customer name: ");
-            String customerB = scanner.nextLine();
-            if (bank.customersTransaction(branchA, customerA, branchB, customerB, amount)) {
-                System.out.println("Successful!");
+            System.out.println("Enter customer A -> branch code: ");
+            String branchA = scanner.nextLine();
+            if (bank.queryBranch(branchA) != null) {
+                Branch branch_A = bank.queryBranch(branchA);
+                System.out.println("Enter customer A -> name: ");
+                String customerA = scanner.nextLine();
+                if (branch_A.queryCustomer(customerA) != null) {
+                    Customer customer_A = branch_A.queryCustomer(customerA);
+                    System.out.println("Pay how much?");
+                    double amount = scanner.nextDouble();
+                    scanner.nextLine();
+                    if (customer_A.getBalance() >= amount) {
+                        System.out.println("Enter customer B -> branch code: ");
+                        String branchB = scanner.nextLine();
+                        if (bank.queryBranch(branchB) != null) {
+                            Branch branch_B = bank.queryBranch(branchB);
+                            System.out.println("Enter customer B -> name: ");
+                            String customerB = scanner.nextLine();
+                            if (branch_B.queryCustomer(customerB) != null) {
+                                if (bank.customersTransaction(branchA, customerA, branchB, customerB, amount)) {
+                                    System.out.println("Successful!");
+                                    System.out.println(customerA + " pay $" + amount + " to " + customerB);
+                                } else {
+                                    System.out.println("Error, transaction failed!");
+                                }
+                            } else {
+                                System.out.println("Error! " + customerB + " doesn't exist in branch code [" + branchB + "]");
+                            }
+                        } else {
+                            System.out.println("Error! Branch code [" + branchB + "] doesn't exist!");
+                        }
+                    } else {
+                        System.out.println("Error! " + customerA + " balance isn't enough!");
+                    }
+                } else {
+                    System.out.println("Error! " + customerA + " doesn't exist in branch code [" + branchA + "]");
+                }
             } else {
-                System.out.println("Error");
+                System.out.println("Error! Branch code [" + branchA + "] doesn't exist!");
             }
         }
-        System.out.println("function out!");
+        System.out.println("transaction function out!");
     }
 
     private static void printCustomer() {
@@ -107,9 +133,13 @@ public class MainBank {
         if (bank.printBranches()) {
             System.out.println("Which branch need to print all customer?\nEnter branch code: ");
             String branchName = scanner.nextLine();
-            bank.printBranchCustomer(branchName);
+            if (bank.queryBranch(branchName) != null) {
+                bank.printBranchCustomer(branchName);
+            } else {
+                System.out.println("Error! Branch code [" + branchName + "] doesn't exist!");
+            }
         }
-        System.out.println("function out!");
+        System.out.println("printCustomer function out!");
     }
 
     private static void printActions() {

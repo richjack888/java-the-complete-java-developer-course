@@ -19,7 +19,7 @@ public class Bank_TimVersion {
 
     public boolean addCustomer(String branchName, String customerName, double initialAmount) {
         Branch_TimVersion branch = findBranch(branchName);
-        if (branchName != null) {
+        if (branchName != null && branch != null) {
             return branch.newCustomer(customerName, initialAmount);
         }
         return false;
