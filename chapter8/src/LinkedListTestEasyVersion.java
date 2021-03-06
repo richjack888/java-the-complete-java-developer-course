@@ -12,8 +12,18 @@ public class LinkedListTestEasyVersion {
         addInOrder(placeToVisit, "Tainan");
         addInOrder(placeToVisit, "Kaohsiung");
         printList(placeToVisit);
+        //        visit(placeToVisit);
 
-        visit(placeToVisit);
+
+        ListIterator<String> listIterator = placeToVisit.listIterator();
+        System.out.println("Now visiting -- City No." + (listIterator.nextIndex() + 1) + " " + listIterator.next());
+        System.out.println("Now visiting -- City No." + (listIterator.previousIndex() + 1) + " " + listIterator.previous());
+        System.out.println("Now visiting -- City No." + (listIterator.nextIndex() + 1) + " " + listIterator.next());
+        System.out.println("Now visiting -- City No." + (listIterator.previousIndex() + 1) + " " + listIterator.previous());
+
+        // try to not use changeDirection, but now work.
+        // seems to must use changeDirection;
+
 
     }
 
@@ -50,7 +60,6 @@ public class LinkedListTestEasyVersion {
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
         ListIterator<String> listIterator = cities.listIterator();
-//        boolean changeDirection = false;
 
         if (cities.isEmpty()) {
             System.out.println("No cities in the itinerary");
@@ -70,37 +79,24 @@ public class LinkedListTestEasyVersion {
                     quit = true;
                     break;
                 case 1:
-//                    if (changeDirection) {
-//                        if (listIterator.hasNext()) {
-//                            listIterator.next();
-//                        }
-//                        changeDirection = false;
-//                    }
+                    if (listIterator.hasNext()) {
+                        listIterator.next();
+                    }
                     if (listIterator.hasNext()) {
                         System.out.println("Now visiting -- City No." + (listIterator.nextIndex() + 1) + " " + listIterator.next());
-                        if (listIterator.hasNext()) {
-                            listIterator.next();
-                        }
                     } else {
                         System.out.println("No more next city!");
-//                        changeDirection = true;
                     }
                     break;
                 case 2:
-//                    if (!changeDirection) {
-//                        if (listIterator.hasPrevious()) {
-//                            listIterator.previous();
-//                        }
-//                        changeDirection = true;
-//                    }
+                    if (listIterator.hasPrevious()) {
+                        listIterator.previous();
+                    }
                     if (listIterator.hasPrevious()) {
                         System.out.println("Now visiting -- City No." + (listIterator.previousIndex() + 1) + " " + listIterator.previous());
-                        if (listIterator.hasPrevious()) {
-                            listIterator.previous();
-                        }
                     } else {
                         System.out.println("No more previous city!");
-//                        changeDirection = false;
+//
                     }
                     break;
                 case 3:
