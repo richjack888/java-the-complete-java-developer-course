@@ -1,7 +1,7 @@
 public class DeskPhone implements ITelephone{
 
-    private int myNumber;
-    private boolean isRinging;
+    int myNumber;
+    boolean isRinging;
 
     public DeskPhone(int myNumber) {
         this.myNumber = myNumber;
@@ -28,7 +28,7 @@ public class DeskPhone implements ITelephone{
     public boolean callPhone(int phoneNumber) {
         if(phoneNumber == myNumber){
             isRinging = true;
-            System.out.println("Ring ring");
+            System.out.println("Desk Phone ring ring");
         }else{
             isRinging = false;
         }
