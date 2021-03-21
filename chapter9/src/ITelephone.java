@@ -4,6 +4,9 @@ public interface ITelephone {
     void answer();
     boolean callPhone(int phoneNumber);
     boolean isRinging();
+    default void dancing(){
+        System.out.println("Let's dance!");
+    }
 
 
 }

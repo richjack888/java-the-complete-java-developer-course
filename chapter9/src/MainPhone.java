@@ -10,6 +10,7 @@ public class MainPhone {
         timsPhone.powerOn();
         timsPhone.callPhone(987654);
         timsPhone.answer();
+        timsPhone.dancing();
 
     }
 }
