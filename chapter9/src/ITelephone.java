@@ -8,5 +8,4 @@ public interface ITelephone {
         System.out.println("Let's dance!");
     }
 
-
 }
