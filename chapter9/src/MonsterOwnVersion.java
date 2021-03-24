@@ -13,17 +13,6 @@ public class MonsterOwnVersion implements ISaveable {
         this.strength = strength;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getHitPoints() {
-        return hitPoints;
-    }
-
-    public int getStrength() {
-        return strength;
-    }
 
     @Override
     public String toString() {
@@ -45,7 +34,7 @@ public class MonsterOwnVersion implements ISaveable {
     }
 
     @Override
-    public void read(List<String> savedValues) {
+    public void update(List<String> savedValues) {
         if (savedValues != null && savedValues.size() > 0) {
             name = savedValues.get(0);
             hitPoints = Integer.parseInt(savedValues.get(1));

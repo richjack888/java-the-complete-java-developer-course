@@ -1,22 +1,13 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class MainReadOwnVersion {
-    List<ISaveable> files = new ArrayList<ISaveable>();
 
-    public static void menu() {
-        System.out.println("Choose\n" +
-                "0 - to quit\n" +
-                "1 - created a character\n" +
-                "2 - save record\n" +
-                "3 - load record\n" +
-                "4 - edit character state");
-    }
-
-    public static List<String> editValues(ISaveable objectToEdit) {
-        List<String> values = new ArrayList<String>();
-        return values;
+    public static void main(String[] args) {
+        ISaveable player = new PlayerOwnVersion("Tim", 20, 40);
+        saveObject(player);
+        editObject(player);
+        loadObject(player);
     }
 
     public static void saveObject(ISaveable objectToSave) {
@@ -40,55 +31,30 @@ public class MainReadOwnVersion {
         }
     }
 
-    public static void editObject(ISaveable objectToEdit) {
-        System.out.println();
-    }
-
     public static void loadObject(ISaveable objectToLoad) {
-        System.out.println(objectToLoad.toString());
+        System.out.println(objectToLoad);
     }
 
-    public void main(String[] args) {
-        menu();
-        start();
-    }
-
-    public void start() {
+    public static void editObject(ISaveable objectToLoad) {
         Scanner scanner = new Scanner(System.in);
-        boolean quit = false;
-        while (!quit) {
-            System.out.print("Choose an option: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-            switch (choice) {
-                case 0:
-                    quit = true;
-                    System.out.println("Bye bye!");
-                    break;
-                case 1:
-                    System.out.print("Enter a character name: ");
-                    String characterName = scanner.nextLine();
-                    System.out.print("Enter a weapon: ");
-                    String weapon = scanner.nextLine();
-                    System.out.print("Enter a hitPoints: ");
-                    int hitPoints = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Enter a strength: ");
-                    int strength = scanner.nextInt();
-                    scanner.nextLine();
-                    ISaveable player = new PlayerOwnVersion(characterName, hitPoints, strength);
-                    files.add(player);
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-            }
-        }
+        ArrayList<String> values = new ArrayList<String>();
+
+        System.out.print("Enter a character name: ");
+        String characterName = scanner.nextLine();
+        System.out.print("Enter a hitPoints: ");
+        String hitPoints = scanner.nextLine();
+        System.out.print("Enter a strength: ");
+        String strength = scanner.nextLine();
+        System.out.print("Enter a weapon: ");
+        String weapon = scanner.nextLine();
+
+        values.add(0, characterName);
+        values.add(1, hitPoints);
+        values.add(2, strength);
+        values.add(3, weapon);
+
+        objectToLoad.update(values);
 
     }
-
 
 }

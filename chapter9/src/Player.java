@@ -68,7 +68,7 @@ public class Player implements ISaveable {
     }
 
     @Override
-    public void read(List<String> savedValues) {
+    public void update(List<String> savedValues) {
         if (savedValues != null && savedValues.size() > 0) {
             this.name = savedValues.get(0);
             this.hitPoints = Integer.parseInt(savedValues.get(1));

@@ -59,7 +59,7 @@ public class MainRead {
 
     public static void loadObject(ISaveable objectToLoad) {
         ArrayList<String> values = readValues();
-        objectToLoad.read(values);
+        objectToLoad.update(values);
     }
 
 
