@@ -1,9 +1,6 @@
 public class MainGearBox {
     public static void main(String[] args) {
         GearBox mcLaren = new GearBox(6);
-        mcLaren.addGear(1, 5.5);
-        mcLaren.addGear(2, 10.10);
-        mcLaren.addGear(3, 15.15);
         mcLaren.operateClutch(true);
         mcLaren.changeGear(1);
         mcLaren.operateClutch(false);
