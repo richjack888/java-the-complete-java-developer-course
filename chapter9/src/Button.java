@@ -1,6 +1,6 @@
 public class Button {
     private String title;
-    private OnClickListener onClickListener;
+    private IOnClickListener IOnClickListener;
 
     public Button(String title) {
         this.title = title;
@@ -10,15 +10,15 @@ public class Button {
         return title;
     }
 
-    public void setOnClickListener(OnClickListener onClickListener) {
-        this.onClickListener = onClickListener;
+    public void setOnClickListener(IOnClickListener IOnClickListener) {
+        this.IOnClickListener = IOnClickListener;
     }
 
     public void onClick() {
-        this.onClickListener.onClick(this.title);
+        this.IOnClickListener.onClick(this.title);
     }
 
-    public interface OnClickListener {
+    public interface IOnClickListener {
         public void onClick(String title);
     }
 }
