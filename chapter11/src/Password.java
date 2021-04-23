@@ -4,14 +4,13 @@ public class Password {
 
     public Password(int password) {
         this.encryptedPassword = encryptDecrypt(password);
-        System.out.println(this.encryptedPassword);
     }
 
     private int encryptDecrypt(int password) {
         return password ^ key;
     }
 
-    public void storePassword() {
+    public final void storePassword() {
         System.out.println("Saving password as " + this.encryptedPassword);
     }
 

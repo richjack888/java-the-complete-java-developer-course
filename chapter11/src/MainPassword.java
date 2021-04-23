@@ -1,7 +1,8 @@
 class MainPassword {
     public static void main(String[] args) {
         int pw = 123456;
-        Password password = new Password(pw);
+//        Password password = new Password(pw);
+        Password password = new ExtendedPassword(pw);
         password.storePassword();
 
         password.letMeIn(65);
