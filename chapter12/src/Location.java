@@ -17,7 +17,6 @@ public class Location {
         exits.put(direction, location);
     }
 
-
     public int getLocationId() {
         return locationId;
     }

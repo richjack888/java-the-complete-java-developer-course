@@ -9,6 +9,7 @@ public class MainLocation {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        String[] west = "west,go west,w".split((", "));
 
         locations.put(0, new Location(0, "You are sitting in front of a computer learning Java."));
         locations.put(1, new Location(1, "You are standing at the end of road before a small brick building."));
@@ -32,6 +33,13 @@ public class MainLocation {
         locations.get(5).addExit("W", 2);
         locations.get(5).addExit("S", 1);
 
+        Map<String, String> vocabulary = new HashMap<>();
+        vocabulary.put("QUIT", "Q");
+        vocabulary.put("NORTH", "N");
+        vocabulary.put("SOUTH", "S");
+        vocabulary.put("WEST", "W");
+        vocabulary.put("EAST", "E");
+
 
         int loc = 1;
         while (true) {
@@ -42,30 +50,28 @@ public class MainLocation {
             Map<String, Integer> exits = locations.get(loc).getExits();
             System.out.println("Available exits are ");
             for (String exit : exits.keySet()) {
-                System.out.println(exit + ", ");
+                System.out.print(exit + ", ");
             }
             System.out.println();
 
             String direction = scanner.nextLine().toUpperCase();
+            if (direction.length() > 1) {
+                String[] words = direction.split(" ");
+                for (String word : words) {
+                    if (vocabulary.containsKey(word)) {
+                        direction = vocabulary.get(word);
+                        break;
+                    }
+                }
+            }
             if (exits.containsKey(direction)) {
                 loc = exits.get(direction);
             } else {
                 System.out.println("You cannot go in that direction");
             }
 
-
-            String[] road = "You are standing at the end of a road before a small brick building".split(" ");
-            for (String i : road) {
-                System.out.println(i);
-            }
-            System.out.println("==============");
-
-            String[] building = "You are inside a building, a well house for a small spring".split((", "));
-            for (String i : building) {
-                System.out.println(i);
-            }
-
-
         }
     }
 }
+
+
