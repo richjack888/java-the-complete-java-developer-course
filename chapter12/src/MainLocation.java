@@ -9,7 +9,6 @@ public class MainLocation {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        String[] west = "west,go west,w".split((", "));
 
         locations.put(0, new Location(0, "You are sitting in front of a computer learning Java."));
         locations.put(1, new Location(1, "You are standing at the end of road before a small brick building."));
