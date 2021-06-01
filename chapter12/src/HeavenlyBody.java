@@ -10,7 +10,7 @@ public class HeavenlyBody {
         this.name = name;
         this.orbitalPeriod = orbitalPeriod;
         this.satellites = new HashSet<>();
-        ;
+
     }
 
     public String getName() {
