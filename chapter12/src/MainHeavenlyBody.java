@@ -100,6 +100,10 @@ public class MainHeavenlyBody {
             System.out.println(planet.getName() + ": " + planet.getOrbitalPeriod());
         }
 
+        Object o = new Object();
+        o.equals(o);
+        "pluto".equals("");
+
 
     }
 }

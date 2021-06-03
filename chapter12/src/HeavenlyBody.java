@@ -36,7 +36,7 @@ public class HeavenlyBody {
         }
         System.out.println("obj.getClass() is " + obj.getClass());
         System.out.println("this.getClass() is " + this.getClass());
-        if ((obj == null) || obj.getClass() != this.getClass()) {
+        if ((obj == null) || (obj.getClass() != this.getClass())) {
             System.out.println("obj is null or not equal");
             return false;
         }
@@ -44,5 +44,11 @@ public class HeavenlyBody {
         String objName = ((HeavenlyBody) obj).getName();
         return this.name.equals(objName);
 
+    }
+
+    @Override
+    public int hashCode() {
+        System.out.println("hashcode called");
+        return super.hashCode() + 57;
     }
 }
