@@ -28,11 +28,13 @@ public final class HeavenlyBody {
         return new HashSet<>(this.satellites);
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
 
+        System.out.println("equals called");
         System.out.println("obj.getClass() is " + obj.getClass());
         System.out.println("this.getClass() is " + this.getClass());
         if ((obj == null) || (obj.getClass() != this.getClass())) {
@@ -44,5 +46,9 @@ public final class HeavenlyBody {
         return this.name.equals(objName);
     }
 
-
+    @Override
+    public int hashCode() {
+        System.out.println("hashcode called");
+        return this.name.hashCode() + 57;
+    }
 }
