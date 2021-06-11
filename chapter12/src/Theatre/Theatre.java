@@ -1,3 +1,5 @@
+package Theatre;
+
 import java.util.*;
 
 public class Theatre {

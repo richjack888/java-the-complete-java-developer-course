@@ -1,3 +1,5 @@
+package Location;
+
 import java.util.HashMap;
 import java.util.Map;
 
