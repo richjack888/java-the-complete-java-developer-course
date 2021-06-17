@@ -8,12 +8,14 @@ public class HeavenlyBody {
     private final double orbitalPeriod;
     private final Set<HeavenlyBody> satellites;
 
+    public static Key makeKey(String name, BodyTypes bodyType) {
+        return new Key(name, bodyType);
+    }
+
     public HeavenlyBody(String name, double orbitalPeriod, BodyTypes bodyType) {
-        ;
         this.orbitalPeriod = orbitalPeriod;
         this.satellites = new HashSet<>();
         this.key = new Key(name, bodyType);
-
 
     }
 
@@ -33,63 +35,115 @@ public class HeavenlyBody {
         return new HashSet<>(this.satellites);
     }
 
+    @Override
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if ((obj == null) || (obj.getClass() != this.getClass())) {
+            System.out.println("obj is null or not equal!");
+            return false;
+        }
+
+        Key objKey = ((HeavenlyBody) obj).getKey();
+        return this.key.equals(objKey);
+    }
+
+    @Override
+    public final int hashCode() {
+        return this.key.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return getKey().getName() + ": " + getKey().getBodyType() + ", " + getOrbitalPeriod();
+    }
+
+
     enum BodyTypes {
         PLANET, DWARF_PLANET, MOON
     }
 
-    private class Key {
+    static final class Key {
         private String name;
-        private BodyTypes bodyTypes;
+        private BodyTypes bodyType;
 
-        private Key(String name, BodyTypes bodyTypes) {
+        private Key(String name, BodyTypes bodyType) {
             this.name = name;
-            this.bodyTypes = bodyTypes;
+            this.bodyType = bodyType;
         }
 
         public String getName() {
             return name;
         }
 
-        public BodyTypes getBodyTypes() {
-            return bodyTypes;
+        public BodyTypes getBodyType() {
+            return bodyType;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if ((obj == null) || (obj.getClass() != this.getClass())) {
+                System.out.println("obj is null or not equal!");
+                return false;
+            }
+
+            String objName = ((HeavenlyBody.Key) obj).getName();
+            BodyTypes objBodyType = ((HeavenlyBody.Key) obj).getBodyType();
+            return this.name.equals(objName) && this.bodyType.equals(objBodyType);
         }
 
         @Override
         public int hashCode() {
-            return this.name.hashCode() + this.bodyTypes.hashCode() + 37;
+            return this.name.hashCode() + this.bodyType.hashCode() + 37;
         }
 
         @Override
         public String toString() {
-            return name + " : " + bodyTypes;
+            return name + " : " + bodyType;
         }
     }
-
 }
-//
-//class Planet extends HeavenlyBody {
-//    private String name;
-//    private double orbitalPeriod;
-//
-//    public Planet(String name, double orbitalPeriod) {
-//        super(name, orbitalPeriod);
-//    }
-//}
-//
-//class DwarfPlanet extends HeavenlyBody {
-//    private String name;
-//    private double orbitalPeriod;
-//
-//    public DwarfPlanet(String name, double orbitalPeriod) {
-//        super(name, orbitalPeriod);
-//    }
-//}
-//
-//class Moon extends HeavenlyBody {
-//    private String name;
-//    private double orbitalPeriod;
-//
-//    public Moon(String name, double orbitalPeriod) {
-//        super(name, orbitalPeriod);
-//    }
-//}
+
+
+class Planet extends HeavenlyBody {
+    private String name;
+    private double orbitalPeriod;
+
+    public Planet(String name, double orbitalPeriod) {
+        super(name, orbitalPeriod, BodyTypes.PLANET);
+    }
+
+    @Override
+    public boolean addSatellite(HeavenlyBody moon) {
+        if (moon.getKey().getBodyType() == BodyTypes.MOON) {
+            return super.addSatellite(moon);
+        } else {
+            return false;
+        }
+    }
+}
+
+
+class DwarfPlanet extends HeavenlyBody {
+    private String name;
+    private double orbitalPeriod;
+
+    public DwarfPlanet(String name, double orbitalPeriod) {
+        super(name, orbitalPeriod, BodyTypes.DWARF_PLANET);
+    }
+}
+
+
+class Moon extends HeavenlyBody {
+    private String name;
+    private double orbitalPeriod;
+
+    public Moon(String name, double orbitalPeriod) {
+        super(name, orbitalPeriod, BodyTypes.MOON);
+    }
+}
+
