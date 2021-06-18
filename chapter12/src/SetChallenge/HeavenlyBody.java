@@ -3,7 +3,7 @@ package SetChallenge;
 import java.util.HashSet;
 import java.util.Set;
 
-public class HeavenlyBody {
+public abstract class HeavenlyBody {
     private final Key key;
     private final double orbitalPeriod;
     private final Set<HeavenlyBody> satellites;
@@ -64,7 +64,7 @@ public class HeavenlyBody {
         PLANET, DWARF_PLANET, MOON
     }
 
-    static final class Key {
+    public static final class Key {
         private String name;
         private BodyTypes bodyType;
 
@@ -103,16 +103,13 @@ public class HeavenlyBody {
 
         @Override
         public String toString() {
-            return name + " : " + bodyType;
+            return name + ": " + bodyType;
         }
     }
 }
 
 
 class Planet extends HeavenlyBody {
-    private String name;
-    private double orbitalPeriod;
-
     public Planet(String name, double orbitalPeriod) {
         super(name, orbitalPeriod, BodyTypes.PLANET);
     }
@@ -121,17 +118,14 @@ class Planet extends HeavenlyBody {
     public boolean addSatellite(HeavenlyBody moon) {
         if (moon.getKey().getBodyType() == BodyTypes.MOON) {
             return super.addSatellite(moon);
-        } else {
-            return false;
         }
+        return false;
+
     }
 }
 
 
 class DwarfPlanet extends HeavenlyBody {
-    private String name;
-    private double orbitalPeriod;
-
     public DwarfPlanet(String name, double orbitalPeriod) {
         super(name, orbitalPeriod, BodyTypes.DWARF_PLANET);
     }
@@ -139,9 +133,6 @@ class DwarfPlanet extends HeavenlyBody {
 
 
 class Moon extends HeavenlyBody {
-    private String name;
-    private double orbitalPeriod;
-
     public Moon(String name, double orbitalPeriod) {
         super(name, orbitalPeriod, BodyTypes.MOON);
     }
