@@ -40,13 +40,11 @@ public abstract class HeavenlyBody {
         if (this == obj) {
             return true;
         }
-        if ((obj == null) || (obj.getClass() != this.getClass())) {
-            System.out.println("obj is null or not equal!");
-            return false;
+        if (obj instanceof HeavenlyBody) {
+            Key objKey = ((HeavenlyBody) obj).getKey();
+            return this.key.equals(objKey);
         }
-
-        Key objKey = ((HeavenlyBody) obj).getKey();
-        return this.key.equals(objKey);
+        return false;
     }
 
     @Override
