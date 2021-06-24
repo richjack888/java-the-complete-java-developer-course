@@ -5,9 +5,10 @@ public class Main {
     public static void main(String[] args) {
 
         Set<Fruit> fruits = new HashSet<>();
-        Fruit fruit = new Fruit("apple");
-        fruits.add(fruit);
-        fruits.add(fruit);
+        Fruit fruit1 = new Fruit("apple", "tree");
+        Fruit fruit2 = new Fruit("apple11", "tree");
+        fruits.add(fruit1);
+        fruits.add(fruit2);
 
         for (Fruit f : fruits) {
             System.out.println(f);
@@ -20,17 +21,11 @@ public class Main {
 
 class Fruit {
     private String name;
+    private String fruitType;
 
-    public Fruit(String name) {
+    public Fruit(String name, String fruitType) {
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.fruitType = fruitType;
     }
 
     @Override
@@ -50,12 +45,12 @@ class Fruit {
         Fruit fruit = (Fruit) other;
 
         // check if names are equal
-        return name.equals(fruit.name);
+        return this.fruitType.equals(fruit.fruitType);
     }
 
     @Override
     public int hashCode() {
-        return name.hashCode();
+        return this.name.hashCode() + this.fruitType.hashCode();
     }
 
     @Override
