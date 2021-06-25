@@ -1,12 +1,18 @@
 public class StockItem implements Comparable<StockItem> {
     private final String name;
     private double price;
-    private int quantityStock = 0;  // can be initialized later
+    private int quantityStock = 0;
 
     public StockItem(String name, double price) {
         this.name = name;
         this.price = price;
         this.quantityStock = 0; // or here ( but you wouldn't normally do both)
+    }
+
+    public StockItem(String name, double price, int quantityStock) {
+        this.name = name;
+        this.price = price;
+        this.quantityStock = quantityStock;
     }
 
     public String getName() {

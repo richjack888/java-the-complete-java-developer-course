@@ -4,13 +4,25 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) {
 
-        Set<Fruit> fruits = new HashSet<>();
-        Fruit fruit1 = new Fruit("apple", "tree");
-        Fruit fruit2 = new Fruit("apple11", "tree");
-        fruits.add(fruit1);
-        fruits.add(fruit2);
+//        Set<Fruit> fruits1 = new HashSet<>();
+//        Fruit fruit1 = new Fruit("apple", "tree");
+//        Fruit fruit2 = new Fruit("apple", "tree");
+//        fruits1.add(fruit1);
+//        fruits1.add(fruit2);
+//
+//        for (Fruit f : fruits1) {
+//            System.out.println(f);
+//
+//        }
 
-        for (Fruit f : fruits) {
+
+        Set<String> fruits2 = new HashSet<>();
+        String fruitA = "apple";
+        String fruitB = "apple";
+        fruits2.add(fruitA);
+        fruits2.add(fruitB);
+
+        for (String f : fruits2) {
             System.out.println(f);
 
         }
@@ -23,7 +35,7 @@ class Fruit {
     private String name;
     private String fruitType;
 
-    public Fruit(String name, String fruitType) {
+    Fruit(String name, String fruitType) {
         this.name = name;
         this.fruitType = fruitType;
     }
@@ -36,21 +48,21 @@ class Fruit {
             return true;
         }
 
-        // if different type they cant be equal
-        if (!(other instanceof Fruit)) {
+        if (other == null || other.getClass() != this.getClass()) {
             return false;
         }
 
         // cast to fruit
         Fruit fruit = (Fruit) other;
 
-        // check if names are equal
-        return this.fruitType.equals(fruit.fruitType);
+        return this.name.equals(fruit.name) && this.fruitType.equals(fruit.fruitType);
     }
 
     @Override
     public int hashCode() {
-        return this.name.hashCode() + this.fruitType.hashCode();
+//        return this.name.hashCode() + this.fruitType.hashCode();
+        System.out.println(super.hashCode());
+        return super.hashCode();
     }
 
     @Override
