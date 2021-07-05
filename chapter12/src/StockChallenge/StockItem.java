@@ -6,14 +6,12 @@ public class StockItem implements Comparable<StockItem> {
     private int quantityStock = 0;
     private int reserved;
 
-    public void setReserved(int reserved) {
-        if (reserved >= 0) {
-            this.reserved += reserved;
-        }
-    }
-
     public int getReserved() {
         return reserved;
+    }
+
+    public void setReserved(int reserved) {
+        this.reserved = reserved;
     }
 
     public StockItem(String name, double price) {

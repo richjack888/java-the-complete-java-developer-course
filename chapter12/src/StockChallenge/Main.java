@@ -16,35 +16,37 @@ public class Main {
         stockList.addStock(door);
 
         Basket zedBasket = new Basket("Zed");
-        zedBasket.addToBasket(bread, 10);
-        zedBasket.addToBasket(cake, 20);
-        zedBasket.addToBasket(door, 3000);
-        checkout(zedBasket);
+        Basket zaraBasket = new Basket("Zara");
+        zedBasket.addToBasket(bread, 5);
+        zedBasket.addToBasket(cake, 10);
 
-        zedBasket.addToBasket(door, 300);
-        checkout(zedBasket);
+        zaraBasket.addToBasket(bread, 15);
+        zaraBasket.addToBasket(cake, 20);
+        
+        checkout(zaraBasket, true);
+        checkout(zedBasket, false);
 
-//        for (Map.Entry<String, Double> price : stockList.PriceList().entrySet()) {
-//            System.out.println(price.getKey() + " costs: $" + price.getValue());
-//        }
-//        System.out.println(zedBasket);
-
-
-//        System.out.println(stockList);
-
+        System.out.println(zedBasket);
+        System.out.println();
+        System.out.println(zaraBasket);
+        System.out.println();
+        System.out.println(stockList);
 
 
     }
 
-    public static int checkout(Basket basket) {
+    public static int checkout(Basket basket, Boolean bool) {
+        if (!bool) {
+            System.out.println("Not checkout!");
+            for (Map.Entry<StockItem, Integer> items : basket.Items().entrySet()) {
+                StockItem item = stockList.getStockItem(items.getKey().getName());
+                item.setReserved(item.getReserved() - items.getValue());
+            }
+            return 0;
+        }
         for (Map.Entry<StockItem, Integer> items : basket.Items().entrySet()) {
             StockItem item = stockList.getStockItem(items.getKey().getName());
-            if (item.getReserved() <= item.quantityInStock()) {
-                item.setReserved(items.getValue());
-            } else {
-                System.out.println("Stock of " + item.getName() + " not enough!");
-                return 0;
-            }
+            sellItem(basket, item.getName(), item.getReserved());
         }
         return 1;
 
@@ -59,19 +61,10 @@ public class Main {
             return 0;
         }
         if (stockList.sellStock(item, quantity) != 0) {
-            basket.addToBasket(stockItem, quantity);
-
             return quantity;
 
         }
         return 0;
     }
-
-//    public static int sellItem(Basket basket, String item, int quantity) {
-//
-//        if (stockItem.quantityInStock() == 0) {
-//            System.out.println(item.toUpperCase() + " already sold out !");
-//            return 0;
-//        }
 
 }
