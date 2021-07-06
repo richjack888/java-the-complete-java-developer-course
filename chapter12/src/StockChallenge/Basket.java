@@ -14,6 +14,15 @@ public class Basket {
         this.list = new LinkedHashMap<>();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void clear() {
+        list.clear();
+    }
+
+
     public int addToBasket(StockItem item, int quantity) {
         if ((item != null) && (quantity > 0)) {
             int inBasket = list.getOrDefault(item, 0);
@@ -21,10 +30,10 @@ public class Basket {
             if (item.quantityInStock() >= reservedCheck) {
                 item.setReserved(reservedCheck);
                 list.put(item, inBasket + quantity);
-                System.out.println(item.getName() + " order " + quantity + " -> Total reserved: " + item.getReserved());
+                System.out.println(getName() + "'s basket order " + item.getName() + " " + quantity + " -> Total reserved: " + item.getReserved());
                 return inBasket;
-            }else {
-                System.out.println("Stock of " + item.getName() + " not enough!");
+            } else {
+                System.out.println(getName() + "'s basket order " + item.getName() + " " + quantity + " -> Error! Stock of " + item.getName() + " not enough!");
                 return 0;
             }
         }
@@ -40,10 +49,10 @@ public class Basket {
         String s = "\nShopping basket " + name + " contains " + list.size() + (list.size() == 1 ? " item" : " items") + "\n";
         double totalCost = 0.0;
         for (Map.Entry<StockItem, Integer> item : list.entrySet()) {
-            s = s + item.getKey() + " --> " + item.getValue() + " purchased\n";
+            s = s + item.getKey() + " --> " + item.getValue() + " units.\n";
             totalCost += item.getKey().getPrice() * item.getValue();
         }
-        return s + " Total cost $" + totalCost;
+        return s + "    Total cost $" + totalCost;
     }
 
 
