@@ -1,9 +1,8 @@
-package StockChallenge;
+package StockChallenge.MyVersion;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class Basket {
     private final String name;

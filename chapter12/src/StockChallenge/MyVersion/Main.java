@@ -1,4 +1,4 @@
-package StockChallenge;
+package StockChallenge.MyVersion;
 
 import java.util.Map;
 
@@ -54,22 +54,21 @@ public class Main {
                 StockItem item = stockList.getStockItem(items.getKey().getName());
                 item.setReserved(item.getReserved() - items.getValue());
             }
-
-            printoutAndClear(basket);
+            printoutAndClear(basket, false);
             return 0;
         }
         for (Map.Entry<StockItem, Integer> items : basket.Items().entrySet()) {
             StockItem item = stockList.getStockItem(items.getKey().getName());
             sellItem(basket, item.getName(), items.getValue());
         }
-        printoutAndClear(basket);
+        printoutAndClear(basket, true);
         return 1;
 
     }
 
-    public static void printoutAndClear(Basket basket) {
+    public static void printoutAndClear(Basket basket, boolean bool) {
         System.out.println(basket);
-        System.out.println(basket.getName() + "'s basket not checkout!\n");
+        System.out.println(basket.getName() + "'s basket " + (bool ? "" : "not ") + "checkout!\n");
         basket.clear();
     }
 

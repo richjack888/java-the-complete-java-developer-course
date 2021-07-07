@@ -1,4 +1,4 @@
-package StockChallenge;
+package StockChallenge.MyVersion;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;

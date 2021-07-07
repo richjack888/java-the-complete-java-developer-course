@@ -1,4 +1,4 @@
-package StockChallenge;
+package StockChallenge.MyVersion;
 
 public class StockItem implements Comparable<StockItem> {
     private final String name;
