@@ -11,16 +11,16 @@ public class StockList {
         this.list = new LinkedHashMap<>();
     }
 
-    public int addStock(StockItem stockItem) {
-        if (stockItem != null) {
-            // check if already have stockItem, jf get null just pass stockItem of parameter
-            StockItem inStock = list.getOrDefault(stockItem.getName(), stockItem);
-            // if there are already stocks on this item, adjust the quantity
-            if (inStock != stockItem) {
-                stockItem.adjustStock(inStock.availableQuantity());
+    public int addStock(StockItem item) {
+        if (item != null) {
+            // check if already have quantities of this item
+            StockItem inStock = list.getOrDefault(item.getName(), item);
+            // If there are already stocks on this item, adjust the quantity
+            if (inStock != item) {
+                inStock.adjustStock(item.availableQuantity());
             }
-            list.put(stockItem.getName(), stockItem);
-            return stockItem.availableQuantity();
+            list.put(inStock.getName(), inStock);
+            return inStock.availableQuantity();
         }
         return 0;
     }
@@ -52,21 +52,12 @@ public class StockList {
     }
 
 
-
     public StockItem getStockItem(String key) {
         return list.get(key);
     }
 
     public Map<String, StockItem> Items() {
         return Collections.unmodifiableMap(list);
-    }
-
-    public Map<String, Double> PriceList() {
-        Map<String, Double> prices = new LinkedHashMap<>();
-        for (Map.Entry<String, StockItem> item : list.entrySet()) {
-            prices.put(item.getKey(), item.getValue().getPrice());
-        }
-        return Collections.unmodifiableMap(prices);
     }
 
     @Override

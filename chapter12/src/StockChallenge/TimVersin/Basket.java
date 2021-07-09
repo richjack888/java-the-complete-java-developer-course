@@ -26,7 +26,7 @@ public class Basket {
         if ((item != null) && (quantity > 0)) {
             // check if we already have the item in the basket
             int inBasket = list.getOrDefault(item, 0);
-            int newQuantity = inBasket + quantity;
+            int newQuantity = inBasket - quantity;
 
             if (newQuantity > 0) {
                 list.put(item, newQuantity);
@@ -52,10 +52,10 @@ public class Basket {
         String s = "\nShopping basket " + name + " contains " + list.size() + (list.size() == 1 ? " item" : " items") + "\n";
         double totalCost = 0.0;
         for (Map.Entry<StockItem, Integer> item : list.entrySet()) {
-            s = s + item.getKey() + ". " + item.getValue() + " purchased\n";
+            s = s + item.getKey() + " ; " + " purchased: " + item.getValue() + "\n";
             totalCost += item.getKey().getPrice() * item.getValue();
         }
-        return s + " Total cost " + totalCost;
+        return s + " Total cost " +String.format("%.2f", totalCost);
     }
 
 
