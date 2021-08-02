@@ -3,6 +3,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.CheckBox?>
 
+<?import javafx.scene.control.Label?>
 <GridPane fx:controller="sample.Controller"
           xmlns:fx="http://java.com/fxml" alignment="center" hgap="10" vgap="10">
     <TextField fx:id="nameField" GridPane.rowIndex="0" GridPane.columnIndex="0"
@@ -13,7 +14,8 @@
             onAction="#onButtonClicked"/>
     <Button  text="Go away" GridPane.rowIndex="2" GridPane.columnIndex="1"
              onAction="#onButtonClicked"/>
-    <CheckBox fx:id="ourCheckBox" text="Clear the field after click or bye" GridPane.rowIndex="3"
+    <CheckBox fx:id="ourCheckBox" text="Clear the field after click or leave" GridPane.rowIndex="3"
               GridPane.columnIndex="0" GridPane.columnSpan="2"
               onAction="#handleChange"/>
+    <Label fx:id="ourLabel" text="Nothing has happened" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
 </GridPane>
