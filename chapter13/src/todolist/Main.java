@@ -1,4 +1,4 @@
-package sample;
+package todolist;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +10,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello JavaFx11");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        Parent root = FXMLLoader.load(getClass().getResource("mainwindow.fxml"));
+        primaryStage.setTitle("Todolist");
+        primaryStage.setScene(new Scene(root, 900, 500));
         primaryStage.show();
     }
 
