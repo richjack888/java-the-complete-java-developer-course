@@ -39,6 +39,7 @@ public class TodoItem {
 
     @Override
     public String toString() {
-        return shortDescription;
+        return shortDescription + "\nDeadline: " + deadline;
+
     }
 }
