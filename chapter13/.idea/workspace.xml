@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Day139">
-      <change afterPath="$PROJECT_DIR$/src/todolist/datamodel/TodoData.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Day140">
+      <change afterPath="$PROJECT_DIR$/TodoListItems.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/todolist/DialogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/todolist/todoItemDialog.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/todolist/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/todolist/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/todolist/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/todolist/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/todolist/mainwindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/todolist/mainwindow.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +78,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
@@ -138,6 +151,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
@@ -156,7 +170,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/out/production/chapter13/sample/sample.fxml" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/javafx-sdk-11.0.2/lib/javafx.web.jar" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -390,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628240523292</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Day140">
+      <created>1628500727000</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1628500727000</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -440,6 +461,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="Day122" />
     <MESSAGE value="Day123" />
@@ -459,7 +481,8 @@
     <MESSAGE value="Day137" />
     <MESSAGE value="Day138" />
     <MESSAGE value="Day139" />
-    <option name="LAST_COMMIT_MESSAGE" value="Day139" />
+    <MESSAGE value="Day140" />
+    <option name="LAST_COMMIT_MESSAGE" value="Day140" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">

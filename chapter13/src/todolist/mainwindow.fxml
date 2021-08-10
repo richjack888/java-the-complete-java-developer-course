@@ -5,8 +5,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.text.Font?>
-<BorderPane fx:controller="todolist.Controller"
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<BorderPane fx:id="mainBorderPane" fx:controller="todolist.Controller"
             xmlns:fx="http://java.com/fxml">
+    <top>
+        <MenuBar>
+            <Menu text="File Button" style="-fx-background-color: pink">
+                <items>
+                    <MenuItem text="Add new todo list"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Bye Bye~"/>
+                </items>
+            </Menu>
+        </MenuBar>
+    </top>
     <left>
         <ListView fx:id="todoListView">
         </ListView>
