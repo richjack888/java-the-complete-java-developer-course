@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Day141">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Day142">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/todolist/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/todolist/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/todolist/DialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/todolist/DialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/todolist/datamodel/TodoData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/todolist/datamodel/TodoData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/todolist/mainwindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/todolist/mainwindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/todolist/todoItemDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/todolist/todoItemDialog.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,16 +165,22 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/out/production/chapter13/sample/sample.fxml" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/javafx-sdk-11.0.2/lib/javafx.web.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="kite.configurable" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -265,6 +276,18 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
+      <workItem from="1628913632953" duration="161000" />
+      <workItem from="1628913810875" duration="504000" />
+      <workItem from="1628914336095" duration="127000" />
+      <workItem from="1628934002541" duration="42000" />
+      <workItem from="1628935129666" duration="247000" />
+      <workItem from="1628937713779" duration="86000" />
+      <workItem from="1628937928388" duration="151000" />
+      <workItem from="1628938113492" duration="8000" />
+      <workItem from="1628938146272" duration="6000" />
+      <workItem from="1628945436752" duration="625000" />
+      <workItem from="1628946450141" duration="1000" />
+      <workItem from="1628946497478" duration="3584000" />
     </task>
     <task id="LOCAL-00001" summary="Day122">
       <created>1626084745720</created>
@@ -413,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628586780163</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Day142">
+      <created>1628844501500</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1628844501500</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -448,6 +478,9 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -485,7 +518,12 @@
     <MESSAGE value="Day139" />
     <MESSAGE value="Day140" />
     <MESSAGE value="Day141" />
-    <option name="LAST_COMMIT_MESSAGE" value="Day141" />
+    <MESSAGE value="Day142" />
+    <option name="LAST_COMMIT_MESSAGE" value="Day142" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">

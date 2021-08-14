@@ -13,7 +13,7 @@
             xmlns:fx="http://java.com/fxml">
     <top>
         <MenuBar>
-            <Menu text="File Button" style="-fx-background-color: pink">
+            <Menu text="File Button" style="-fx-background-color: pink" onAction="#showNewItemDialog">
                 <items>
                     <MenuItem text="Add new todo list"/>
                     <SeparatorMenuItem/>
