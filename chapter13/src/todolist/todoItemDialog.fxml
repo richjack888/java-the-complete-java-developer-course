@@ -1,13 +1,9 @@
-<?import javafx.scene.control.DialogPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <DialogPane fx:controller="todolist.DialogController"
             xmlns:fx="http://java.com/fxml">
     <headerText>
-        We could put instructions here
+        I'm instructions from fxml
     </headerText>
     <content>
         <GridPane vgap="10" hgap="10">

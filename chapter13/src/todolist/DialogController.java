@@ -2,10 +2,11 @@ package todolist;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import todolist.datamodel.TodoData;
 import todolist.datamodel.TodoItem;
 
-import java.awt.*;
 import java.time.LocalDate;
 
 public class DialogController {
@@ -16,12 +17,13 @@ public class DialogController {
     @FXML
     private DatePicker deadlinePicker;
 
-    public void processResult(){
+    public TodoItem processResult() {
         String shortDescription = shortDescriptionField.getText().trim();
         String details = detailsArea.getText().trim();
         LocalDate deadlineValue = deadlinePicker.getValue();
-
-        TodoData.getInstance().addTodoItem(new TodoItem(shortDescription, details, deadlineValue));
+        TodoItem todoItem = new TodoItem(shortDescription, details, deadlineValue);
+        TodoData.getInstance().addTodoItem(todoItem);
+        return todoItem;
 
     }
 
