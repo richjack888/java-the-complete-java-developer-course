@@ -2,6 +2,8 @@ package todolist;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -27,6 +29,8 @@ public class Controller {
     private Label deadlineLabel;
     @FXML
     private BorderPane mainBorderPane;
+    @FXML
+    private ContextMenu listContextMenu;
 
 
     public void initialize() {
@@ -48,6 +52,17 @@ public class Controller {
 //        todoItems.add(item4);
 //        todoItems.add(item5);
 //        TodoData.getInstance().setTodoItems(todoItems);
+
+        listContextMenu = new ContextMenu();
+        MenuItem deleteMenuItem = new MenuItem("Delete todo item");
+        deleteMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                TodoItem todoItem = todoListView.getSelectionModel().getSelectedItem();
+                deleteItem(todoItem);
+            }
+        });
+
 
         todoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TodoItem>() {
             @Override
@@ -91,6 +106,9 @@ public class Controller {
             }
         });
 
+    }
+
+    private void deleteItem(TodoItem todoItem) {
     }
 
     @FXML
