@@ -63,6 +63,8 @@ public class Controller {
             }
         });
 
+        listContextMenu.getItems().addAll(deleteMenuItem);
+
 
         todoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TodoItem>() {
             @Override
@@ -102,6 +104,17 @@ public class Controller {
                         }
                     }
                 };
+
+                cell.emptyProperty().addListener(
+                        (obs, wasEmpty, isNowEmpty) -> {
+                            if (isNowEmpty) {
+                                cell.setContextMenu(null);
+                            } else {
+                                cell.setContextMenu(listContextMenu);
+                            }
+                        }
+                );
+
                 return cell;
             }
         });
@@ -109,6 +122,14 @@ public class Controller {
     }
 
     private void deleteItem(TodoItem todoItem) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Deleter todo item");
+        alert.setHeaderText("Delete item: " + todoItem.getShortDescription());
+        alert.setContentText("Are you sure? Press OK  to confirm.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && (result.get() == ButtonType.OK)) {
+            TodoData.getInstance().deleteTodoItem(todoItem);
+        }
     }
 
     @FXML
