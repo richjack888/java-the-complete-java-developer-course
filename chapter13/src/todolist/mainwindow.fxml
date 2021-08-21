@@ -1,23 +1,44 @@
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <BorderPane fx:id="mainBorderPane" fx:controller="todolist.Controller"
             xmlns:fx="http://java.com/fxml">
     <top>
-        <MenuBar>
-            <Menu text="File Button" style="-fx-background-color: pink" onAction="#showNewItemDialog">
-                <items>
-                    <MenuItem text="Add new todo list"/>
-                    <SeparatorMenuItem/>
-                    <MenuItem text="Bye Bye~"/>
-                </items>
-            </Menu>
-        </MenuBar>
+        <VBox>
+            <MenuBar>
+                <Menu text="File Button" style="-fx-background-color: pink" onAction="#showNewItemDialog">
+                    <items>
+                        <MenuItem text="Add A New Todo Item"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Bye Bye~"/>
+                    </items>
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <HBox>
+                    <Button onAction="#showNewItemDialog">
+                        <tooltip>
+                            <Tooltip text="Add A New Todo Item"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@/toolbarButtonGraphics/general/New24.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <ToggleButton fx:id="filterToggleButton" text="Today's Items">
+                        <tooltip>
+                            <Tooltip text="Button Down: Show Today's items only. Button Up:Show all item."/>
+                        </tooltip>
+                    </ToggleButton>
+                </HBox>
+            </ToolBar>
+        </VBox>
     </top>
     <left>
-        <ListView fx:id="todoListView">
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed">
         </ListView>
     </left>
     <center>

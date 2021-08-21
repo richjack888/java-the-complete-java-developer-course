@@ -16,4 +16,8 @@ Pick up dry cleaning	The clothes should be ready by Wednesday	2016-20-04
 11 todoitem	11 todoitem	2021-11-08
 12 todoitem	12	2021-12-08
 13 todoitem	13 todoitem	2021-13-08
-19 todoitem	19 todoitem	2021-19-08
+14  todoitem	14 todoitem	2021-21-08
+15 todoitem	15 todoitem	2021-31-08
+13.5 todoitem	13.5  todoitem	2021-20-08
+14.1 todoitem	14.1 todoitem	2021-21-08
+14.2 todoitem	14.2 todoitem	2021-21-08
