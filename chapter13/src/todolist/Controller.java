@@ -2,6 +2,7 @@ package todolist;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +22,7 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 public class Controller {
     private List<TodoItem> todoItems;
@@ -37,6 +39,11 @@ public class Controller {
     private ContextMenu listContextMenu;
     @FXML
     public ToggleButton filterToggleButton;
+
+    private FilteredList<TodoItem> filteredList;
+
+    private Predicate<TodoItem> predicateAllItems;
+    private Predicate<TodoItem> predicateTodaysItems;
 
 
     public void initialize() {
@@ -85,7 +92,24 @@ public class Controller {
             }
         });
 
-        SortedList<TodoItem> sortedList = new SortedList<TodoItem>(TodoData.getInstance().getTodoItems(),
+        predicateAllItems = new Predicate<TodoItem>() {
+            @Override
+            public boolean test(TodoItem todoItem) {
+                return true;
+            }
+        };
+
+        predicateTodaysItems = new Predicate<TodoItem>() {
+            @Override
+            public boolean test(TodoItem todoItem) {
+                return todoItem.getDeadline().equals(LocalDate.now());
+            }
+        };
+
+        filteredList = new FilteredList<TodoItem>(TodoData.getInstance().getTodoItems(),
+                predicateAllItems);
+
+        SortedList<TodoItem> sortedList = new SortedList<TodoItem>(filteredList,
                 new Comparator<TodoItem>() {
                     @Override
                     public int compare(TodoItem o1, TodoItem o2) {
@@ -195,9 +219,9 @@ public class Controller {
     @FXML
     public void handleFilterButton() {
         if (filterToggleButton.isSelected()) {
-
+            filteredList.setPredicate(predicateTodaysItems);
         } else {
-
+            filteredList.setPredicate(predicateAllItems);
         }
     }
 }
