@@ -4,15 +4,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <BorderPane fx:id="mainBorderPane" fx:controller="todolist.Controller"
-            xmlns:fx="http://java.com/fxml">
+            xmlns:fx="http://java.com/fxml"
+            stylesheets="@styles.css">
     <top>
         <VBox>
             <MenuBar>
-                <Menu text="File Button" style="-fx-background-color: pink" onAction="#showNewItemDialog">
+                <Menu text="File Button" style="-fx-background-color: pink">
                     <items>
-                        <MenuItem text="Add A New Todo Item"/>
+                        <MenuItem text="Add A New Todo Item" onAction="#showNewItemDialog"/>
                         <SeparatorMenuItem/>
-                        <MenuItem text="Bye Bye~"/>
+                        <MenuItem text="Bye Bye~" onAction="#handleExit" id="button_2"/>
                     </items>
                 </Menu>
             </MenuBar>
