@@ -34,6 +34,11 @@
                             <Tooltip text="Button Down: Show Today's items only. Button Up:Show all item."/>
                         </tooltip>
                     </ToggleButton>
+                    <Label text="JavaFx Effects" fx:id="label"
+                           onMouseMoved="#handleBigMouseEnter" onMouseExited="#handleOriginMouseExit"
+                           rotate="45"/>
+                    <Button text="shadow effects" fx:id="button4" onMouseMoved="#handleShadowMouseMoved"/>
+                    <Button text="Open File" onAction="#handleOpenFileClick"/>
                 </HBox>
             </ToolBar>
         </VBox>

@@ -10,10 +10,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import todolist.datamodel.TodoData;
 import todolist.datamodel.TodoItem;
@@ -40,6 +42,10 @@ public class Controller {
     private ContextMenu listContextMenu;
     @FXML
     public ToggleButton filterToggleButton;
+    @FXML
+    public Label label;
+    @FXML
+    public Button button4;
 
     private FilteredList<TodoItem> filteredList;
 
@@ -239,5 +245,30 @@ public class Controller {
     @FXML
     public void handleExit() {
         Platform.exit();
+    }
+
+    @FXML
+    public void handleBigMouseEnter() {
+        label.setScaleX(2.0);
+        label.setScaleY(2.0);
+    }
+
+    @FXML
+    public void handleOriginMouseExit() {
+        label.setScaleX(1.0);
+        label.setScaleY(1.0);
+        label.setRotate(0);
+    }
+
+    @FXML
+    public void handleShadowMouseMoved() {
+        button4.setEffect(new DropShadow());
+    }
+
+    @FXML
+    public void handleOpenFileClick() {
+        FileChooser chooser = new FileChooser();
+        chooser.showOpenDialog(null);
+
     }
 }
