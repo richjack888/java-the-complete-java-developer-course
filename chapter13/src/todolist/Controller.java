@@ -10,16 +10,20 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.effect.Bloom;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import todolist.datamodel.TodoData;
 import todolist.datamodel.TodoItem;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Comparator;
@@ -46,6 +50,8 @@ public class Controller {
     public Label label;
     @FXML
     public Button button4;
+    @FXML
+    public Button bloomButton;
 
     private FilteredList<TodoItem> filteredList;
 
@@ -248,6 +254,56 @@ public class Controller {
     }
 
     @FXML
+    public void handleOpenFileClick() {
+        FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text", "*.txt"),
+                new FileChooser.ExtensionFilter("PDF", "*.pdf"),
+                new FileChooser.ExtensionFilter("WORD", "*.word"),
+                new FileChooser.ExtensionFilter("All", "*.*")
+        );
+        File file = chooser.showOpenDialog(mainBorderPane.getScene().getWindow());
+        if (file != null) {
+            System.out.println(file.getPath());
+        } else {
+            System.out.println("Chooser was cancelled");
+        }
+
+    }
+
+    public void handleSaveFileClick() {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Save Application File");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text", "*.txt"),
+                new FileChooser.ExtensionFilter("PDF", "*.pdf"),
+                new FileChooser.ExtensionFilter("WORD", "*.word")
+        );
+        File file = chooser.showSaveDialog(mainBorderPane.getScene().getWindow());
+        if (file != null) {
+            System.out.println(file.getPath());
+        } else {
+            System.out.println("Chooser was cancelled");
+        }
+    }
+
+    public void handleBloomMoved() {
+        Bloom bloom = new Bloom();
+        bloomButton.setFont(Font.font(null, FontWeight.BOLD, 30));
+        bloomButton.setEffect(bloom);
+    }
+
+    public void handleBloomExit() {
+        bloomButton.setFont(Font.font(null, FontWeight.NORMAL, 14));
+        bloomButton.setEffect(null);
+    }
+
+    @FXML
+    public void handleShadowMouseMoved() {
+        button4.setEffect(new DropShadow());
+    }
+
+    @FXML
     public void handleBigMouseEnter() {
         label.setScaleX(2.0);
         label.setScaleY(2.0);
@@ -258,17 +314,5 @@ public class Controller {
         label.setScaleX(1.0);
         label.setScaleY(1.0);
         label.setRotate(0);
-    }
-
-    @FXML
-    public void handleShadowMouseMoved() {
-        button4.setEffect(new DropShadow());
-    }
-
-    @FXML
-    public void handleOpenFileClick() {
-        FileChooser chooser = new FileChooser();
-        chooser.showOpenDialog(null);
-
     }
 }
