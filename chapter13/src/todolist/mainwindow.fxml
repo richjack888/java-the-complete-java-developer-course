@@ -42,6 +42,8 @@
                     <Label text="JavaFx Effects" fx:id="label"
                            onMouseMoved="#handleBigMouseEnter" onMouseExited="#handleOriginMouseExit"
                            rotate="45"/>
+                    <Hyperlink text="www.javafx.com" onAction="#handleLinkClick"/>
+
                 </HBox>
             </ToolBar>
         </VBox>

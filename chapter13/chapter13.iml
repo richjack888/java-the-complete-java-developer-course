@@ -8,24 +8,23 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="javafx-fxml">
+      <library name="javafx11">
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/11/javafx-fxml-11.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/11/javafx-fxml-11-linux.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/11/javafx-controls-11.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/11/javafx-controls-11-linux.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/11/javafx-graphics-11.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/11/javafx-graphics-11-linux.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/11/javafx-base-11.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/11/javafx-base-11-linux.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-11.0.2/lib/javafx-swt.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-11.0.2/lib/javafx.base.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-11.0.2/lib/javafx.controls.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-11.0.2/lib/javafx.fxml.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-11.0.2/lib/javafx.graphics.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-11.0.2/lib/javafx.media.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-11.0.2/lib/javafx.swing.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-11.0.2/lib/javafx.web.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="javafx-swt" level="application" />
     <orderEntry type="module-library">
-      <library>
+      <library name="jlfgr-1_0">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/jlfgr-1_0.jar!/" />
         </CLASSES>

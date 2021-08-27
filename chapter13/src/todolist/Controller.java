@@ -9,6 +9,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.*;
 import javafx.scene.effect.Bloom;
 import javafx.scene.effect.DropShadow;
@@ -23,8 +28,11 @@ import javafx.util.Callback;
 import todolist.datamodel.TodoData;
 import todolist.datamodel.TodoItem;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
@@ -54,7 +62,6 @@ public class Controller {
     public Button bloomButton;
 
     private FilteredList<TodoItem> filteredList;
-
     private Predicate<TodoItem> predicateAllItems;
     private Predicate<TodoItem> predicateTodaysItems;
 
@@ -314,5 +321,14 @@ public class Controller {
         label.setScaleX(1.0);
         label.setScaleY(1.0);
         label.setRotate(0);
+    }
+
+    @FXML
+    public void handleLinkClick() {
+        try {
+            Desktop.getDesktop().browse(new URI("https://openjfx.io//"));
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 }
