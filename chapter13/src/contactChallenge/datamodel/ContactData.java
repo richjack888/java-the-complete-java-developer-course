@@ -28,11 +28,28 @@ public class ContactData {
         ObservableList<Contact> contacts = FXCollections.observableArrayList();
     }
 
-    public ObservableList<Contact> getContacts() {
-        return contacts;
+    // *** Add methods to add/delete/access contacts here ***
+    public void addContact(Contact contact) {
+        contacts.add(contact);
     }
 
-    // *** Add methods to add/delete/access contacts here ***
+    public void removeContact(Contact contact) {
+        contacts.remove(contact);
+    }
+
+    public void editContact(Contact oldContact, Contact newContact) {
+        if (contacts.contains(oldContact)) {
+            int indexOfContact = contacts.indexOf(oldContact);
+            contacts.get(indexOfContact).setFirstName(newContact.getFirstName());
+            contacts.get(indexOfContact).setLastName(newContact.getLastName());
+            contacts.get(indexOfContact).setPhoneNumber(newContact.getPhoneNumber());
+            contacts.get(indexOfContact).setNotes(newContact.getNotes());
+        } else {
+            System.out.println("Can't find this contact!");
+        }
+
+    }
+
 
     public void loadContacts() {
         try {
