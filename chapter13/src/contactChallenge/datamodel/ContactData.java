@@ -24,32 +24,20 @@ public class ContactData {
     private ObservableList<Contact> contacts;
 
     public ContactData() {
-        // *** initialize the contacts list here ***
-        ObservableList<Contact> contacts = FXCollections.observableArrayList();
+        contacts = FXCollections.observableArrayList();
     }
 
-    // *** Add methods to add/delete/access contacts here ***
-    public void addContact(Contact contact) {
-        contacts.add(contact);
+    public ObservableList<Contact> getContacts() {
+        return contacts;
     }
 
-    public void removeContact(Contact contact) {
-        contacts.remove(contact);
+    public void addContact(Contact item) {
+        contacts.add(item);
     }
 
-    public void editContact(Contact oldContact, Contact newContact) {
-        if (contacts.contains(oldContact)) {
-            int indexOfContact = contacts.indexOf(oldContact);
-            contacts.get(indexOfContact).setFirstName(newContact.getFirstName());
-            contacts.get(indexOfContact).setLastName(newContact.getLastName());
-            contacts.get(indexOfContact).setPhoneNumber(newContact.getPhoneNumber());
-            contacts.get(indexOfContact).setNotes(newContact.getNotes());
-        } else {
-            System.out.println("Can't find this contact!");
-        }
-
+    public void deleteContact(Contact item) {
+        contacts.remove(item);
     }
-
 
     public void loadContacts() {
         try {
