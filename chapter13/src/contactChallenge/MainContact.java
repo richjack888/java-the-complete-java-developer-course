@@ -1,5 +1,6 @@
 package contactChallenge;
 
+import contactChallenge.datamodel.ContactData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,9 +18,18 @@ public class MainContact extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainwindow.fxml")));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Contacts");
         primaryStage.setScene(new Scene(root, 820, 420));
         primaryStage.show();
     }
 
+    @Override
+    public void init() throws Exception {
+        ContactData.getInstance().loadContacts();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        ContactData.getInstance().saveContacts();
+    }
 }

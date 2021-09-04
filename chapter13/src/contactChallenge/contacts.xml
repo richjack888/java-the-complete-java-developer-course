@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contacts>
+	<contact>
+		<first_name>Demi</first_name>
+		<last_name>Moore</last_name>
+		<phone_number>12345</phone_number>
+		<notes>Real Name: Demi Gene Guynes</notes>
+	</contact>
+	<contact>
+		<first_name>Cardi</first_name>
+		<last_name>B</last_name>
+		<phone_number>12346</phone_number>
+		<notes>Real Name: Belcalis Marlenis Almánzar</notes>
+	</contact>
+	<contact>
+		<first_name>Mahershala</first_name>
+		<last_name>Ali</last_name>
+		<phone_number>12347</phone_number>
+		<notes>Real Name: Mahershalalhashbaz Gilmore</notes>
+	</contact>
+	<contact>
+		<first_name>Diane</first_name>
+		<last_name>Keaton</last_name>
+		<phone_number>12348</phone_number>
+		<notes>Real Name: Diane Hall</notes>
+	</contact>
+</contacts>

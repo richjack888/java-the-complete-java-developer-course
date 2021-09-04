@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Day156">
-      <change afterPath="$PROJECT_DIR$/contacts.xml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Day157">
+      <change afterPath="$PROJECT_DIR$/src/contactChallenge/contacts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contacts.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contactChallenge/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/contactChallenge/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contactChallenge/MainContact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/contactChallenge/MainContact.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contactChallenge/datamodel/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/contactChallenge/datamodel/Contact.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contactChallenge/datamodel/ContactData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/contactChallenge/datamodel/ContactData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contactChallenge/mainwindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/contactChallenge/mainwindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contactChallenge/style.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -401,7 +403,10 @@
       <workItem from="1630481960052" duration="3915000" />
       <workItem from="1630545266565" duration="10841000" />
       <workItem from="1630638748179" duration="598000" />
-      <workItem from="1630654752788" duration="8215000" />
+      <workItem from="1630654752788" duration="8337000" />
+      <workItem from="1630719028842" duration="5166000" />
+      <workItem from="1630744909089" duration="259000" />
+      <workItem from="1630746447442" duration="924000" />
     </task>
     <task id="LOCAL-00001" summary="Day122">
       <created>1626084745720</created>
@@ -655,7 +660,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630485858157</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Day157">
+      <created>1630663163849</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1630663163849</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -710,7 +722,6 @@
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Day132" />
     <MESSAGE value="Day133" />
     <MESSAGE value="Day134" />
     <MESSAGE value="Day135" />
@@ -735,7 +746,8 @@
     <MESSAGE value="Day154" />
     <MESSAGE value="Day155" />
     <MESSAGE value="Day156" />
-    <option name="LAST_COMMIT_MESSAGE" value="Day156" />
+    <MESSAGE value="Day157" />
+    <option name="LAST_COMMIT_MESSAGE" value="Day157" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

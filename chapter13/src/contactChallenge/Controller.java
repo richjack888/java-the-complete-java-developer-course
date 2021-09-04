@@ -2,8 +2,6 @@ package contactChallenge;
 
 import contactChallenge.datamodel.Contact;
 import contactChallenge.datamodel.ContactData;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,7 +11,6 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-import java.util.List;
 import java.util.Optional;
 
 public class Controller {
@@ -40,36 +37,15 @@ public class Controller {
     @FXML
     private TableView<Contact> tableview;
 
-    private List<Contact> contacts;
-
-    private ContactData contactData = new ContactData();
-
     public void initialize() {
 
-        contactData.loadContacts();
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("LastName"));
         phoneNumberCol.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
         notesCol.setCellValueFactory(new PropertyValueFactory<>("Notes"));
 
-
-        tableview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Contact>() {
-            @Override
-            public void changed(ObservableValue<? extends Contact> observableValue, Contact contact, Contact t1) {
-                if (t1 != null) {
-                    Contact con = tableview.getSelectionModel().getSelectedItem();
-                    firstNameCol.setText(con.getFirstName());
-                    lastNameCol.setText(con.getLastName());
-                    phoneNumberCol.setText(con.getPhoneNumber());
-                    notesCol.setText(con.getNotes());
-
-
-                }
-
-            }
-        });
-
-        tableview.setItems(contactData.getContacts());
+        // show data in tableview
+        tableview.setItems(ContactData.getInstance().getContacts());
 
         // edit function
         tableview.setEditable(true);
@@ -77,9 +53,6 @@ public class Controller {
         lastNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         phoneNumberCol.setCellFactory(TextFieldTableCell.forTableColumn());
         notesCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        contactData.saveContacts();
-
 
     }
 

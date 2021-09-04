@@ -13,7 +13,7 @@ import java.io.InputStream;
 
 public class ContactData {
 
-    private static final String CONTACTS_FILE = "contacts.xml";
+    private static final String CONTACTS_FILE = "src/contactChallenge/contacts.xml";
 
     private static final String CONTACT = "contact";
     private static final String FIRST_NAME = "first_name";
@@ -22,21 +22,18 @@ public class ContactData {
     private static final String NOTES = "notes";
 
     private ObservableList<Contact> contacts;
+    private static ContactData instance = new ContactData();
 
-    public ContactData() {
+    private ContactData() {
         contacts = FXCollections.observableArrayList();
+    }
+
+    public static ContactData getInstance() {
+        return instance;
     }
 
     public ObservableList<Contact> getContacts() {
         return contacts;
-    }
-
-    public void addContact(Contact item) {
-        contacts.add(item);
-    }
-
-    public void deleteContact(Contact item) {
-        contacts.remove(item);
     }
 
     public void loadContacts() {
