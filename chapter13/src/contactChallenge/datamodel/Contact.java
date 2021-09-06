@@ -22,7 +22,6 @@ public class Contact {
         return firstName.get();
     }
 
-
     public void setFirstName(String firstName) {
         this.firstName.set(firstName);
     }

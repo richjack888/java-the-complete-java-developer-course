@@ -11,6 +11,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class Controller {
@@ -37,6 +38,7 @@ public class Controller {
     @FXML
     private TableView<Contact> tableview;
 
+
     public void initialize() {
 
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
@@ -54,6 +56,11 @@ public class Controller {
         phoneNumberCol.setCellFactory(TextFieldTableCell.forTableColumn());
         notesCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        // add button disable until first and last name input
+        addBtn.disableProperty().bind(
+                firstNameField.textProperty().isEmpty()
+                        .or(lastNameField.textProperty().isEmpty())
+        );
     }
 
 
@@ -62,8 +69,9 @@ public class Controller {
         Contact contact = new Contact(
                 firstNameField.getText(),
                 lastNameField.getText(),
-                phoneNumberField.getText(),
-                notesField.getText()
+                // if user input = "" than value set to " " to avoid app crash
+                !Objects.equals(phoneNumberField.getText(), "") ? phoneNumberField.getText() : " ",
+                !Objects.equals(notesField.getText(), "") ? notesField.getText() : " "
         );
         tableview.getItems().add(contact);
 
