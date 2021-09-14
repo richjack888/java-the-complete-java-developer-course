@@ -2,7 +2,10 @@
 
 public class Main {
     public static void main(String[] args) {
-        // test
+        HouseFly houseFly = new HouseFly();
+        Telemarketer telemarketer = new Telemarketer();
+        DiningRoom diningRoom = new DiningRoom(new IPest[]{houseFly, telemarketer});
+        diningRoom.ServeDinner();
     }
 }
 
@@ -10,11 +13,12 @@ interface IPest {
     void BeAnnoying();
 }
 
-class HouseFly  implements IPest {
-    void FlyAroundYourHead(){
+class HouseFly implements IPest {
+    void FlyAroundYourHead() {
         System.out.println("FlyAroundYourHead");
     }
-    void LandOnThings(){
+
+    void LandOnThings() {
         System.out.println("LandOnThings");
     }
 
@@ -24,11 +28,12 @@ class HouseFly  implements IPest {
     }
 }
 
-class Telemarketer  implements IPest {
-    void CallDuringDinner(){
+class Telemarketer implements IPest {
+    void CallDuringDinner() {
         System.out.println("CallDuringDinner");
     }
-    void ContinueTalkingWhenYouSayNo(){
+
+    void ContinueTalkingWhenYouSayNo() {
         System.out.println("ContinueTalkingWhenYouSayNo");
     }
 
@@ -39,15 +44,18 @@ class Telemarketer  implements IPest {
 }
 
 class DiningRoom {
+    IPest[] pests;
 
-//    DiningRoom(IPest[] pests) {
-//        pests = new HouseFly();
-//    }
-//
-//    void ServeDinner() {
-//        System.out.println("eating");
-//
-//        foreach pest in pests
-//        pest.BeAnnoying();
-//    }
+    DiningRoom(IPest[] pests) {
+        this.pests = pests;
+    }
+
+    void ServeDinner() {
+        System.out.println("when diningPeople are eating...");
+        for (IPest pest : pests) {
+            if (pest instanceof HouseFly) {
+                pest.BeAnnoying();
+            }
+        }
+    }
 }
