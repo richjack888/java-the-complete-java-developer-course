@@ -15,12 +15,24 @@ public class Locations implements Map<Integer, Location> {
         try {
             file = new FileWriter("src/introduceIo/locations.txt");
             for (Location location : locations.values()) {
-                file.write(location.getDescription() + ", " + location.getDescription() + "\n");
+                file.write(location.getLocationID() + ", " + location.getDescription() + "\n");
             }
-            file.close();
         } catch (IOException e) {
             System.out.println("In catch block");
             e.printStackTrace();
+        } finally {
+            System.out.println("In finally block");
+            try {
+                if (file != null) {
+                    System.out.println("file close");
+                    file.close();
+                }else{
+                    System.out.println("file not close");
+                }
+            } catch (IOException e) {
+                System.out.println("In second catch block");
+                e.printStackTrace();
+            }
         }
     }
 
