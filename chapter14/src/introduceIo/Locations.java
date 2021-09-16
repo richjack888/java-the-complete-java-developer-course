@@ -10,28 +10,12 @@ import java.util.Set;
 public class Locations implements Map<Integer, Location> {
     private static Map<Integer, Location> locations = new HashMap<Integer, Location>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         FileWriter file = null;
-        try {
-            file = new FileWriter("src/introduceIo/locations.txt");
+        // check why not work?
+        try (file = new FileWriter("src/introduceIo/locations.txt")) {
             for (Location location : locations.values()) {
                 file.write(location.getLocationID() + ", " + location.getDescription() + "\n");
-            }
-        } catch (IOException e) {
-            System.out.println("In catch block");
-            e.printStackTrace();
-        } finally {
-            System.out.println("In finally block");
-            try {
-                if (file != null) {
-                    System.out.println("file close");
-                    file.close();
-                }else{
-                    System.out.println("file not close");
-                }
-            } catch (IOException e) {
-                System.out.println("In second catch block");
-                e.printStackTrace();
             }
         }
     }

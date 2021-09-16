@@ -1,4 +1,6 @@
-
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,8 +9,31 @@ public class Main {
 //        DiningRoom diningRoom = new DiningRoom(new IPest[]{houseFly, telemarketer});
 //        diningRoom.ServeDinner();
 
-        Student student = new Student();
-        student.setName("");
+//        Student student = new Student();
+//        student.setName("");
+
+//        String directoryPath = "src/introduceIo";
+//        File file = new File(directoryPath);
+//
+//        if (file.isDirectory()) {
+//            System.out.println("File is a Directory");
+//        }
+//        else {
+//            System.out.println("Directory doesn't exist!!");
+//        }
+
+        String directoryPath = "src/introduceIo";
+
+        Path path = Paths.get(directoryPath);
+        boolean isDir = Files.isDirectory(path);
+
+        if (isDir) {
+            System.out.println("File is a Directory");
+        }
+        else {
+            System.out.println("Directory doesn't exist!!");
+        }
+
     }
 }
 
