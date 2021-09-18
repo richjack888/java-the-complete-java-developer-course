@@ -1,5 +1,6 @@
 package introduceIo;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -18,51 +19,96 @@ public class Locations implements Map<Integer, Location> {
 //            }
 //
 //        }
+
     }
 
     static {
 
-//        Scanner locScanner = null;
-
-//        try {
-//            locScanner = new Scanner(new FileReader("src/introduceIo/locations.txt"));
-//            locScanner.useDelimiter(",");
-//            while (locScanner.hasNext()) {
-//                int locInt = locScanner.nextInt();
-//                locScanner.skip(locScanner.delimiter());
-//                String description = locScanner.nextLine();
-//                System.out.println("Imported loc: " + locInt + ": " + description);
-//                Map<String, Integer> tempExit = new HashMap<>();
-//                locations.put(locInt, new Location(locInt, description, tempExit));
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } finally {
-//            if (locScanner != null) {
-//                locScanner.close();
-//                ;
-//            }
-//        }
-
-        Scanner dirScanner = null;
+        // read locations.txt
+        Scanner scanner = null;
         try {
-            dirScanner = new Scanner(new FileReader("src/introduceIo/directions.txt"));
-            dirScanner.useDelimiter(",\r");
-            while (dirScanner.hasNext()) {
-                int dirInt = dirScanner.nextInt();
-                String dirDescription = dirScanner.next();
-                int dirInt2 = dirScanner.nextInt();
-                dirScanner.nextLine();
-                System.out.println("Imported dir: " + dirInt + ", description " + dirDescription + dirInt2);
-//                Map<String, Integer> tempExit = new HashMap<>();
-//                tempExit.put(dirDescription, dirInt2);
+            scanner = new Scanner(new FileReader("src/introduceIo/locations.txt"));
+            scanner.useDelimiter(",");
+            while (scanner.hasNext()) {
+                int locInt = scanner.nextInt();
+                scanner.skip(scanner.delimiter());
+                String description = scanner.nextLine();
+//                System.out.println("Imported loc: " + locInt + ": " + description);
+                Map<String, Integer> tempExit = new HashMap<>();
+                locations.put(locInt, new Location(locInt, description, tempExit));
             }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (dirScanner != null) {
-                dirScanner.close();
-                ;
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
+
+//        // read directions.txt - version1
+//        Scanner dirScanner = null;
+//        try {
+//            dirScanner = new Scanner(new FileReader("src/introduceIo/directions.txt"));
+//            dirScanner.useDelimiter(",");
+//            while (dirScanner.hasNext()) {
+//                int dirInt = dirScanner.nextInt();
+//                dirScanner.skip(dirScanner.delimiter());
+//                String dirDescription = dirScanner.next();
+//                dirScanner.skip(dirScanner.delimiter());
+//                String locationIdStr = dirScanner.nextLine();
+//                int locationIdInt = Integer.parseInt(locationIdStr);
+//                locations.get(dirInt).addExit(dirDescription,locationIdInt );
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (dirScanner != null) {
+//                dirScanner.close();
+//                ;
+//            }
+//        }
+
+//        // read directions.txt  - version2
+//        try {
+//            scanner = new Scanner(new BufferedReader(new FileReader("src/introduceIo/directions.txt")));
+//            scanner.useDelimiter(",");
+//            while (scanner.hasNextLine()) {
+//                int loc = scanner.nextInt();
+//                scanner.skip(scanner.delimiter());
+//                String direction = scanner.next();
+//                scanner.skip(scanner.delimiter());
+//                String dest = scanner.next();
+//                int destination = Integer.parseInt(dest);
+//                System.out.println(loc + ": " + direction + ": " + destination);
+//                Location location = locations.get(loc);
+//                location.addExit(direction, destination);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (scanner != null) {
+//                scanner.close();
+//            }
+//        }
+
+//         read directions.txt  - version3
+        try {
+            scanner = new Scanner(new BufferedReader(new FileReader("src/introduceIo/directions.txt")));
+            scanner.useDelimiter(",");
+            while (scanner.hasNextLine()) {
+                String input = scanner.nextLine();
+                String[] data = input.split(",");
+                int loc = Integer.parseInt(data[0]);
+                String direction = data[1];
+                int destination = Integer.parseInt(data[2]);
+                Location location = locations.get(loc);
+                location.addExit(direction, destination);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (scanner != null) {
+                scanner.close();
             }
         }
 

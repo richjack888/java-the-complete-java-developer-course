@@ -1,7 +1,3 @@
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 public class Main {
     public static void main(String[] args) {
 //        HouseFly houseFly = new HouseFly();
@@ -22,17 +18,20 @@ public class Main {
 //            System.out.println("Directory doesn't exist!!");
 //        }
 
-        String directoryPath = "src/introduceIo";
-
-        Path path = Paths.get(directoryPath);
-        boolean isDir = Files.isDirectory(path);
-
-        if (isDir) {
-            System.out.println("File is a Directory");
-        }
-        else {
-            System.out.println("Directory doesn't exist!!");
-        }
+//        String directoryPath = "src/introduceIo";
+//
+//        Path path = Paths.get(directoryPath);
+//        boolean isDir = Files.isDirectory(path);
+//
+//        if (isDir) {
+//            System.out.println("File is a Directory");
+//        }
+//        else {
+//            System.out.println("Directory doesn't exist!!");
+//        }
+        String s = "Hello";
+        s.concat(" World");  // returns a new String object
+        System.out.println(s);  // prints Hello - not Hello World.
 
     }
 }
