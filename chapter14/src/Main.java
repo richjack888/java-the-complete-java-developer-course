@@ -1,5 +1,7 @@
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 //        HouseFly houseFly = new HouseFly();
 //        Telemarketer telemarketer = new Telemarketer();
 //        DiningRoom diningRoom = new DiningRoom(new IPest[]{houseFly, telemarketer});
@@ -29,9 +31,19 @@ public class Main {
 //        else {
 //            System.out.println("Directory doesn't exist!!");
 //        }
-        String s = "Hello";
-        s.concat(" World");  // returns a new String object
-        System.out.println(s);  // prints Hello - not Hello World.
+//        String s = "Hello";
+//        s.concat(" World");  // returns a new String object
+//        System.out.println(s);  // prints Hello - not Hello World.
+
+        System.out.println("Enter a number");
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        if(a != 0){
+            throw new Exception("fuck you, I need a zero!");
+        }
+        int b = scanner.nextInt();
+
+        System.out.println(a/b);
 
     }
 }
