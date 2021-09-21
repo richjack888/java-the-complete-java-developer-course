@@ -1,7 +1,9 @@
-import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
 //        HouseFly houseFly = new HouseFly();
 //        Telemarketer telemarketer = new Telemarketer();
 //        DiningRoom diningRoom = new DiningRoom(new IPest[]{houseFly, telemarketer});
@@ -35,18 +37,60 @@ public class Main {
 //        s.concat(" World");  // returns a new String object
 //        System.out.println(s);  // prints Hello - not Hello World.
 
-        System.out.println("Enter a number");
-        Scanner scanner = new Scanner(System.in);
-        int a = scanner.nextInt();
-        if(a != 0){
-            throw new Exception("fuck you, I need a zero!");
-        }
-        int b = scanner.nextInt();
+//        System.out.println("Enter a number");
+//        Scanner scanner = new Scanner(System.in);
+//        int a = scanner.nextInt();
+//        if(a != 0){
+//            throw new Exception("fuck you, I need a zero!");
+//        }
+//        int b = scanner.nextInt();
+//
+//        System.out.println(a/b);
 
-        System.out.println(a/b);
+
+//        // need to use terminal not work with ide like intellij
+//        Console console = System.console();
+//        if (console == null) {
+//            System.out.println("No console: non-interactive mode!");
+//            System.out.println("You are use Intellij now ! tyr use terminal");
+//            System.exit(0);
+//        }
+//
+//        System.out.print("Enter your username: ");
+//        String username = console.readLine();
+//
+//        System.out.print("Enter your password: ");
+//        char[] password = console.readPassword();
+//
+//        String passport = console.readLine("Enter your %d (th) passport number: ", 2);
+
+        long startTime = System.currentTimeMillis();
+
+
+//        try (FileWriter fileWriter = new FileWriter("writeSpeedTest.txt")) {
+//            for (int i = 1; i <= 50000000; i++) {
+//                fileWriter.write(i + ": abcdefg abcdefg abcdefg abcdefg abcdefg abcdefg abcdefg" + "\n");
+//
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("writeSpeedTest.txt"))) {
+            for (int i = 1; i <= 5; i++) {
+                fileWriter.write(i + ": abcdefg abcdefg abcdefg abcdefg abcdefg abcdefg abcdefg" + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        long endTime = System.currentTimeMillis();
+        System.out.println(endTime - startTime);
 
     }
 }
+
 
 interface IPest {
     void BeAnnoying();
