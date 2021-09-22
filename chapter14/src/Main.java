@@ -1,166 +1,95 @@
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
+
+    private static final int REPEAT_TIMES = 10;
+    private static final String REPEAT_CONTENT = "I'm test robot. ";
+    private static final String FILE_NAME = "writeSpeedTest.txt";
+
+    private static long startTime;
+    private static long endTime;
+    private static long writeTime;
+    private static long writeBufferTime;
+
     public static void main(String[] args) throws IOException {
-//        HouseFly houseFly = new HouseFly();
-//        Telemarketer telemarketer = new Telemarketer();
-//        DiningRoom diningRoom = new DiningRoom(new IPest[]{houseFly, telemarketer});
-//        diningRoom.ServeDinner();
 
-//        Student student = new Student();
-//        student.setName("");
+        List<String> texts = new ArrayList<>(REPEAT_TIMES);
 
-//        String directoryPath = "src/introduceIo";
-//        File file = new File(directoryPath);
-//
-//        if (file.isDirectory()) {
-//            System.out.println("File is a Directory");
-//        }
-//        else {
-//            System.out.println("Directory doesn't exist!!");
-//        }
+        for (int i = 1; i <= REPEAT_TIMES; i++) {
+            texts.add(i + ", " + REPEAT_CONTENT.repeat(6) + "\n");
+        }
 
-//        String directoryPath = "src/introduceIo";
-//
-//        Path path = Paths.get(directoryPath);
-//        boolean isDir = Files.isDirectory(path);
-//
-//        if (isDir) {
-//            System.out.println("File is a Directory");
-//        }
-//        else {
-//            System.out.println("Directory doesn't exist!!");
-//        }
-//        String s = "Hello";
-//        s.concat(" World");  // returns a new String object
-//        System.out.println(s);  // prints Hello - not Hello World.
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("Round " + i);
+            write(texts);
+            writeBuffered(texts);
+            System.out.println();
+        }
 
-//        System.out.println("Enter a number");
-//        Scanner scanner = new Scanner(System.in);
-//        int a = scanner.nextInt();
-//        if(a != 0){
-//            throw new Exception("fuck you, I need a zero!");
-//        }
-//        int b = scanner.nextInt();
-//
-//        System.out.println(a/b);
+        resultPrint();
+
+    }
 
 
-//        // need to use terminal not work with ide like intellij
-//        Console console = System.console();
-//        if (console == null) {
-//            System.out.println("No console: non-interactive mode!");
-//            System.out.println("You are use Intellij now ! tyr use terminal");
-//            System.exit(0);
-//        }
-//
-//        System.out.print("Enter your username: ");
-//        String username = console.readLine();
-//
-//        System.out.print("Enter your password: ");
-//        char[] password = console.readPassword();
-//
-//        String passport = console.readLine("Enter your %d (th) passport number: ", 2);
+    private static void write(List<String> texts) {
 
-        long startTime = System.currentTimeMillis();
+        startTime = System.currentTimeMillis();
 
-
-//        try (FileWriter fileWriter = new FileWriter("writeSpeedTest.txt")) {
-//            for (int i = 1; i <= 50000000; i++) {
-//                fileWriter.write(i + ": abcdefg abcdefg abcdefg abcdefg abcdefg abcdefg abcdefg" + "\n");
-//
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-        try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("writeSpeedTest.txt"))) {
-            for (int i = 1; i <= 5; i++) {
-                fileWriter.write(i + ": abcdefg abcdefg abcdefg abcdefg abcdefg abcdefg abcdefg" + "\n");
+        try (FileWriter fileWriter = new FileWriter(FILE_NAME)) {
+            for (String text : texts) {
+                fileWriter.write(text);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
-        long endTime = System.currentTimeMillis();
-        System.out.println(endTime - startTime);
-
-    }
-}
-
-
-interface IPest {
-    void BeAnnoying();
-}
-
-class HouseFly implements IPest {
-    void FlyAroundYourHead() {
-        System.out.println("FlyAroundYourHead");
+        endTime = System.currentTimeMillis();
+        System.out.println("    write time: " + (endTime - startTime) / 1000f + " sec ");
+        writeTime += (endTime - startTime);
     }
 
-    void LandOnThings() {
-        System.out.println("LandOnThings");
-    }
 
-    public void BeAnnoying() {
-        FlyAroundYourHead();
-        LandOnThings();
-    }
-}
+    private static void writeBuffered(List<String> texts) {
 
-class Telemarketer implements IPest {
-    void CallDuringDinner() {
-        System.out.println("CallDuringDinner");
-    }
+        startTime = System.currentTimeMillis();
 
-    void ContinueTalkingWhenYouSayNo() {
-        System.out.println("ContinueTalkingWhenYouSayNo");
-    }
-
-    public void BeAnnoying() {
-        CallDuringDinner();
-        ContinueTalkingWhenYouSayNo();
-    }
-}
-
-class DiningRoom {
-    IPest[] pests;
-
-    DiningRoom(IPest[] pests) {
-        this.pests = pests;
-    }
-
-    void ServeDinner() {
-        System.out.println("when diningPeople are eating...");
-        for (IPest pest : pests) {
-            if (pest instanceof HouseFly) {
-                pest.BeAnnoying();
+        try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILE_NAME))) {
+            for (String text : texts) {
+                fileWriter.write(text);
             }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        endTime = System.currentTimeMillis();
+        System.out.println("    writeBuffered time: " + (endTime - startTime) / 1000f + " sec ");
+        writeBufferTime += (endTime - startTime);
+    }
+
+
+    private static void resultPrint() {
+
+        File f = new File(FILE_NAME);
+        long fileSize = f.length();
+        System.out.format("The size of the texts file is %d MB.\n\n", (fileSize / 1000000));
+
+        System.out.println("writeTime: " + writeTime / 1000f + " sec\nwriteBufferTime: " + writeBufferTime / 1000f + " sec");
+        if (writeTime < writeBufferTime) {
+            System.out.println("write is fast !");
+        } else {
+            System.out.println("writeBuffer is fast !!");
         }
     }
 }
 
-class Student {
 
-    private String name;
-    private int age;
 
-    public void setName(String name) {
-        if (name == null || name.equals("")) {
-            throw new IllegalArgumentException("Name is invalid");
-        }
 
-        this.name = name;
-    }
 
-    public void setAge(int age) {
-        if (age < 1 || age > 100) {
-            throw new IllegalArgumentException("Age is invalid");
-        }
 
-        this.age = age;
-    }
-}
