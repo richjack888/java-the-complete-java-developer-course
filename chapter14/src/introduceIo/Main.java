@@ -1,7 +1,6 @@
 package introduceIo;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -35,10 +34,7 @@ public class Main {
                 break;
             }
 
-            Map<String, Integer> exits = new LinkedHashMap<String, Integer>();
-            exits.put("Q", 0);
-            exits.putAll(locations.get(loc).getExits());
-
+            Map<String, Integer> exits = locations.get(loc).getExits();
             System.out.print("Available exits are ");
             for (String exit : exits.keySet()) {
                 System.out.print(exit + ", ");

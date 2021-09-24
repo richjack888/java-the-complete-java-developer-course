@@ -21,21 +21,21 @@ public class Locations implements Map<Integer, Location> {
 //
 //        }
 
-        // version 2
-        try (BufferedWriter file = new BufferedWriter(new FileWriter("src/introduceIo/locations_big.txt"));
-             BufferedWriter dirFile = new BufferedWriter(new FileWriter("src/introduceIo/directions_big.txt"))) {
-            for (Location location : locations.values()) {
-                file.write(location.getLocationID() + "," + location.getDescription() + "\n");
-                for (String direction : location.getExits().keySet()) {
-                    dirFile.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
-//                    if (!direction.equalsIgnoreCase("Q")) {
-//                        dirFile.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
-//                    }
-                }
-            }
-        }
+//        // version 2
+//        try (BufferedWriter file = new BufferedWriter(new FileWriter("src/introduceIo/locations_big.txt"));
+//             BufferedWriter dirFile = new BufferedWriter(new FileWriter("src/introduceIo/directions_big.txt"))) {
+//            for (Location location : locations.values()) {
+//                file.write(location.getLocationID() + "," + location.getDescription() + "\n");
+//                for (String direction : location.getExits().keySet()) {
+//                    dirFile.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
+////                    if (!direction.equalsIgnoreCase("Q")) {
+////                        dirFile.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
+////                    }
+//                }
+//            }
+//        }
 
-
+        // version 3
         try (DataOutputStream locFile = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("src/introduceIo/locations.dat")))) {
             for (Location location : locations.values()) {
                 locFile.writeInt(location.getLocationID());
