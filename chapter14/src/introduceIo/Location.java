@@ -16,7 +16,7 @@ public class Location {
         } else {
             this.exits = new LinkedHashMap<String, Integer>();
         }
-//        this.exits.put("Q", 0);
+        this.exits.put("Q", 0);
     }
 
     public int getLocationID() {
