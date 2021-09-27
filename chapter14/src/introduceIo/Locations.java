@@ -34,22 +34,29 @@ public class Locations implements Map<Integer, Location> {
 //                }
 //            }
 //        }
+//
+//        // version 3
+//        try (DataOutputStream locFile = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("locations.dat")))) {
+//            for (Location location : locations.values()) {
+//                locFile.writeInt(location.getLocationID());
+//                locFile.writeUTF(location.getDescription());
+//                System.out.println("Writing location " + location.getLocationID() + " : " + location.getDescription());
+//                System.out.println("Writing " + (location.getExits().size() - 1) + " exits.");
+//                locFile.writeInt(location.getExits().size() - 1);
+//                for (String direction : location.getExits().keySet()) {
+//                    if (!direction.equalsIgnoreCase("Q")) {
+//                        System.out.println("\t\t" + direction + "," + location.getExits().get(direction));
+//                        locFile.writeUTF(direction);
+//                        locFile.writeInt(location.getExits().get(direction));
+//                    }
+//                }
+//            }
+//        }
 
-        // version 3
-        try (DataOutputStream locFile = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("locations.dat")))) {
+//        version 4
+        try (ObjectOutputStream locFile = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("src/introduceIo/locations.dat")))) {
             for (Location location : locations.values()) {
-                locFile.writeInt(location.getLocationID());
-                locFile.writeUTF(location.getDescription());
-                System.out.println("Writing location " + location.getLocationID() + " : " + location.getDescription());
-                System.out.println("Writing " + (location.getExits().size() - 1) + " exits.");
-                locFile.writeInt(location.getExits().size() - 1);
-                for (String direction : location.getExits().keySet()) {
-                    if (!direction.equalsIgnoreCase("Q")) {
-                        System.out.println("\t\t" + direction + "," + location.getExits().get(direction));
-                        locFile.writeUTF(direction);
-                        locFile.writeInt(location.getExits().get(direction));
-                    }
-                }
+                locFile.writeObject(location);
             }
         }
     }
@@ -259,7 +266,7 @@ public class Locations implements Map<Integer, Location> {
 //        locations.put(5, new Location(5, "You are in the forest", tempExit));
 
 //        version 5
-        try (DataInputStream locFile = new DataInputStream(new BufferedInputStream(new FileInputStream("locations111.dat")))) {
+        try (DataInputStream locFile = new DataInputStream(new BufferedInputStream(new FileInputStream("src/introduceIo/locations.dat")))) {
             boolean eof = false;
             while (!eof) {
                 try {
