@@ -8,6 +8,7 @@ public class Locations implements Map<Integer, Location> {
 
     public static void main(String[] args) throws IOException {
 
+        // version 1
 ////        try (FileWriter file = new FileWriter("src/introduceIo/locations.txt");
 //        try (FileWriter file = new FileWriter("src/introduceIo/locations_big.txt");
 ////             FileWriter dirFile = new FileWriter("src/introduceIo/directions.txt")) {
@@ -64,6 +65,7 @@ public class Locations implements Map<Integer, Location> {
     static {
 
 //         read locations.txt
+//        System.out.println("read location");
 
 ////         version 1
 //        Scanner scanner = null;
@@ -115,6 +117,7 @@ public class Locations implements Map<Integer, Location> {
 
 
 //         read directions.txt
+//        System.out.println("read directions");
 
 //        // version 1
 //        Scanner dirScanner = null;
@@ -235,6 +238,58 @@ public class Locations implements Map<Integer, Location> {
 //            e.printStackTrace();
 //        }
 
+//     read locations.dat
+        System.out.println("read locations.dat that combine location and direction in one file");
+
+        ////        version 1
+//        try (DataInputStream locFile = new DataInputStream(new BufferedInputStream(new FileInputStream("src/introduceIo/locations.dat")))) {
+//            boolean eof = false;
+//            while (!eof) {
+//                try {
+//                    Map<String, Integer> exits = new LinkedHashMap<>();
+//                    int locID = locFile.readInt();
+//                    String description = locFile.readUTF();
+//                    int numExits = locFile.readInt();
+//                    System.out.println("Read location " + locID + " : " + description);
+//                    System.out.println("Found " + numExits + " exits");
+//                    for (int i = 0; i < numExits; i++) {
+//                        String direction = locFile.readUTF();
+//                        int destination = locFile.readInt();
+//                        exits.put(direction, destination);
+//                        System.out.println("\t\t" + direction + "," + destination);
+//                    }
+//                    locations.put(locID, new Location(locID, description, exits));
+//                } catch (EOFException e) {
+//                    System.out.println("no data in stream !");
+//                    eof = true;
+//                }
+//            }
+//        } catch (IOException io) {
+//            System.out.println("IOException!");
+//        }
+
+
+//        version 2
+        try (ObjectInputStream locFile = new ObjectInputStream(new BufferedInputStream(new FileInputStream("src/introduceIo/locations.dat")))) {
+            boolean eof = false;
+            while (!eof) {
+                try {
+                    Location location = (Location) locFile.readObject();
+                    System.out.println("Read location " + location.getLocationID() + " : " + location.getDescription());
+                    System.out.println("Found " + location.getExits().size() + " exits");
+
+                    locations.put(location.getLocationID(), location);
+                } catch (EOFException e) {
+                    eof = true;
+                    System.out.println("EOF exception " + e.getMessage());
+                }
+            }
+        } catch (IOException io) {
+            System.out.println("IO exception " + io.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println("ClassNotFoundException " + e.getMessage());
+        }
+
 
 //      //  before FileWriter
 //        Map<String, Integer> tempExit = new HashMap<String, Integer>();
@@ -265,32 +320,6 @@ public class Locations implements Map<Integer, Location> {
 //        tempExit.put("W", 2);
 //        locations.put(5, new Location(5, "You are in the forest", tempExit));
 
-//        version 5
-        try (DataInputStream locFile = new DataInputStream(new BufferedInputStream(new FileInputStream("src/introduceIo/locations.dat")))) {
-            boolean eof = false;
-            while (!eof) {
-                try {
-                    Map<String, Integer> exits = new LinkedHashMap<>();
-                    int locID = locFile.readInt();
-                    String description = locFile.readUTF();
-                    int numExits = locFile.readInt();
-                    System.out.println("Read location " + locID + " : " + description);
-                    System.out.println("Found " + numExits + " exits");
-                    for (int i = 0; i < numExits; i++) {
-                        String direction = locFile.readUTF();
-                        int destination = locFile.readInt();
-                        exits.put(direction, destination);
-                        System.out.println("\t\t" + direction + "," + destination);
-                    }
-                    locations.put(locID, new Location(locID, description, exits));
-                } catch (EOFException e) {
-                    System.out.println("no data in stream !");
-                    eof = true;
-                }
-            }
-        } catch (IOException io) {
-            System.out.println("IOException!");
-        }
     }
 
     @Override
