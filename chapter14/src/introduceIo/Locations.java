@@ -142,7 +142,7 @@ public class Locations implements Map<Integer, Location> {
 //            }
 //        }
 
-        //        // version1 with tyr-with-resources.
+//                // version1 with tyr-with-resources.
 //        try (Scanner scanner = new Scanner(new FileReader("src/introduceIo/directions_big.txt"));
 //        ) {
 //            scanner.useDelimiter(",");
@@ -221,7 +221,7 @@ public class Locations implements Map<Integer, Location> {
 //            e.printStackTrace();
 //        }
 
-////        version 4-2 try-with-resources
+//        version 4-2 try-with-resources
 //        try (BufferedReader dirFile = new BufferedReader(new FileReader("src/introduceIo/directions_big.txt"))) {
 //            String input;
 //            while ((input = dirFile.readLine())!=null) {
@@ -238,37 +238,37 @@ public class Locations implements Map<Integer, Location> {
 //            e.printStackTrace();
 //        }
 
-//     read locations.dat
-        System.out.println("read locations.dat that combine location and direction in one file");
-
-        ////        version 1
-//        try (DataInputStream locFile = new DataInputStream(new BufferedInputStream(new FileInputStream("src/introduceIo/locations.dat")))) {
-//            boolean eof = false;
-//            while (!eof) {
-//                try {
-//                    Map<String, Integer> exits = new LinkedHashMap<>();
-//                    int locID = locFile.readInt();
-//                    String description = locFile.readUTF();
-//                    int numExits = locFile.readInt();
-//                    System.out.println("Read location " + locID + " : " + description);
-//                    System.out.println("Found " + numExits + " exits");
-//                    for (int i = 0; i < numExits; i++) {
-//                        String direction = locFile.readUTF();
-//                        int destination = locFile.readInt();
-//                        exits.put(direction, destination);
-//                        System.out.println("\t\t" + direction + "," + destination);
-//                    }
-//                    locations.put(locID, new Location(locID, description, exits));
-//                } catch (EOFException e) {
-//                    System.out.println("no data in stream !");
-//                    eof = true;
-//                }
-//            }
-//        } catch (IOException io) {
-//            System.out.println("IOException!");
-//        }
-
-
+////     read locations.dat
+//        System.out.println("read locations.dat that combine location and direction in one file");
+//
+//        ////        version 1
+////        try (DataInputStream locFile = new DataInputStream(new BufferedInputStream(new FileInputStream("src/introduceIo/locations.dat")))) {
+////            boolean eof = false;
+////            while (!eof) {
+////                try {
+////                    Map<String, Integer> exits = new LinkedHashMap<>();
+////                    int locID = locFile.readInt();
+////                    String description = locFile.readUTF();
+////                    int numExits = locFile.readInt();
+////                    System.out.println("Read location " + locID + " : " + description);
+////                    System.out.println("Found " + numExits + " exits");
+////                    for (int i = 0; i < numExits; i++) {
+////                        String direction = locFile.readUTF();
+////                        int destination = locFile.readInt();
+////                        exits.put(direction, destination);
+////                        System.out.println("\t\t" + direction + "," + destination);
+////                    }
+////                    locations.put(locID, new Location(locID, description, exits));
+////                } catch (EOFException e) {
+////                    System.out.println("no data in stream !");
+////                    eof = true;
+////                }
+////            }
+////        } catch (IOException io) {
+////            System.out.println("IOException!");
+////        }
+//
+//
 //        version 2
         try (ObjectInputStream locFile = new ObjectInputStream(new BufferedInputStream(new FileInputStream("src/introduceIo/locations.dat")))) {
             boolean eof = false;
@@ -284,12 +284,14 @@ public class Locations implements Map<Integer, Location> {
                     System.out.println("EOF exception " + e.getMessage());
                 }
             }
+
+        } catch (InvalidClassException e){
+            System.out.println("InvalidClassException " + e.getMessage());
         } catch (IOException io) {
             System.out.println("IO exception " + io.getMessage());
         } catch (ClassNotFoundException e) {
             System.out.println("ClassNotFoundException " + e.getMessage());
         }
-
 
 //      //  before FileWriter
 //        Map<String, Integer> tempExit = new HashMap<String, Integer>();
