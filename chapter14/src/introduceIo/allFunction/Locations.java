@@ -1,4 +1,4 @@
-package introduceIo;
+package introduceIo.allFunction;
 
 import java.io.*;
 import java.util.*;
@@ -10,9 +10,9 @@ public class Locations implements Map<Integer, Location> {
 
         // version 1
 ////        try (FileWriter file = new FileWriter("src/introduceIo/locations.txt");
-//        try (FileWriter file = new FileWriter("src/introduceIo/locations_big.txt");
+//        try (FileWriter file = new FileWriter("src/introduceIo/allFunction/locations_big.txt");
 ////             FileWriter dirFile = new FileWriter("src/introduceIo/directions.txt")) {
-//             FileWriter dirFile = new FileWriter("src/introduceIo/directions_big.txt")) {
+//             FileWriter dirFile = new FileWriter("src/introduceIo/allFunction/directions_big.txt")) {
 //            for (Location location : locations.values()) {
 //                file.write(location.getLocationID() + ", " + location.getDescription() + "\n");
 //                for (String direction : location.getExits().keySet()) {
@@ -23,8 +23,8 @@ public class Locations implements Map<Integer, Location> {
 //        }
 
 //        // version 2
-//        try (BufferedWriter file = new BufferedWriter(new FileWriter("src/introduceIo/locations_big.txt"));
-//             BufferedWriter dirFile = new BufferedWriter(new FileWriter("src/introduceIo/directions_big.txt"))) {
+//        try (BufferedWriter file = new BufferedWriter(new FileWriter("src/introduceIo/allFunction/locations_big.txt"));
+//             BufferedWriter dirFile = new BufferedWriter(new FileWriter("src/introduceIo/allFunction/directions_big.txt"))) {
 //            for (Location location : locations.values()) {
 //                file.write(location.getLocationID() + "," + location.getDescription() + "\n");
 //                for (String direction : location.getExits().keySet()) {
@@ -55,7 +55,7 @@ public class Locations implements Map<Integer, Location> {
 //        }
 
 //        version 4
-        try (ObjectOutputStream locFile = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("src/introduceIo/locations.dat")))) {
+        try (ObjectOutputStream locFile = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("src/introduceIo/allFunction/locations.dat")))) {
             for (Location location : locations.values()) {
                 locFile.writeObject(location);
             }
@@ -70,7 +70,7 @@ public class Locations implements Map<Integer, Location> {
 ////         version 1
 //        Scanner scanner = null;
 //        try {
-//            scanner = new Scanner(new FileReader("src/introduceIo/locations_big.txt"));
+//            scanner = new Scanner(new FileReader("src/introduceIo/allFunction/locations_big.txt"));
 //            scanner.useDelimiter(",");
 //            while (scanner.hasNext()) {
 //                int locInt = scanner.nextInt();
@@ -88,7 +88,7 @@ public class Locations implements Map<Integer, Location> {
 //        }
 
 ////         version 1 try-with-resources
-//        try (Scanner scanner = new Scanner(new FileReader("src/introduceIo/locations_big.txt"))) {
+//        try (Scanner scanner = new Scanner(new FileReader("src/introduceIo/allFunction/locations_big.txt"))) {
 //            scanner.useDelimiter(",");
 //            while (scanner.hasNext()) {
 //                int locInt = scanner.nextInt();
@@ -102,7 +102,7 @@ public class Locations implements Map<Integer, Location> {
 //        }
 
 ////        version 2 with try-with-resources
-//        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader("src/introduceIo/locations_big.txt")))) {
+//        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader("src/introduceIo/allFunction/locations_big.txt")))) {
 //            scanner.useDelimiter(",");
 //            while (scanner.hasNext()) {
 //                int locInt = scanner.nextInt();
@@ -143,7 +143,7 @@ public class Locations implements Map<Integer, Location> {
 //        }
 
 //                // version1 with tyr-with-resources.
-//        try (Scanner scanner = new Scanner(new FileReader("src/introduceIo/directions_big.txt"));
+//        try (Scanner scanner = new Scanner(new FileReader("src/introduceIo/allFunction/directions_big.txt"));
 //        ) {
 //            scanner.useDelimiter(",");
 //            while (scanner.hasNext()) {
@@ -186,7 +186,7 @@ public class Locations implements Map<Integer, Location> {
 //        Scanner scanner = null;
 //        try {
 ////            scanner = new Scanner(new BufferedReader(new FileReader("src/introduceIo/directions.txt")));
-//            scanner = new Scanner(new BufferedReader(new FileReader("src/introduceIo/directions_big.txt")));
+//            scanner = new Scanner(new BufferedReader(new FileReader("src/introduceIo/allFunction/directions_big.txt")));
 //            scanner.useDelimiter(",");
 //            while (scanner.hasNextLine()) {
 //                String input = scanner.nextLine();
@@ -206,7 +206,7 @@ public class Locations implements Map<Integer, Location> {
 //        }
 
 ////         version 4 with try-with-resources
-//        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader("src/introduceIo/directions_big.txt")))) {
+//        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader("src/introduceIo/allFunction/directions_big.txt")))) {
 //            while (scanner.hasNextLine()) {
 //                String input = scanner.nextLine();
 //                String[] data = input.split(",");
@@ -221,8 +221,8 @@ public class Locations implements Map<Integer, Location> {
 //            e.printStackTrace();
 //        }
 
-//        version 4-2 try-with-resources
-//        try (BufferedReader dirFile = new BufferedReader(new FileReader("src/introduceIo/directions_big.txt"))) {
+////        version 4-2 try-with-resources
+//        try (BufferedReader dirFile = new BufferedReader(new FileReader("src/introduceIo/allFunction/directions_big.txt"))) {
 //            String input;
 //            while ((input = dirFile.readLine())!=null) {
 //                String[] data = input.split(",");
@@ -241,36 +241,36 @@ public class Locations implements Map<Integer, Location> {
 ////     read locations.dat
 //        System.out.println("read locations.dat that combine location and direction in one file");
 //
-//        ////        version 1
-////        try (DataInputStream locFile = new DataInputStream(new BufferedInputStream(new FileInputStream("src/introduceIo/locations.dat")))) {
-////            boolean eof = false;
-////            while (!eof) {
-////                try {
-////                    Map<String, Integer> exits = new LinkedHashMap<>();
-////                    int locID = locFile.readInt();
-////                    String description = locFile.readUTF();
-////                    int numExits = locFile.readInt();
-////                    System.out.println("Read location " + locID + " : " + description);
-////                    System.out.println("Found " + numExits + " exits");
-////                    for (int i = 0; i < numExits; i++) {
-////                        String direction = locFile.readUTF();
-////                        int destination = locFile.readInt();
-////                        exits.put(direction, destination);
-////                        System.out.println("\t\t" + direction + "," + destination);
-////                    }
-////                    locations.put(locID, new Location(locID, description, exits));
-////                } catch (EOFException e) {
-////                    System.out.println("no data in stream !");
-////                    eof = true;
-////                }
-////            }
-////        } catch (IOException io) {
-////            System.out.println("IOException!");
-////        }
+        ////        version 1
+//        try (DataInputStream locFile = new DataInputStream(new BufferedInputStream(new FileInputStream("src/introduceIo/allFunction/locations.dat")))) {
+//            boolean eof = false;
+//            while (!eof) {
+//                try {
+//                    Map<String, Integer> exits = new LinkedHashMap<>();
+//                    int locID = locFile.readInt();
+//                    String description = locFile.readUTF();
+//                    int numExits = locFile.readInt();
+//                    System.out.println("Read location " + locID + " : " + description);
+//                    System.out.println("Found " + numExits + " exits");
+//                    for (int i = 0; i < numExits; i++) {
+//                        String direction = locFile.readUTF();
+//                        int destination = locFile.readInt();
+//                        exits.put(direction, destination);
+//                        System.out.println("\t\t" + direction + "," + destination);
+//                    }
+//                    locations.put(locID, new Location(locID, description, exits));
+//                } catch (EOFException e) {
+//                    System.out.println("no data in stream !");
+//                    eof = true;
+//                }
+//            }
+//        } catch (IOException io) {
+//            System.out.println("IOException!");
+//        }
 //
 //
 //        version 2
-        try (ObjectInputStream locFile = new ObjectInputStream(new BufferedInputStream(new FileInputStream("src/introduceIo/locations.dat")))) {
+        try (ObjectInputStream locFile = new ObjectInputStream(new BufferedInputStream(new FileInputStream("src/introduceIo/allFunction/locations.dat")))) {
             boolean eof = false;
             while (!eof) {
                 try {

@@ -1,4 +1,4 @@
-package introduceIo;
+package introduceIo.fileReader;
 
 import java.util.HashMap;
 import java.util.Map;

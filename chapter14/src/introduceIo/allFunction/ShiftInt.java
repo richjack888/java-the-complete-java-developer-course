@@ -1,4 +1,4 @@
-package introduceIo;
+package introduceIo.allFunction;
 
 public class ShiftInt {
 
