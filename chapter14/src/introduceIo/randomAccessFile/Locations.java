@@ -10,19 +10,35 @@ public class Locations implements Map<Integer, Location> {
     public static void main(String[] args) throws IOException {
 
         try (RandomAccessFile raf = new RandomAccessFile("src/introduceIo/randomAccessFile/locations_raf.dat", "rwd")) {
+
+            // The whole contents were made of  A part, B part, C part, data of locations.
+            // A part 0 ~ 3 byte
+            // B part 4 ~ 7 byte
+            // C part 8 ~ 1699 bytes
+            // data of locations 1700 ~ end
+
+            // A part - total number of locations which is 141
             raf.writeInt(locations.size());
-            int indexSize = locations.size() * 3 * Integer.BYTES;
-            int locationStart = (int) (indexSize + raf.getFilePointer() + Integer.BYTES);
+
+            // B part - start place of location data, which is after A + B + C part
+            int indexSize = locations.size() * 3 * Integer.BYTES; // length of C part
+            int locationStart = (int) (indexSize + raf.getFilePointer() + Integer.BYTES); // length of A + B + C part
             raf.writeInt(locationStart);
 
+            // record place of C part start
             long indexStart = raf.getFilePointer();
+            System.out.println("index Start: "  + indexStart + ", which is the place of C part start.");
 
+            // measure every location's length and write all data of locations
             int startPointer = locationStart;
-            raf.seek(startPointer);
+            System.out.println("start pointer: " + startPointer + ", which is the place of location data start.");
+            raf.seek(startPointer); // jump to place of location data start
 
             for (Location location : locations.values()) {
                 raf.writeInt(location.getLocationID());
                 raf.writeUTF(location.getDescription());
+
+                // retrieve Map of exits data (Map<String, Integer> exits)
                 StringBuilder stringBuilder = new StringBuilder();
                 for (String direction : location.getExits().keySet()) {
                     if (!direction.equalsIgnoreCase("Q")) {
@@ -34,20 +50,21 @@ public class Locations implements Map<Integer, Location> {
                 }
                 raf.writeUTF(stringBuilder.toString());
 
-                IndexRecord record = new IndexRecord(startPointer, (int) (raf.getFilePointer() - startPointer));
-                index.put(location.getLocationID(), record);
+                // calculate each of location length
+                int length = (int) (raf.getFilePointer() - startPointer);
+                IndexRecord record = new IndexRecord(startPointer, length);
 
-                startPointer = (int) raf.getFilePointer();
-
+                index.put(location.getLocationID(), record);  // put result to index map, so later C part could use it
+                startPointer = (int) raf.getFilePointer(); // when current location was recorded, move pointer to the end
             }
 
-            raf.seek(indexStart);
+            // C part - index of location
+            raf.seek(indexStart); // back to C part start
             for (Integer locationID : index.keySet()) {
                 raf.writeInt(locationID);
                 raf.writeInt(index.get(locationID).getStartByte());
                 raf.writeInt(index.get(locationID).getLength());
             }
-
         }
     }
 
@@ -64,16 +81,16 @@ public class Locations implements Map<Integer, Location> {
                     locations.put(location.getLocationID(), location);
                 } catch (EOFException e) {
                     eof = true;
-                    System.out.println("EOF exception " + e.getMessage());
+                    System.out.println("EOF exception: " + e.getMessage());
                 }
             }
 
         } catch (InvalidClassException e) {
-            System.out.println("InvalidClassException " + e.getMessage());
+            System.out.println("InvalidClassException: " + e.getMessage());
         } catch (IOException io) {
-            System.out.println("IO exception " + io.getMessage());
+            System.out.println("IO exception: " + io.getMessage());
         } catch (ClassNotFoundException e) {
-            System.out.println("ClassNotFoundException " + e.getMessage());
+            System.out.println("ClassNotFoundException: " + e.getMessage());
         }
 
 
