@@ -92,6 +92,26 @@ public class Locations implements Map<Integer, Location> {
 
     }
 
+    public Location getLocation(int locationID) throws IOException {
+        IndexRecord record = index.get(locationID);
+        raIn.seek(record.getStartByte());
+        int id = raIn.readInt();
+        String description = raIn.readUTF();
+        String exits = raIn.readUTF();
+        String[] exitPart = exits.split(",");
+
+        Location location = new Location(id, description, null);
+
+        if (locationID != 0) {
+            for (int i = 0; i < exitPart.length; i++) {
+                String direction = exitPart[i];
+                int destination = Integer.parseInt(exitPart[++i]);
+                location.addExit(direction, destination);
+            }
+        }
+        return location;
+    }
+
     @Override
     public int size() {
         return locations.size();
@@ -151,4 +171,9 @@ public class Locations implements Map<Integer, Location> {
     public Set<Entry<Integer, Location>> entrySet() {
         return locations.entrySet();
     }
+
+    public void close() throws IOException {
+        raIn.close();
+    }
+
 }
