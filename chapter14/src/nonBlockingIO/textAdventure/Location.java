@@ -1,4 +1,4 @@
-package nonBlockingIO;
+package nonBlockingIO.textAdventure;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
