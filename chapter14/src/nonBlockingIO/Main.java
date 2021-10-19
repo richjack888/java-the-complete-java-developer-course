@@ -28,6 +28,13 @@ public class Main {
 
             ByteBuffer intBuffer = ByteBuffer.allocate(Integer.BYTES);
             intBuffer.putInt(666);
+            intBuffer.flip();
+            numBytes = binChannel.write(intBuffer);
+            System.out.println("numBytes written was: " + numBytes);
+
+            intBuffer.flip();
+            intBuffer.putInt(-123);
+            intBuffer.flip();
             numBytes = binChannel.write(intBuffer);
             System.out.println("numBytes written was: " + numBytes);
 
