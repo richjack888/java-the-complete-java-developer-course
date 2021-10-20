@@ -2,6 +2,7 @@ package nonBlockingIO;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
@@ -27,17 +28,21 @@ public class Main {
             System.out.println("numBytes written was: " + numBytes);
 
             ByteBuffer intBuffer = ByteBuffer.allocate(Integer.BYTES);
-            intBuffer.putInt(666);
+            intBuffer.putInt(123);
             intBuffer.flip();
             numBytes = binChannel.write(intBuffer);
             System.out.println("numBytes written was: " + numBytes);
 
             intBuffer.flip();
-            intBuffer.putInt(-123);
+            intBuffer.putInt(-789);
             intBuffer.flip();
             numBytes = binChannel.write(intBuffer);
             System.out.println("numBytes written was: " + numBytes);
 
+            RandomAccessFile randomAccessFile = new RandomAccessFile("src/nonBlockingIO/data.dat", "rwd");
+            byte[] b = new byte[outputBytes.length];
+            randomAccessFile.read(b);
+            System.out.println(new String(b));
 
 
         } catch (IOException e) {
