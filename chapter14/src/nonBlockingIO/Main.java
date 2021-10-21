@@ -8,6 +8,7 @@ import java.nio.channels.FileChannel;
 
 public class Main {
     public static void main(String[] args) {
+
 //        try {
 //            Path dataPath = Paths.get("src/nonBlockingIO/data.txt");
 //            Files.write(dataPath, "\nLine 4".getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
@@ -39,11 +40,26 @@ public class Main {
             numBytes = binChannel.write(intBuffer);
             System.out.println("numBytes written was: " + numBytes);
 
-            RandomAccessFile randomAccessFile = new RandomAccessFile("src/nonBlockingIO/data.dat", "rwd");
-            byte[] b = new byte[outputBytes.length];
-            randomAccessFile.read(b);
-            System.out.println(new String(b));
+            // read from IO
+//            RandomAccessFile randomAccessFile = new RandomAccessFile("src/nonBlockingIO/data.dat", "rwd");
+//
+//            byte[] b = new byte[outputBytes.length];
+//            randomAccessFile.read(b);
+//            System.out.println(new String(b));
+//
+//            long int1 = randomAccessFile.readInt();
+//            long int2 = randomAccessFile.readInt();
+//            System.out.println(int1);
+//            System.out.println(int2);
 
+
+            // read from NIO
+            RandomAccessFile randomAccessFile = new RandomAccessFile("src/nonBlockingIO/data.dat", "rwd");
+            FileChannel channel = randomAccessFile.getChannel();
+            long numBytesRead = channel.read(buffer);
+            outputBytes[0] = 'a';
+            outputBytes[1] = 'b';
+            System.out.println("outputBytes = " + new String(outputBytes));
 
         } catch (IOException e) {
             e.printStackTrace();
