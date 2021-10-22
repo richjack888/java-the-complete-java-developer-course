@@ -56,10 +56,34 @@ public class Main {
             // read from NIO
             RandomAccessFile randomAccessFile = new RandomAccessFile("src/nonBlockingIO/data.dat", "rwd");
             FileChannel channel = randomAccessFile.getChannel();
-            long numBytesRead = channel.read(buffer);
             outputBytes[0] = 'a';
             outputBytes[1] = 'b';
-            System.out.println("outputBytes = " + new String(outputBytes));
+            buffer.flip();
+            long numBytesRead = channel.read(buffer);
+            if (buffer.hasArray()) {
+                System.out.println("outputBytes = " + new String(buffer.array()));
+            }
+
+//            // Relative read
+//            intBuffer.flip();
+//            numBytesRead = channel.read(intBuffer);
+//            intBuffer.flip();
+//            System.out.println(intBuffer.getInt());
+//            intBuffer.flip();
+//            numBytesRead = channel.read(intBuffer);
+//            intBuffer.flip();
+//            System.out.println(intBuffer.getInt());
+
+            // Absolute read
+            intBuffer.flip();
+            numBytesRead = channel.read(intBuffer);
+            System.out.println(intBuffer.getInt(0));
+            intBuffer.flip();
+            numBytesRead = channel.read(intBuffer);
+            System.out.println(intBuffer.getInt(0));
+
+            channel.close();
+            randomAccessFile.close();
 
         } catch (IOException e) {
             e.printStackTrace();
