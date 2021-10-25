@@ -96,19 +96,14 @@ public class Main {
 
             byte[] outputBytes = "Hello World!".getBytes();
             buffer.put(outputBytes);
-
             buffer.putInt(111);
             buffer.putInt(-222);
-
             byte[] outputByte2 = "Go away!".getBytes();
             buffer.put(outputByte2);
-
             buffer.putInt(666);
             buffer.putInt(-777);
-
             buffer.flip();
             binChannel.write(buffer);
-
 
         } catch (IOException e) {
             e.printStackTrace();
