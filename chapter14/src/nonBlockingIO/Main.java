@@ -2,6 +2,7 @@ package nonBlockingIO;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
@@ -89,21 +90,48 @@ public class Main {
 //            channel.close();
 //            randomAccessFile.close();
 
-
+        // write part
         try (FileOutputStream binFile = new FileOutputStream("src/nonBlockingIO/data.dat");
              FileChannel binChannel = binFile.getChannel()) {
             ByteBuffer buffer = ByteBuffer.allocate(100);
 
+//            // unchain
+//            byte[] outputBytes = "Hello World!".getBytes();
+//            buffer.put(outputBytes);
+//            buffer.putInt(111);
+//            buffer.putInt(-222);
+//            byte[] outputByte2 = "Go away!".getBytes();
+//            buffer.put(outputByte2);
+//            buffer.putInt(666);
+//            buffer.putInt(-777);
+//            buffer.flip();
+//            binChannel.write(buffer);
+
+            // chain
             byte[] outputBytes = "Hello World!".getBytes();
-            buffer.put(outputBytes);
-            buffer.putInt(111);
-            buffer.putInt(-222);
             byte[] outputByte2 = "Go away!".getBytes();
-            buffer.put(outputByte2);
-            buffer.putInt(666);
-            buffer.putInt(-777);
+            buffer.put(outputBytes).putInt(111).putInt(-222).put(outputByte2).putInt(666).putInt(-777);
             buffer.flip();
             binChannel.write(buffer);
+
+
+            // read part
+            RandomAccessFile ra = new RandomAccessFile("src/nonBlockingIO/data.dat", "rwd");
+            FileChannel channel = ra.getChannel();
+            ByteBuffer readBuffer = ByteBuffer.allocate(100);
+            channel.read(readBuffer);
+            readBuffer.flip();
+
+            byte[] inputString = new byte[outputBytes.length];
+            readBuffer.get(inputString);
+            System.out.println("inputString = " + new String(inputString));
+            System.out.println("int1 = " + readBuffer.getInt());
+            System.out.println("int2 = " + readBuffer.getInt());
+            byte[] inputString2 = new byte[outputByte2.length];
+            readBuffer.get(inputString2);
+            System.out.println("inputString2 = " + new String(inputString2));
+            System.out.println("int3 = " + readBuffer.getInt());
+
 
         } catch (IOException e) {
             e.printStackTrace();
