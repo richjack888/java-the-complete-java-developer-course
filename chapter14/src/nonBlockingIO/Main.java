@@ -107,10 +107,24 @@ public class Main {
 //            buffer.flip();
 //            binChannel.write(buffer);
 
-            // chain
+//            // chain
+//            byte[] outputBytes = "Hello World!".getBytes();
+//            byte[] outputByte2 = "Go away!".getBytes();
+//            buffer.put(outputBytes).putInt(111).putInt(-222).put(outputByte2).putInt(666).putInt(-777);
+//            buffer.flip();
+//            binChannel.write(buffer);
+
+
             byte[] outputBytes = "Hello World!".getBytes();
+            buffer.put(outputBytes);
+            long int1Pos = outputBytes.length;
+            buffer.putInt(111);
+            long int2Pos = int1Pos + Integer.BYTES;
+            buffer.putInt(-222);
             byte[] outputByte2 = "Go away!".getBytes();
-            buffer.put(outputBytes).putInt(111).putInt(-222).put(outputByte2).putInt(666).putInt(-777);
+            buffer.put(outputByte2);
+            long int3Pos = int2Pos + Integer.BYTES + outputByte2.length;
+            buffer.putInt(666);
             buffer.flip();
             binChannel.write(buffer);
 
