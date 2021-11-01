@@ -168,38 +168,49 @@ public class Main {
             readBuffer.flip();
             System.out.println("int1 = " + readBuffer.getInt());
 
+            RandomAccessFile copyFile = new RandomAccessFile("src/nonBlockingIO/dataCopy.dat", "rw");
+            FileChannel copyChannel = copyFile.getChannel();
+//            channel.position(0);
+//            long numTransferred = copyChannel.transferFrom(channel, 0, channel.size());
+            long numTransferred = copyChannel.transferTo(0, channel.size(), copyChannel);
+            System.out.println("Num transferred = " + numTransferred);
 
-            // write int first, then string
-            byte[] outputString = "Hello World!".getBytes();
-            long str1Pos = 0;
-            long newInt1Pos = outputString.length;
-            long newInt2Pos = newInt1Pos + Integer.BYTES;
-            byte[] outputString2 = "Go away!".getBytes();
-            long str2Pos = newInt2Pos + Integer.BYTES;
-            long newInt3Pos = str2Pos + outputString2.length;
+            channel.close();
+            ra.close();
+            copyChannel.close();
 
-            ByteBuffer intBuffer = ByteBuffer.allocate(Integer.BYTES);
-            intBuffer.putInt(222);
-            intBuffer.flip();
-            binChannel.position(newInt1Pos);
-            binChannel.write(intBuffer);
 
-            intBuffer.flip();
-            intBuffer.putInt(-987);
-            intBuffer.flip();
-            binChannel.position(newInt2Pos);
-            binChannel.write(intBuffer);
-
-            intBuffer.flip();
-            intBuffer.putInt(10000);
-            intBuffer.flip();
-            binChannel.position(newInt3Pos);
-            binChannel.write(intBuffer);
-
-            binChannel.position(str1Pos);
-            binChannel.write(ByteBuffer.wrap(outputString));
-            binChannel.position(str2Pos);
-            binChannel.write(ByteBuffer.wrap(outputString2));
+//            // write int first, then string
+//            byte[] outputString = "Hello World!".getBytes();
+//            long str1Pos = 0;
+//            long newInt1Pos = outputString.length;
+//            long newInt2Pos = newInt1Pos + Integer.BYTES;
+//            byte[] outputString2 = "Go away!".getBytes();
+//            long str2Pos = newInt2Pos + Integer.BYTES;
+//            long newInt3Pos = str2Pos + outputString2.length;
+//
+//            ByteBuffer intBuffer = ByteBuffer.allocate(Integer.BYTES);
+//            intBuffer.putInt(222);
+//            intBuffer.flip();
+//            binChannel.position(newInt1Pos);
+//            binChannel.write(intBuffer);
+//
+//            intBuffer.flip();
+//            intBuffer.putInt(-987);
+//            intBuffer.flip();
+//            binChannel.position(newInt2Pos);
+//            binChannel.write(intBuffer);
+//
+//            intBuffer.flip();
+//            intBuffer.putInt(10000);
+//            intBuffer.flip();
+//            binChannel.position(newInt3Pos);
+//            binChannel.write(intBuffer);
+//
+//            binChannel.position(str1Pos);
+//            binChannel.write(ByteBuffer.wrap(outputString));
+//            binChannel.position(str2Pos);
+//            binChannel.write(ByteBuffer.wrap(outputString2));
 
 
         } catch (IOException e) {
