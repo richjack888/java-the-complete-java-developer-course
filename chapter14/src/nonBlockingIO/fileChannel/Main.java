@@ -1,4 +1,4 @@
-package nonBlockingIO;
+package nonBlockingIO.fileChannel;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
