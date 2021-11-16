@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,10 +23,19 @@ public class Main {
 //        Path path = Paths.get("./src/nonBlockingIO/path","files", "files.txt");
 //        printFile(path);
 
-        Path path2 = FileSystems.getDefault().getPath(".", "src", "nonBlockingIO", "path", "files", "..", "files", "files.txt");
-        System.out.println(path2.normalize().toAbsolutePath());
-        System.out.println(path2.toAbsolutePath());
-        printFile(path2);
+//        Path path2 = FileSystems.getDefault().getPath(".", "src", "nonBlockingIO", "path", "files", "..", "files", "files.txt");
+//        System.out.println(path2.normalize().toAbsolutePath());
+//        System.out.println(path2.toAbsolutePath());
+//        printFile(path2);
+
+        Path path3 = FileSystems.getDefault().getPath("thisfiledoesntexist.txt");
+        System.out.println(path3.toAbsolutePath());
+
+        Path path4 = Paths.get("Z:\\", "abc", "don", "thisfiledoesntexist.txt");
+        System.out.println(path4.toAbsolutePath());
+
+        System.out.println("path3 exits = " + Files.exists(path3));
+        System.out.println("path4 exits = " + Files.exists(path4));
 
 
 //        // check working directory path 1
