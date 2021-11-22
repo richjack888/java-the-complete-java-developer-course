@@ -16,13 +16,22 @@ public class Main {
 //            Path copyFile = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples","Dir4");
 //            Files.copy(
 
-            Path fileToMove = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "file1copy.txt");
-            Path destination = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copy.txt");
+//            Path fileToMove = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "file1copy.txt");
+//            Path destination = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copy.txt");
+//            Files.move(fileToMove, destination);
+
+//            Path fileToMove = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "file1copy.txt");
+//            Path destination = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copy.txt");
+//            Files.move(fileToMove, destination);
+
+            // rename
+            Path fileToMove = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copy.txt");
+            Path destination = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copyRename.txt");
             Files.move(fileToMove, destination);
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 }
