@@ -24,10 +24,13 @@ public class Main {
 //            Path destination = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copy.txt");
 //            Files.move(fileToMove, destination);
 
-            // rename
-            Path fileToMove = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copy.txt");
-            Path destination = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copyRename.txt");
-            Files.move(fileToMove, destination);
+//            // rename
+//            Path fileToMove = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copy.txt");
+//            Path destination = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copyRename.txt");
+//            Files.move(fileToMove, destination);
+
+            Path fileToDelete = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copyRename.txt");
+            Files.delete(fileToDelete);
 
         } catch (IOException e) {
             e.printStackTrace();
