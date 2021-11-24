@@ -30,7 +30,8 @@ public class Main {
 //            Files.move(fileToMove, destination);
 
             Path fileToDelete = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copyRename.txt");
-            Files.delete(fileToDelete);
+//            Files.delete(fileToDelete);
+            Files.deleteIfExists(fileToDelete);
 
         } catch (IOException e) {
             e.printStackTrace();
