@@ -29,9 +29,20 @@ public class Main {
 //            Path destination = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copyRename.txt");
 //            Files.move(fileToMove, destination);
 
-            Path fileToDelete = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copyRename.txt");
-//            Files.delete(fileToDelete);
-            Files.deleteIfExists(fileToDelete);
+//            Path fileToDelete = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir1", "file1copyRename.txt");
+////            Files.delete(fileToDelete);
+//            Files.deleteIfExists(fileToDelete);
+
+//            Path fileToCreate = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "file2.txt");
+//            Files.createFile(fileToCreate);
+
+//            Path dirToCreate = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir4");
+//            Files.createDirectory(dirToCreate);
+
+//            Path dirToCreate = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir2/Dir3/Dir4/Dir5/Dir6");
+//            Path dirToCreate = FileSystems.getDefault().getPath("src\\nonBlockingIO\\path\\copyExamples", "Dir2\\Dir3\\Dir4\\Dir5\\Dir6");
+            Path dirToCreate = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples/Dir2/Dir3/Dir4/Dir5/Dir6/Dir7");
+            Files.createDirectories(dirToCreate);
 
         } catch (IOException e) {
             e.printStackTrace();
