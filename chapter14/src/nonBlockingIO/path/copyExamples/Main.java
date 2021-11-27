@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,8 +42,21 @@ public class Main {
 
 //            Path dirToCreate = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "Dir2/Dir3/Dir4/Dir5/Dir6");
 //            Path dirToCreate = FileSystems.getDefault().getPath("src\\nonBlockingIO\\path\\copyExamples", "Dir2\\Dir3\\Dir4\\Dir5\\Dir6");
-            Path dirToCreate = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples/Dir2/Dir3/Dir4/Dir5/Dir6/Dir7");
-            Files.createDirectories(dirToCreate);
+//            Path dirToCreate = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples/Dir2/Dir3/Dir4/Dir5/Dir6/Dir7");
+//            Files.createDirectories(dirToCreate);
+
+//            Path filePath = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples/Dir1/file1.txt");
+//            System.out.println("Size: " +  Files.size(filePath));
+//            System.out.println("Last modified: " + Files.getLastModifiedTime(filePath));
+
+            Path filePath = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples/Dir1/file1.txt");
+            BasicFileAttributes attrs = Files.readAttributes(filePath, BasicFileAttributes.class);
+            System.out.println("Size: " + attrs.size());
+            System.out.println("Last modified = " + attrs.lastModifiedTime());
+            System.out.println("Created = " + attrs.creationTime());
+            System.out.println("Is directory = " + attrs.isDirectory());
+            System.out.println("Is regular file = " + attrs.isRegularFile());
+
 
         } catch (IOException e) {
             e.printStackTrace();
