@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 
-public class Main {
+public class FileAttributes {
     public static void main(String[] args) {
         try {
 //            Path sourceFile = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples", "file1.txt");
