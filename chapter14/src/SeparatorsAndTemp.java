@@ -34,7 +34,16 @@ public class SeparatorsAndTemp {
 //        }
 
         System.out.println("------ Walking Tree for Dir2 ------");
-        Path dir2Path = FileSystems.getDefault().getPath("src/nonBlockingIO/path/copyExamples" + File.separator + "Dir2");
+//        Path dir2Path = FileSystems.getDefault().getPath(
+//                "src" + File.separator +
+//                "nonBlockingIO" + File.separator +
+//                "path" + File.separator +
+//                "copyExamples" + File.separator +
+//                "Dir2");
+
+        // version 2
+        Path dir2Path = FileSystems.getDefault().getPath(String.join(File.separator, "src", "nonBlockingIO", "path", "copyExamples", "Dir2"));
+
         try {
             Files.walkFileTree(dir2Path, new PrintNames());
         } catch (IOException e) {
