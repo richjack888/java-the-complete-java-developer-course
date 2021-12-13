@@ -33,20 +33,31 @@ public class SeparatorsAndTemp {
 //            System.out.println(path);
 //        }
 
-        System.out.println("------ Walking Tree for Dir2 ------");
-//        Path dir2Path = FileSystems.getDefault().getPath(
-//                "src" + File.separator +
-//                "nonBlockingIO" + File.separator +
-//                "path" + File.separator +
-//                "copyExamples" + File.separator +
-//                "Dir2");
+//        System.out.println("------ Walking Tree for Dir2 ------");
+////        Path dir2Path = FileSystems.getDefault().getPath(
+////                "src" + File.separator +
+////                "nonBlockingIO" + File.separator +
+////                "path" + File.separator +
+////                "copyExamples" + File.separator +
+////                "Dir2");
+//
+//        // version 2
+//        Path dir2Path = FileSystems.getDefault().getPath(String.join(File.separator, "src", "nonBlockingIO", "path", "copyExamples", "Dir2"));
+//
+//        try {
+//            Files.walkFileTree(dir2Path, new PrintNames());
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//        }
 
-        // version 2
+
+        System.out.println("--- Copy Dir2 to Dir4 / Dir2Copy ---");
+        Path copyPath = FileSystems.getDefault().getPath(String.join(File.separator, "src", "nonBlockingIO", "path", "copyExamples", "Dir4","Dir2Copy"));
+        // FileTree/Dir4/Dir2Copy
         Path dir2Path = FileSystems.getDefault().getPath(String.join(File.separator, "src", "nonBlockingIO", "path", "copyExamples", "Dir2"));
-
-        try {
-            Files.walkFileTree(dir2Path, new PrintNames());
-        } catch (IOException e) {
+        try{
+            Files.walkFileTree(dir2Path,new CopyFiles(dir2Path,copyPath) );
+        }catch (IOException e){
             System.out.println(e.getMessage());
         }
 
