@@ -29,6 +29,7 @@ public class Main {
             }
         });
         myRunnableThread2.start();
+        anotherThread.interrupt();
 
         System.out.println(ANSI_CYAN + "Hello again from the main thread.");
 
