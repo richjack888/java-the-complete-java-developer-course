@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println(ANSI_PURPLE + "Hello from the main thread.");
 
-        Thread anotherThread = new AnotherThread();
+        final Thread anotherThread = new AnotherThread();
         anotherThread.setName(" == Another Thread == ");
         anotherThread.start();
 
@@ -18,18 +18,19 @@ public class Main {
             }
         }.start();
 
-        Thread myRunnableThread = new Thread(new MyRunnable());
-        myRunnableThread.start();
-
-        Thread myRunnableThread2 = new Thread(new MyRunnable(){
+        Thread myRunnableThread = new Thread(new MyRunnable() {
             @Override
             public void run() {
                 System.out.println(ANSI_BLACK + "Hello from anonymous MyRunnable class.");
-//                super.run();
+                try {
+                    anotherThread.join(1000);
+                    System.out.println(ANSI_RED + "AnotherThread terminated or timed out, so I'm running again." );
+                } catch (InterruptedException e) {
+                    System.out.println(ANSI_RED + "I couldn't wait after all. I was interrupted");
+                }
             }
         });
-        myRunnableThread2.start();
-        anotherThread.interrupt();
+        myRunnableThread.start();
 
         System.out.println(ANSI_CYAN + "Hello again from the main thread.");
 
