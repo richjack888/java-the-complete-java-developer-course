@@ -81,16 +81,17 @@ class Reader implements Runnable {
     }
 
     public void run() {
-        Random ramdom = new Random();
+        Random random = new Random();
         for (String latestMessage = message.read(); !latestMessage.equals("Finished");
              latestMessage = message.read()) {
             System.out.println(latestMessage);
-        }
-        try {
-            Thread.sleep(ramdom.nextInt(2000));
-        } catch (InterruptedException e) {
+            try {
+                Thread.sleep(random.nextInt(2000));
+            } catch (InterruptedException e) {
 
+            }
         }
+
 
     }
 }
