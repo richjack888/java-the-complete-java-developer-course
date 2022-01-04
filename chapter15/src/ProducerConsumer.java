@@ -1,10 +1,15 @@
 import thread.ThreadColor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class ProducerConsumer {
     public static void main(String[] args) {
+        List<String> buffer = new ArrayList<String>();
+        MyProducer producer = new MyProducer(buffer, ThreadColor.ANSI_YELLOW);
+        MyConsumer consumer1 = new MyConsumer(buffer, ThreadColor.ANSI_PURPLE);
+        MyConsumer consumer2 = new MyConsumer(buffer, ThreadColor.ANSI_CYAN);
 
     }
 }
@@ -23,13 +28,13 @@ class MyProducer implements Runnable {
         Random random = new Random();
         String[] nums = {"1", "2", "3", "4", "5"};
 
-        for(String num: nums){
-            try{
-                System.out.println(color+"Adding..." + num);
+        for (String num : nums) {
+            try {
+                System.out.println(color + "Adding..." + num);
                 buffer.add(num);
 
                 Thread.sleep(random.nextInt(1000));
-            }catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 System.out.println("Producer was interrupted");
             }
         }
@@ -38,11 +43,29 @@ class MyProducer implements Runnable {
         buffer.add("EOF");
 
 
-
     }
 }
 
-class MyConsumer implements Runnable{
-    private List<String>buffer;
+class MyConsumer implements Runnable {
+    private List<String> buffer;
     private String color;
+
+    public MyConsumer(List<String> buffer, String color) {
+        this.buffer = buffer;
+        this.color = color;
+    }
+
+    public void run() {
+        while (true) {
+            if (buffer.isEmpty()) {
+                continue;
+            }
+            if (buffer.get(0).equals(EOF)) {
+                System.out.println(color + "Exiting");
+                break;
+            } else {
+                System.out.println(color + "Removed " + buffer.remove(0));
+            }
+        }
+    }
 }
