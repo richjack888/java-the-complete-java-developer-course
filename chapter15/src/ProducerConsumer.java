@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+// Don't know why can't import
 import static EOF;
 
 public class ProducerConsumer {
