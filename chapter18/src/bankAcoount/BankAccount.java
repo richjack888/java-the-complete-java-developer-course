@@ -6,7 +6,7 @@ public class BankAccount {
     private double balance;
 
     public static final int CHECKING = 1;
-    public static final int  SAVING = 2;
+    public static final int SAVING = 2;
 
     private int typeOfAccount;
 
@@ -28,6 +28,9 @@ public class BankAccount {
     // The branch argument is true if the customer is performing the transaction
     // at  a branch, with a teller, otherwise is at an ATM
     public double withdraw(double amount, boolean branch) {
+        if ((amount > 500.00) && !branch) {
+            throw new IllegalArgumentException();
+        }
         balance -= amount;
         return balance;
     }
