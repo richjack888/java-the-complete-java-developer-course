@@ -4,6 +4,7 @@ package musicDB;
 import musicDB.model.Artist;
 import musicDB.model.Datasource;
 
+import javax.swing.*;
 import java.util.List;
 
 
@@ -14,7 +15,8 @@ public class Main {
             System.out.println("Can't open datasource");
             return;
         }
-        List<Artist> artists = dataSource.queryArtists();
+
+        List<Artist> artists = dataSource.queryArtists(Datasource.SortOrder.ORDER_BY_ASC);
         if (artists == null) {
             System.out.println("No artists!");
             return;

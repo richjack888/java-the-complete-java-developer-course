@@ -32,9 +32,12 @@ public class Datasource {
     public static final int INDEX_SONG_TITLE = 3;
     public static final int INDEX_SONG_ALBUM = 4;
 
-    public static final int ORDER_BY_NONE = 1;
-    public static final int ORDER_BY_ASC = 2;
-    public static final int ORDER_BY_DESC = 3;
+    public enum SortOrder {
+        ORDER_BY_NONE,
+        ORDER_BY_ASC,
+        ORDER_BY_DESC;
+
+    }
 
     private Connection conn;
 
@@ -60,49 +63,24 @@ public class Datasource {
         }
     }
 
-    public List<Artist> queryArtists(int sortOrder) {
+    public List<Artist> queryArtists(SortOrder sortOrder) {
 
-//        // close by manual
-//        Statement statement = null;
-//        ResultSet resultSet = null;
-//
-//        try {
-//            statement = conn.createStatement();
-//            resultSet = statement.executeQuery("SELECT * FROM " + TABLE_ARTISTS);
-//
-//            List<Artist> artists = new ArrayList<>();
-//            while (resultSet.next()) {
-//                Artist artist = new Artist();
-//                artist.setId(resultSet.getInt(COLUMN_ARTIST_ID));
-//                artist.setName(resultSet.getString(COLUMN_ARTIST_NAME));
-//                artists.add(artist);
-//            }
-//            return artists;
-//        } catch (SQLException e) {
-//            System.out.println("Query failed: " + e.getMessage());
-//            return null;
-//        } finally {
-//            try {
-//                if (resultSet != null) {
-//                    resultSet.close();
-//                }
-//            } catch (SQLException e) {
-//                System.out.println("Error close ResultSet: " + e.getMessage());
-//
-//            }
-//
-//            try {
-//                if (statement != null) {
-//                    statement.close();
-//                }
-//            } catch (SQLException e) {
-//                System.out.println("Error close Statement: " + e.getMessage());
-//            }
-//        }
+        StringBuilder stringBuilder = new StringBuilder("SELECT * FROM ");
+        stringBuilder.append(TABLE_ARTISTS);
+        if (sortOrder != SortOrder.ORDER_BY_NONE) {
+            stringBuilder.append(" ORDER BY ");
+            stringBuilder.append(COLUMN_ARTIST_NAME);
+            stringBuilder.append(" COLLATE NOCASE ");
+            if (sortOrder == SortOrder.ORDER_BY_DESC) {
+                stringBuilder.append("DESC");
+            } else {
+                stringBuilder.append("ASC");
+            }
+        }
 
-        // close by auto
+
         try (Statement statement = conn.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM " + TABLE_ARTISTS);) {
+             ResultSet resultSet = statement.executeQuery(stringBuilder.toString())) {
 
             List<Artist> artists = new ArrayList<>();
             while (resultSet.next()) {
