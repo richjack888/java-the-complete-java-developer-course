@@ -36,7 +36,6 @@ public class Datasource {
         ORDER_BY_NONE,
         ORDER_BY_ASC,
         ORDER_BY_DESC;
-
     }
 
     private Connection conn;
