@@ -38,6 +38,16 @@ public class Datasource {
         ORDER_BY_DESC;
     }
 
+    public static final String QUERY_ALBUMS_BY_ARTIST_START =
+            "SELECT " + TABLE_ALBUMS + "." + COLUMN_ALBUM_NAME + " FROM " + TABLE_ALBUMS +
+                    " INNER JOIN " + TABLE_ARTISTS + " ON " + TABLE_ALBUMS + "." + COLUMN_ALBUM_ARTIST +
+                    " = " + TABLE_ARTISTS + "." + COLUMN_ARTIST_ID +
+                    " WHERE " + TABLE_ARTISTS + "." + COLUMN_ALBUM_NAME + " = \"";
+
+    public static final String QUERY_ALBUMS_BY_ARTIST_SORT =
+            " ORDER BY " + TABLE_ALBUMS + "." + COLUMN_ALBUM_NAME + " COLLATE NOCASE ";
+
+
     private Connection conn;
 
     public boolean open() {
@@ -93,6 +103,38 @@ public class Datasource {
             System.out.println("Query failed: " + e.getMessage());
             return null;
         }
+    }
+
+    public List<String> queryAlbumsForArtist(String artistName, SortOrder sortOrder) {
+
+        // SELECT albums.name FROM albums INNER JOIN artists ON albums.artist = artists._id WHERE artists.name = "Iron Maiden" ORDER BY albums.name COLLATE NOCASE ASC
+        StringBuilder stringBuilder = new StringBuilder(QUERY_ALBUMS_BY_ARTIST_START);
+        stringBuilder.append(artistName);
+        stringBuilder.append("\"");
+
+        if (sortOrder != SortOrder.ORDER_BY_NONE) {
+            stringBuilder.append(QUERY_ALBUMS_BY_ARTIST_SORT);
+            if (sortOrder == SortOrder.ORDER_BY_DESC) {
+                stringBuilder.append("DESC");
+            } else {
+                stringBuilder.append("ASC");
+            }
+        }
+
+        System.out.println("SQL statement = " + stringBuilder.toString());
+
+        try (Statement statement = conn.createStatement();
+             ResultSet resultSet = statement.executeQuery(stringBuilder.toString())) {
+            List<String> albums = new ArrayList<>();
+            while (resultSet.next()) {
+                albums.add(resultSet.getString(1));
+            }
+            return albums;
+        } catch (SQLException e) {
+            System.out.println("Query failed: " + e.getMessage());
+            return null;
+        }
+
     }
 
 }
