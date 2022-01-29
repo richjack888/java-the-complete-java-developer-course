@@ -48,6 +48,20 @@ public class Datasource {
             " ORDER BY " + TABLE_ALBUMS + "." + COLUMN_ALBUM_NAME + " COLLATE NOCASE ";
 
 
+    public static final String QUERY_ARTIST_FOR_SONG_START =
+            "SELECT " + TABLE_ARTISTS + "." + COLUMN_ALBUM_NAME + ", " +
+                    TABLE_ALBUMS + "." + COLUMN_ALBUM_NAME + ", " +
+                    TABLE_SONGS + "." + COLUMN_SONG_TRACK + " FROM " + TABLE_SONGS +
+                    " INNER JOIN " + TABLE_ALBUMS + " ON " +
+                    TABLE_SONGS + "." + COLUMN_SONG_ALBUM + " = " + TABLE_ALBUMS + "." + COLUMN_ALBUM_ID +
+                    " INNER JOIN " + TABLE_ARTISTS + " ON " +
+                    TABLE_ALBUMS + "." + COLUMN_ALBUM_ARTIST + " = " + TABLE_ARTISTS + "." + COLUMN_ALBUM_ID +
+                    " WHERE " + TABLE_SONGS + "." + COLUMN_SONG_TITLE + " = \"";
+
+    public static final String QUERY_ARTIST_FOR_SONG_SORT =
+            " ORDER BY " + TABLE_ARTISTS + "." + COLUMN_ARTIST_NAME + "," +
+                    TABLE_ALBUMS + "." + COLUMN_ALBUM_NAME + " COLLATE NOCASE";
+
     private Connection conn;
 
     public boolean open() {
@@ -134,7 +148,39 @@ public class Datasource {
             System.out.println("Query failed: " + e.getMessage());
             return null;
         }
-
     }
 
+    public List<SongArtist> queryArtistsForSong(String songName, SortOrder sortOrder) {
+        StringBuilder stringBuilder = new StringBuilder(QUERY_ARTIST_FOR_SONG_START);
+        stringBuilder.append(songName);
+        stringBuilder.append("\"");
+
+        if (sortOrder != SortOrder.ORDER_BY_NONE) {
+            stringBuilder.append(QUERY_ARTIST_FOR_SONG_SORT);
+            if (sortOrder == SortOrder.ORDER_BY_DESC) {
+                stringBuilder.append(" DESC");
+            } else {
+                stringBuilder.append(" ASC");
+            }
+        }
+
+        System.out.println("SQL statement = " + stringBuilder.toString());
+
+        try (Statement statement = conn.createStatement();
+             ResultSet results = statement.executeQuery(stringBuilder.toString())) {
+
+            List<SongArtist> songArtists = new ArrayList<>();
+            while (results.next()) {
+                SongArtist songArtist = new SongArtist();
+                songArtist.setArtistName(results.getString(1));
+                songArtist.setAlbumName(results.getString(2));
+                songArtist.setTrack(results.getInt(3));
+                songArtists.add(songArtist);
+            }
+            return songArtists;
+        } catch (SQLException e) {
+            System.out.println("Query failed: " + e.getMessage());
+            return null;
+        }
+    }
 }
