@@ -34,16 +34,22 @@ public class Main {
 //            System.out.println(album);
 //        }
 
-        List<SongArtist> songArtists = dataSource.queryArtistsForSong("Heartless", Datasource.SortOrder.ORDER_BY_ASC);
+//        List<SongArtist> songArtists = dataSource.queryArtistsForSong("go Your Own Way", Datasource.SortOrder.ORDER_BY_ASC);
+//
+//        if (songArtists == null) {
+//            System.out.println("Couldn't find the artist for the song");
+//            return;
+//        }
+//
+//        for (SongArtist artist : songArtists) {
+//            System.out.println(artist);
+//        }
 
-        if (songArtists == null) {
-            System.out.println("Couldn't find the artist for the song");
-            return;
-        }
+//        dataSource.querySongsMetadata();
+//        int count = dataSource.getCount(Datasource.TABLE_SONGS);
+//        System.out.println("Number of songs is: " + count);
 
-        for (SongArtist artist : songArtists) {
-            System.out.println(artist);
-        }
+        dataSource.createViewForSongArtists();
 
         dataSource.close();
 
