@@ -83,7 +83,7 @@ public class Datasource {
 
     public static final String QUERY_VIEW_SONG_INFO_PREP = "SELECT " + COLUMN_ARTIST_NAME + ", " +
             COLUMN_SONG_ALBUM + ", " + COLUMN_SONG_TRACK + " FROM " + TABLE_ARTIST_SONG_VIEW +
-            " WHERE " + COLUMN_SONG_TITLE + " = ?";
+            " WHERE LOWER (" + COLUMN_SONG_TITLE + ") = ?";
 
     private Connection conn;
 
@@ -104,6 +104,10 @@ public class Datasource {
 
     public void close() {
         try {
+            if (querySongInfoView != null) {
+                querySongInfoView.close();
+            }
+
             if (conn != null) {
                 conn.close();
             }
@@ -254,7 +258,7 @@ public class Datasource {
 
         try {
             querySongInfoView.setString(1, song_title);
-            ResultSet resultSet = querySongInfoView.executeQuery(song_title);
+            ResultSet resultSet = querySongInfoView.executeQuery();
 
             List<SongArtist> songArtists = new ArrayList<>();
             while (resultSet.next()) {
