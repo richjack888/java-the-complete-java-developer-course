@@ -383,7 +383,7 @@ public class Datasource {
                 throw new SQLException("The song insert failed");
             }
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println("Insert song exception: " + e.getMessage());
             try {
                 System.out.println("Performing rollback");

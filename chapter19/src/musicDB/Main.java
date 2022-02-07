@@ -66,7 +66,7 @@ public class Main {
 //            System.out.println("FROM VIEW - " + artist);
 //        }
 
-        dataSource.insertSong("Touch of Grey", "Grateful Dead", "In The Dark", 1);
+        dataSource.insertSong("Bird Dog", "Everyly Brothers", "All-Time Greatest Hits", 7);
         dataSource.close();
 
     }
