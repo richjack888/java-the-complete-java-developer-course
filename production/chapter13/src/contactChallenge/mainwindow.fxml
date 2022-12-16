@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="contactChallenge.Controller">
+    <center>
+        <TableView fx:id="tableview" onKeyPressed="#handleDelKeyPressed" onMouseClicked="#handleDelClick">
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+            <columns>
+                <TableColumn fx:id="firstNameCol" onEditCommit="#onEditFirstName" prefWidth="200.0" text="First Name"/>
+                <TableColumn fx:id="lastNameCol" onEditCommit="#onEditLastName" minWidth="0.0" prefWidth="200.0"
+                             text="Last Name"/>
+                <TableColumn fx:id="phoneNumberCol" onEditCommit="#onEditPhoneNumber" minWidth="0.0" prefWidth="200.0"
+                             text="Phone Number"/>
+                <TableColumn fx:id="notesCol" onEditCommit="#onEditNotes" minWidth="0.0" prefWidth="200.0"
+                             text="Notes"/>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+
+        <HBox spacing="20">
+            <TextField fx:id="firstNameField" promptText="First Name" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="lastNameField" promptText="Last Name" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="phoneNumberField" promptText="Phone Number" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="notesField" promptText="Notes" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="addBtn" mnemonicParsing="false" onAction="#handleAddBtn" text="Add" HBox.hgrow="ALWAYS"/>
+
+        </HBox>
+    </bottom>
+
+
+</BorderPane>

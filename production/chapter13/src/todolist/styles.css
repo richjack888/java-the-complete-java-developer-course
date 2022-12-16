@@ -1,0 +1,9 @@
+.menu-item {
+    -fx-text-fill: red;
+    -fx-background-color: yellow;
+}
+
+#button_2 {
+    -fx-text-fill: white;
+    -fx-background-color: purple;
+}
