@@ -9,7 +9,9 @@
       <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/MultipleThreads.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/ProducerConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starvation.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ThreadColor.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/thread/AnotherThread.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/thread/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/thread/MyRunnable.java" afterDir="false" />
@@ -62,6 +64,7 @@
       <updated>1665111652998</updated>
       <workItem from="1665111654428" duration="27000" />
       <workItem from="1665111729639" duration="28000" />
+      <workItem from="1671077115817" duration="46000" />
     </task>
     <servers />
   </component>

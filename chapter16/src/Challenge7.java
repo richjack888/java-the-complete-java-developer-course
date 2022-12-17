@@ -11,8 +11,8 @@ public class Challenge7 {
         new Thread(new Transfer(account2, account1, 200.00), "Transfer2").start();
 
         Thread.sleep(1000);
-        System.out.println(account1.getBalance());
-        System.out.println(account2.getBalance());
+        System.out.println("account1: " + account1.getBalance());
+        System.out.println("account2: " + account2.getBalance());
     }
 }
 
@@ -70,6 +70,8 @@ class BankAccount7 {
                 // The deposit failed. Refund the money back into the account.
                 System.out.printf("%s: Destination account busy. Refunding money\n",
                         Thread.currentThread().getName());
+
+//                deposit(amount); // refund may not work
                 while (!deposit(amount)) {
                     continue;
                 }
