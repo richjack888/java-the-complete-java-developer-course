@@ -18,8 +18,12 @@ public class Challenge9 {
             }
         });
 
-        tutorThread.start();
-        studentThread.start();
+//        tutorThread.start();
+//        studentThread.start();
+
+
+        new Thread(() -> System.out.println("println")).start();
+
     }
 }
 
@@ -69,9 +73,9 @@ class NewStudent {
     public void handInAssignment() {
         synchronized (tutor) {
             tutor.getProgressReport();
+            tutor.notifyAll();
             synchronized (this) {
                 System.out.println("Student handed in assignment");
-                tutor.notifyAll();
             }
         }
     }
