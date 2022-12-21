@@ -1,5 +1,5 @@
-import java.text.Collator;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class test {
     public static void main(String[] args) {
@@ -19,6 +19,16 @@ public class test {
 //        }
 
         list.forEach(employee -> System.out.println(employee.getName() +  " , " + employee.getAge()));
+
+        AtomicInteger n = new AtomicInteger(); // 宣告變數n及初值
+
+
+
+        list.forEach(e -> {
+            n.getAndIncrement(); // 編譯錯誤
+
+            // ...
+        });
 
     }
 }
