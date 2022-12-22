@@ -16,13 +16,10 @@ public class Main {
 //
 //        System.out.println(sillyString);
 
-        AnotherClass anotherClass = new AnotherClass();
-        String silly = anotherClass.doSomething();
-        System.out.println(silly);
+//        AnotherClass anotherClass = new AnotherClass();
+//        String silly = anotherClass.doSomething();
+//        System.out.println(silly);
 
-        int n = 0;
-        System.out.println(n);
-        
 
 
 
@@ -41,22 +38,6 @@ interface UpperConcat {
 
 class AnotherClass {
 
-    public static final double PI = 3.141592653589793;
-
-    public double radius;
-    public double xPos;
-    public double yPos;
-    public double zPos;
-
-    AnotherClass() {
-    }
-
-    void Sphere(double x, double y, double z, double r) {
-        radius = r;
-        xPos = x;
-        yPos = y;
-        zPos = z;
-    }
 //    public String doSomething() {
 //        System.out.println("The another class name is: " + this.getClass().getSimpleName());
 //        return Main.doStringStuff(new UpperConcat() {
@@ -83,20 +64,32 @@ class AnotherClass {
 
 
     public String doSomething() {
-        final int[] i = {0};
-        {
-            UpperConcat uc = new UpperConcat() {
-                @Override
-                public String upperAndConcat(String s1, String s2) {
-                    i[0]++;
-                    System.out.println("inside anonymous: " + i[0]);
-                    return s1.toUpperCase() + s2.toUpperCase();
-                }
-            };
-//            i++;
-            System.out.println(i[0]);
-            return Main.doStringStuff(uc, "String1", "String2");
-        }
+
+        UpperConcat upperConcat = (s1, s2) -> {
+            String simpleName = this.getClass().getSimpleName();
+            System.out.println("Lambda class name: " + (simpleName.equals("") ? "empty" : simpleName));
+            return s1.toUpperCase() + s2.toUpperCase();
+
+        };
+        System.out.println("The another class: " + getClass().getSimpleName());
+        return Main.doStringStuff(upperConcat, "Hi", "Yt");
+
+    }
+
+    public void printValue() {
+        int number = 25;
+        Runnable runnable = () -> {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("The value is " + number);
+        };
+
+        new Thread(runnable).start();
     }
 }
+
+
 

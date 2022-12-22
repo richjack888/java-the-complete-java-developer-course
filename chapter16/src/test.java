@@ -1,4 +1,6 @@
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class test {
@@ -18,18 +20,35 @@ public class test {
 //            System.out.println(employee.getName() + ", " + employee.getAge());
 //        }
 
-        list.forEach(employee -> System.out.println(employee.getName() +  " , " + employee.getAge()));
+        list.forEach(employee -> {
+                    if (employee.getAge() > 50){
+                        System.out.println(employee.getName() + " , " + employee.getAge());
+                    }
+                }
+        );
 
-        AtomicInteger n = new AtomicInteger(); // 宣告變數n及初值
+//        for (Employee employee : list) {
+//            System.out.println(employee.getName());
+//            new Thread(() -> System.out.println(employee.getAge())).start();
+//        }
+
+//        CoordinateSystem coordinateSystem = new CoordinateSystem();
+//        System.out.println(coordinateSystem.getOrigin());
+//        coordinateSystem.getOrigin().x = 15;
+//        System.out.println(coordinateSystem.getOrigin());
+//        assert coordinateSystem.getOrigin().getX() == 0;
+//        System.out.println(coordinateSystem.getOrigin());
+//        coordinateSystem.getOrigin() = new Point(5,5);
 
 
+    }
 
-        list.forEach(e -> {
-            n.getAndIncrement(); // 編譯錯誤
+    static final class CoordinateSystem {
+        private final Point origin = new Point(0, 0);
 
-            // ...
-        });
-
+        public Point getOrigin() {
+            return origin;
+        }
     }
 }
 
@@ -66,3 +85,5 @@ class Employee implements Comparable<Employee> {
         }
     }
 }
+
+
