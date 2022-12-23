@@ -16,9 +16,10 @@ public class Main {
 //
 //        System.out.println(sillyString);
 
-//        AnotherClass anotherClass = new AnotherClass();
+        AnotherClass anotherClass = new AnotherClass();
 //        String silly = anotherClass.doSomething();
 //        System.out.println(silly);
+        anotherClass.printValue();
 
 
 
@@ -65,6 +66,8 @@ class AnotherClass {
 
     public String doSomething() {
 
+
+
         UpperConcat upperConcat = (s1, s2) -> {
             String simpleName = this.getClass().getSimpleName();
             System.out.println("Lambda class name: " + (simpleName.equals("") ? "empty" : simpleName));
@@ -85,9 +88,11 @@ class AnotherClass {
                 e.printStackTrace();
             }
             System.out.println("The value is " + number);
+            System.out.println("lambda done!");
         };
 
         new Thread(runnable).start();
+        System.out.println("method done!");
     }
 }
 
