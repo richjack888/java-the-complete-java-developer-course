@@ -5,6 +5,8 @@ public class GenericTest {
 
     public static void main(String[] args) {
 
+
+
 //        Plate<? extends Fruit> p = new Plate<Fruit>(new Fruit());
 //        p.set(new Food());
 //        p.set(new Fruit());
