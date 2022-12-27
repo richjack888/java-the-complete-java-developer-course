@@ -1,16 +1,18 @@
 import java.util.*;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
 
 public class EmployeeTest {
 
     public static void main(String[] args) {
         List<Employee> list = Arrays.asList(
-                new Employee("Jack", 80),
-                new Employee("Banana", 105),
-                new Employee("Apple", 33),
-                new Employee("Cock", 13));
+                new Employee("Jack Jojo", 80),
+                new Employee("Banana Bee", 105),
+                new Employee("Apple Ace", 33),
+                new Employee("Cock Chicken", 13));
 
 //        Collections.sort(list);
 
@@ -66,8 +68,30 @@ public class EmployeeTest {
 //        System.out.println("falseTime: " + falseTime);
 
 
-        Function<Employee, String> UpperName = employee -> employee.getName().toUpperCase();
+//        Function<Employee, String> upperName = employee -> employee.getName().toUpperCase();
+//        Function<Employee, String> upperName = Employee::getUpperName;
+//        list.forEach(employee -> System.out.println(upperName.apply(employee)));
+//        list.forEach(Employee::printName);
 
+
+//        List<Integer> listOfNumber  = Arrays.asList(1,2,3,4,5,6);
+//        listOfNumber.forEach(System.out::println);
+
+//        Consumer<String> c1 = String::toUpperCase;
+//        Consumer<String> c1 = s -> System.out.println(s.toUpperCase());
+//        Consumer<String> c2 = System.out::println;
+//        c1.andThen(c2).accept("Hello, World!");
+
+//        Function<Employee, String> upperCase = employee -> employee.getName().toUpperCase();
+//        Function<String, String> firstName = name -> name.substring(0, name.indexOf(" "));
+//        Function<Employee, String> chainFunction = upperCase.andThen(firstName);
+//        list.forEach(employee -> System.out.println(chainFunction.apply(employee)));
+//
+//        BiFunction<String, Employee, String> concatAge = (String name, Employee employee) -> name.concat(" " + employee.getAge());
+//        list.forEach(employee -> System.out.println(concatAge.apply(upperCase.apply(employee), employee)));
+
+        IntUnaryOperator incBy10 = i -> i + 10;
+        System.out.println(incBy10.applyAsInt(new Random().nextInt(100)));
 
 
     }
@@ -104,6 +128,15 @@ class Employee implements Comparable<Employee> {
         return name;
     }
 
+    public String getUpperName() {
+        return name.toUpperCase();
+    }
+
+    public void printName() {
+        System.out.println(name);
+    }
+
+
     public int getAge() {
         return age;
     }
@@ -119,7 +152,13 @@ class Employee implements Comparable<Employee> {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
 
 
