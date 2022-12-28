@@ -4,15 +4,13 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class EmployeeTest {
 
     public static void main(String[] args) {
-        List<Employee> list = Arrays.asList(
-                new Employee("Jack Jojo", 80),
-                new Employee("Banana Bee", 105),
-                new Employee("Apple Ace", 33),
-                new Employee("Cock Chicken", 13));
+        List<Employee> list = Arrays.asList(new Employee("Jack Jojo", 80), new Employee("Banana Bee", 105), new Employee("Apple Ace", 33), new Employee("Cock Chicken", 13));
 
 //        Collections.sort(list);
 
@@ -90,15 +88,42 @@ public class EmployeeTest {
 //        BiFunction<String, Employee, String> concatAge = (String name, Employee employee) -> name.concat(" " + employee.getAge());
 //        list.forEach(employee -> System.out.println(concatAge.apply(upperCase.apply(employee), employee)));
 
-        IntUnaryOperator incBy10 = i -> i + 10;
-        System.out.println(incBy10.applyAsInt(new Random().nextInt(100)));
+//        IntUnaryOperator incBy10 = i -> i + 10;
+//        System.out.println(incBy10.applyAsInt(new Random().nextInt(100)));
+
+        List<String> someBingoNumbers = Arrays.asList("N40", "N36", "N32", "B12", "B6", "G56", "G49", "G60", "G50", "g64", "O71");
+
+//        someBingoNumbers.stream().
+//                filter(s -> s.toUpperCase().startsWith("G")).
+//                sorted((String s1, String s2)-> s1.compareTo(s2)).
+//                forEach((String s) -> System.out.println(s));
+
+//        someBingoNumbers.stream().
+//                filter(s -> s.toUpperCase().startsWith("G")).
+//                sorted().
+//                forEach(System.out::println);
+
+//        someBingoNumbers.stream().
+//                map(String::toUpperCase).
+//                filter(s -> s.startsWith("G")).
+//                sorted().
+//                forEach(System.out::println);
+
+        List<String> names1 = Arrays.asList("Tony", "Tom", "John", "Andy");
+        System.out.println(names1.stream().
+                filter(s -> s.startsWith("T")).
+                collect(Collectors.toList()));
+
+
+        List<String> names2 = Stream.of("Tony", "Tom", "John", "Andy").
+                filter(name -> name.startsWith("T")).
+                collect(Collectors.toList());
+        System.out.println(names2.toString());
 
 
     }
 
-    static void printEmployeeByAge(List<Employee> list,
-                                   String ageText,
-                                   Predicate<Employee> ageCondition) {
+    static void printEmployeeByAge(List<Employee> list, String ageText, Predicate<Employee> ageCondition) {
         System.out.println(ageText);
         for (Employee employee : list) {
             if (ageCondition.test(employee)) {
@@ -154,10 +179,7 @@ class Employee implements Comparable<Employee> {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+        return "Employee{" + "name='" + name + '\'' + ", age=" + age + '}';
     }
 }
 
