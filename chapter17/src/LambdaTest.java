@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
@@ -153,6 +154,15 @@ public class LambdaTest {
 }
 
 class Person {
+    public static List<Person> createRoster() {
+        return Arrays.asList(
+                new Person("Tom", Person.Sex.MALE, "a@gamil.com", 21),
+                new Person("Banana", Person.Sex.MALE, "b@gamil.com", 50),
+                new Person("Coke", Person.Sex.MALE, "c@gamil.com", 5),
+                new Person("GI JOE", Person.Sex.MALE, "d@gamil.com", 31));
+    }
+
+
     public enum Sex {
         MALE, FEMALE
     }
@@ -184,6 +194,18 @@ class Person {
 
     public void printPerson() {
         System.out.println(name + " - " + gender + " - " + age);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public static int compareByAge(Person a, Person b) {
+        return a.birthday.compareTo(b.birthday);
     }
 }
 

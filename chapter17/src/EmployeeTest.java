@@ -103,22 +103,22 @@ public class EmployeeTest {
 //                sorted().
 //                forEach(System.out::println);
 
-//        someBingoNumbers.stream().
-//                map(String::toUpperCase).
-//                filter(s -> s.startsWith("G")).
-//                sorted().
-//                forEach(System.out::println);
+        someBingoNumbers.stream().
+                map(String::toUpperCase).
+                filter(s -> s.startsWith("G")).
+                sorted().
+                forEach(System.out::println);
 
-        List<String> names1 = Arrays.asList("Tony", "Tom", "John", "Andy");
-        System.out.println(names1.stream().
-                filter(s -> s.startsWith("T")).
-                collect(Collectors.toList()));
-
-
-        List<String> names2 = Stream.of("Tony", "Tom", "John", "Andy").
-                filter(name -> name.startsWith("T")).
-                collect(Collectors.toList());
-        System.out.println(names2.toString());
+//        List<String> names1 = Arrays.asList("Tony", "Tom", "John", "Andy");
+//        System.out.println(names1.stream().
+//                filter(s -> s.startsWith("T")).
+//                collect(Collectors.toList()));
+//
+//
+//        List<String> names2 = Stream.of("Tony", "Tom", "John", "Andy").
+//                filter(name -> name.startsWith("T")).
+//                collect(Collectors.toList());
+//        System.out.println(names2.toString());
 
 
     }
