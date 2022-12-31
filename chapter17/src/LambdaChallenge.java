@@ -6,6 +6,7 @@ import java.util.concurrent.Callable;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 
 public class LambdaChallenge {
@@ -75,13 +76,23 @@ public class LambdaChallenge {
 //                .sorted()
 //                .forEach((String name) -> System.out.println(name));
 
-        long nameBeginWithA = topNames2015.stream()
-                .map((String s) -> s.substring(0, 1).toUpperCase().concat(s.substring(1)))
-                .filter((String s) -> s.startsWith("A"))
-                .peek(System.out::println)
-                .count();
-        System.out.println("Number of names begin with A is :"+nameBeginWithA);
+//        long nameBeginWithA =
+//                topNames2015.stream()
+//                        .map((String s) -> s.substring(0, 1).toUpperCase().concat(s.substring(1)))
+//                        .filter((String s) -> s.startsWith("A"))
+//                        .peek(System.out::println)
+//                        .count();
+//        System.out.println("Number of names begin with A is :" + nameBeginWithA);
 
+//        List<String> newList =
+//                topNames2015.stream()
+//                        .map((String s) -> s.substring(0, 1).toUpperCase().concat(s.substring(1)))
+//                        .filter((String s) -> s.startsWith("A"))
+//                        .peek(System.out::println)
+//                        .collect(Collectors.toList());
+//        newList.forEach(System.out::println);
+
+        ;
 
 
     }
