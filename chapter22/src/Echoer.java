@@ -25,17 +25,26 @@ public class Echoer extends Thread {
                 if (echo.equals("exit")) {
                     break;
                 }
+
+////                 test client timeout for socket.setSoTimeout(5000);
+//                try {
+//                    Thread.sleep(15000);
+//                }catch (InterruptedException e) {
+//                    System.out.println("Thread interrupted");
+//                }
+
+
                 output.println("Server receive your message: " + echo);
                 System.out.println("Message from " + clientAddress + ": " + echo);
             }
         } catch (Exception e) {
-            System.out.println("Error:" + e.getMessage());
+            System.out.println("Echoer Error:" + e.getMessage());
         } finally {
             try {
                 socket.close();
                 System.out.println(socket.getInetAddress() + ":" + socket.getPort() + " close connection.");
             } catch (Exception e) {
-                System.out.println("Error:" + e.getMessage());
+                System.out.println("Echoer Error:" + e.getMessage());
             }
         }
     }

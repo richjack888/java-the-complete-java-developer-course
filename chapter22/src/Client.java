@@ -3,12 +3,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) {
         System.out.println("Client start!");
         try (Socket socket = new Socket("localhost", 5688)) {
+            socket.setSoTimeout(5000);
             System.out.println("Client open connect to server -> " + socket.getInetAddress() + ":" +socket.getPort());
             BufferedReader echoes = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter stringToEcho = new PrintWriter(socket.getOutputStream(), true);
@@ -28,7 +30,11 @@ public class Client {
                 }
             } while (!clientSentString.equals("exit"));
 
-        } catch (IOException e) {
+        } catch (SocketTimeoutException e) {
+            System.out.println("Client Error: The socket timeout!");
+        }
+
+        catch (IOException e) {
             System.out.println("Client error: " + e.getMessage());
         }
 
