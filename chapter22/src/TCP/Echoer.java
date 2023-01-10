@@ -1,3 +1,5 @@
+package TCP;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -34,17 +36,17 @@ public class Echoer extends Thread {
 //                }
 
 
-                output.println("Server receive your message: " + echo);
+                output.println("TCP.Server receive your message: " + echo);
                 System.out.println("Message from " + clientAddress + ": " + echo);
             }
         } catch (Exception e) {
-            System.out.println("Echoer Error:" + e.getMessage());
+            System.out.println("TCP.Echoer Error:" + e.getMessage());
         } finally {
             try {
                 socket.close();
                 System.out.println(socket.getInetAddress() + ":" + socket.getPort() + " close connection.");
             } catch (Exception e) {
-                System.out.println("Echoer Error:" + e.getMessage());
+                System.out.println("TCP.Echoer Error:" + e.getMessage());
             }
         }
     }
