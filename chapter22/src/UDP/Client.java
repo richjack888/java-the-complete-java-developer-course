@@ -24,6 +24,11 @@ public class Client {
                 DatagramPacket datagramPacket = new DatagramPacket(data, data.length, address, 54088);
                 datagramSocket.send(datagramPacket);
 
+                byte[] data2 = new byte[50];
+                datagramPacket = new DatagramPacket(data2, data2.length);
+                datagramSocket.receive(datagramPacket);
+                System.out.println("Text receive is: " + new String(data2, 0, datagramPacket.getLength()));
+
             } while (!echoString.equals("exit"));
 
         } catch (SocketTimeoutException e) {
