@@ -12,8 +12,9 @@ public class Url {
     public static void main(String[] args) {
 
         try {
-//            URL url = new URL("https://example.org");
-            URL url = new URL("https://example.org/somethin.html");
+            URL url = new URL("https://example.org");
+//            URL url = new URL("https://example.org/somethin.html");
+//            URL url = new URL("https://api.flickr.com/services/feeds/photos_public.gne?tags=cats");
             HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
             httpConnection.setRequestMethod("GET");
             httpConnection.setRequestProperty("User-Agent", "Chrome");
