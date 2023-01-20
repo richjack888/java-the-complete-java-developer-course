@@ -37,12 +37,48 @@ public class test {
 //        int c = Math.addExact(a,b); // will throw an ArithmeticException
 
 
-        long longNumber = 2147483647;
-        Long longNumber2 = 214748364L;
-//        short shortNumber = 541444;
-        System.out.println(longNumber + 2);
+//        long longNumber = 2147483647;
+//        Long longNumber2 = 214748364L;
+////        short shortNumber = 541444;
+//        System.out.println(longNumber + 2);
+
+//        Integer i = new Integer(10);
+//        System.out.println(modify(i));
+//        System.out.println(i);
+//
+//        int i2  = 10;
+//        System.out.println(modify2(i2));
+//        System.out.println(i2);
+
+//        String a = "a";
+//        String b = "a";
+//        System.out.println(a == b);
+
+//        Integer i = 5;
+//        System.out.println(i.equals(5));
+//        byte a = 6;
+//        int b = 3;
+//
+//        int x = (int) 14748364899L;
+//        int y = Integer.MAX_VALUE;
+//        System.out.println(x > y);
+
+        double myDouble = 2.5;
+        float myFloat = (float) myDouble;
 
 
 
+
+    }
+
+    private static Integer modify(Integer i) {
+        i = i + 1;
+        return i;
+
+    }
+
+    private static int modify2(int i) {
+        i = i + 1;
+        return i;
     }
 }
