@@ -1,4 +1,6 @@
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 public class test {
     public static void main(String[] args) {
@@ -63,10 +65,35 @@ public class test {
 //        int y = Integer.MAX_VALUE;
 //        System.out.println(x > y);
 
-        double myDouble = 2.5;
-        float myFloat = (float) myDouble;
+//        Double myDouble = 2.5;
+//        System.out.println(myDouble.getClass());
 
+//        System.out.println(8e7);
 
+//        double pound = 100;
+//        double kilogram = pound * 0.45359237;
+//        System.out.println(kilogram);
+
+//        // calculate pi
+//        double pi = 0;
+//        for (int i = 1; i <= 10000000; i++) {
+//            pi += Math.pow(-1, i + 1) / (2 * i - 1);
+//        }
+//        pi *= 4;
+//        System.out.println(pi);
+
+//        char mychar = '\u9876';
+//        System.out.println(mychar);
+
+//        char mySimplechar = '?';
+//        System.out.println(mySimplechar);
+//        char myUnicodechar = '\u003F';
+//        System.out.println(myUnicodechar);
+//        char myDecimalchar = 63;
+//        System.out.println(myDecimalchar);
+
+        int myInt = Integer.parseInt("123456");
+        System.out.println(Integer.reverse(myInt));
 
 
     }
