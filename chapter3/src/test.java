@@ -1,7 +1,3 @@
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
-
 public class test {
     public static void main(String[] args) {
 //        System.out.println(Integer.MIN_VALUE);
@@ -92,8 +88,23 @@ public class test {
 //        char myDecimalchar = 63;
 //        System.out.println(myDecimalchar);
 
-        int myInt = Integer.parseInt("123456");
-        System.out.println(Integer.reverse(myInt));
+//        int myInt = Integer.parseInt("123456");
+//        System.out.println(Integer.reverse(myInt));
+
+//        int myInt2 = 10;
+//        String myString = "Hello";
+//        System.out.println(myInt2 + myString);
+
+//        char firstChar = 'A';
+//        char secondChar = 'B';
+//        System.out.println(firstChar + secondChar);
+
+//        int result = 10;
+//        result -= 5.5;
+//        System.out.println(result);
+
+
+
 
 
     }
