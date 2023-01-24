@@ -103,13 +103,31 @@ public class test {
 //        result -= 5.5;
 //        System.out.println(result);
 
+//        String car = "BMW";
+//        boolean favoriteCar = (car != "BMW");
+//        System.out.println(favoriteCar);
 
+//        int i = 3;
+//        int a = i++; // a = 3, i = 4
+//        System.out.println("a = " + a);
+//        int b = ++a; // b = 4, a = 4
+//        System.out.println("b = " + b);
 
+//        int number = 5;
+//        int number = -5;
+        int number = 0;
+        System.out.println((number > 0) ? "positive" : ((number == 0) ? "zero" : "negative"));
 
 
     }
 
-    private static Integer modify(Integer i) {
+    private static Integer modify(Integer i, String s) {
+        i = i + 1;
+        return i;
+
+    }
+
+    private static Integer modify(String s,Integer i) {
         i = i + 1;
         return i;
 
