@@ -1,8 +1,9 @@
-public class FractionMyAnswer {
+public class FractionTest {
     public static void main(String[] args) {
-        System.out.println(addFractions("5/8", "5/6"));
-        System.out.println(addFractions("1/8", "5/6"));
-        System.out.println(addFractions("1/5", "2/5"));
+//        System.out.println(addFractions("5/8", "5/6"));
+//        System.out.println(addFractions("1/8", "5/6"));
+//        System.out.println(addFractions("1/5", "2/5"));
+        System.out.println(addFractions("15/8", "5/6"));
     }
 
     public static String addFractions(String fraction1, String fraction2) {
