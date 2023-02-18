@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -31,7 +32,7 @@ public class RandomMatch {
 
         Random random = new Random();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             int animalsIndex = random.nextInt(12);
             int zodiacIndex = random.nextInt(12);
 
@@ -44,8 +45,14 @@ public class RandomMatch {
             }
         }
 
+////         version-1
+//        result.entrySet().stream()
+//                .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()))
+//                .forEach(entry -> System.out.println("(" + entry.getKey() + ")：" + entry.getValue()));
+
+        //  version-2
         result.entrySet().stream()
-                .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()))
+                .sorted(Map.Entry.<String, Integer>comparingByValue(Comparator.reverseOrder()))
                 .forEach(entry -> System.out.println("(" + entry.getKey() + ")：" + entry.getValue()));
 
 
