@@ -1,6 +1,5 @@
 public class test {
     public static void main(String[] args) {
-
         for (int i = 0; i < 5; i++) {
             System.out.println("Round " + (i + 1));
             // random generate width from 1 to 100
@@ -19,7 +18,6 @@ public class test {
             }
             System.out.println();
         }
-
         // bottom part
         for (int i = width - 1; i >= 1; i--) {
             for (int j = 1; j <= i; j++) {
