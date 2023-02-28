@@ -37,7 +37,7 @@ public class SmartKitchen {
 
 }
 
-class Test {
+class TestSmartKitchen {
     public static void main(String[] args) {
 
         SmartKitchen kitchen = new SmartKitchen();
